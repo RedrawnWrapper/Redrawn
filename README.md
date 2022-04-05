@@ -1,4 +1,4 @@
-<a href="https://discord.js.org"><img src="https://cdn.discordapp.com/attachments/959986358473084988/960017463607701525/Sin_titulo-1.png" width="546" alt="discord.js" /></a>
+<img src="https://cdn.discordapp.com/attachments/959986358473084988/960017463607701525/Sin_titulo-1.png" width="546" alt="Redrawn" /></a>
 # Redrawn (Beta)
 Redrawn is a GoAnimate Server Emulator carrying on the torch of [VisualPlugin's GoAnimate Wrapper project](https://github.com/GoAnimate-Wrapper) after it's shutdown in 2020. This is based off Wrapper Offline in a goal of being better than Wrapper Offline...
 
