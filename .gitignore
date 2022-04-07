@@ -144,3 +144,7 @@ dist
 *.sfk
 *.sfap0
 utilities/config.bat
+utilities/config.bat
+utilities/ungoogled-chromium/the_profile/chrome_shutdown_ms.txt
+utilities/ungoogled-chromium/the_profile/CrashpadMetrics-active.pma
+utilities/ungoogled-chromium/the_profile/chrome_shutdown_ms.txt
