@@ -771,7 +771,7 @@ if !JUSTIMPORTED!==y ( echo Note: You'll need to reload the editor for your file
 :: Hello, code wanderer. Enjoy seeing all the secret options easily instead of finding them yourself.
 echo:
 echo Enter 1 to reopen the video list
-echo Enter 3 to open the server page
+echo Enter 2 to open the server page
 echo Enter ? to open the FAQ
 echo Enter clr to clean up the screen
 echo Enter 0 to close Redrawn
@@ -783,8 +783,7 @@ set /p CHOICE=Choice:
 if "!choice!"=="0" goto exitwrapperconfirm
 set FUCKOFF=n
 if "!choice!"=="1" goto reopen_webpage
-if "!choice!"=="2" goto start_importer
-if "!choice!"=="3" goto open_server
+if "!choice!"=="2" goto open_server
 if "!choice!"=="?" goto open_faq
 if /i "!choice!"=="clr" goto wrapperstartedcls
 if /i "!choice!"=="cls" goto wrapperstartedcls
@@ -860,10 +859,6 @@ echo Opening the wrapper-offline folder...
 start explorer.exe wrapper-offline
 popd
 goto wrapperidle
-
-:start_importer
-echo This doesn't work, please try to use the importer in the Legacy Video Maker, if it does not work, join our discord server and report whatever is wrong.
-goto wrapperstartedcls
 
 :youfuckoff
 echo You fuck off.
