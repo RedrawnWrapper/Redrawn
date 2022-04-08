@@ -64,5 +64,4 @@ module.exports = http.createServer((req, res) => {
 	if (!found) { res.statusCode = 404; res.end(); }
 }).listen(env.PORT || env.SERVER_PORT, console.log);
 
-// 2epik4u is weird
-// update: still weird
+// Fuck you Octanuary 
