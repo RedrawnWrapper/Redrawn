@@ -40,10 +40,10 @@ Redrawn:
 | MiiArtisan   | Co-project lead and logo |
 | DazaSeal     | Co-project lead and frontend designer |
 | JosephAnimate2022 | Backend development and batch related stuff |
-| BluePeacocks | Developer
-| IdiotKid     | Developer
-| tonyanifire  | Developer
-
+| BluePeacocks | Developer |
+| IdiotKid     | Developer |
+| tonyanifire  | Developer |
+| davidstv     | Developer, contributed to importing |
 
 Original Wrapper, Wrapper offline, and unaffiliated credits:
 | Name         | Contribution         |
