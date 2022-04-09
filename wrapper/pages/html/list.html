@@ -111,12 +111,15 @@
 </body>
 
 <script>
-	// This loads the video list's content
+	var json;
 	var tbody = document.getElementsByTagName('tbody')[0];
 	var loadMore = document.getElementById('load_more');
+	const listReq = new XMLHttpRequest();
+	listReq.open('GET', '/movieList');
+	listReq.send();
 
 	var C = 0;
-	function loadRows(json) {
+	function loadRows() {
 		let c = C; C += 69;
 		for (; c < C; c++) {
 			if (c > json.length - 1) {
@@ -125,32 +128,21 @@
 			}
 
 			const tbl = json[c];
-			const date = tbl.date.substr(0, 10)
-			const id = tbl.id.substr(2, 9);
-			tbody.innerHTML += '<tr id="' + tbl.id + '"><td><img src="/movie_thumbs/' + tbl.id + '.png"></td><td><div>' + tbl.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</div><div>(#' + id + ') ' + tbl.durationString + '</div></div></div></td><td><span>' + date + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a><a href="javascript:;" onclick="deleteMovie(\'' + tbl.id + '\')"></a></td></tr>';
+			const date = tbl.date.substr(0, 10) + ' ' + tbl.date.substr(11);
+			tbody.insertAdjacentHTML('beforeend','<tr><td><img src="/movie_thumbs/' + tbl.id + '.png"></td><td><div>' + tbl.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a></td></tr>');
 		}
 	}
-	function noMovies(text = "You have not created any movies.") {
-		tbody.remove();
-		$("main").append(`<p style="text-align:center">${text}</p>`)
+
+	loadMore.onclick = loadRows;
+	listReq.onreadystatechange = function (e) {
+		if (listReq.readyState != 4) return;
+		json = JSON.parse(listReq.responseText);
+		loadRows();
 	}
-
-	fetch('/ajax/movie/list').then((response) => {
-		response.json().then(data => {
-			if (Object.keys(item).length !== 0) loadRows(data);
-			else noMovies();
-
-		})
-	});
 
 	function popup(id) {
 		window.open('/player?movieId=' + id, 'MsgWindow', 'width=1280,height=723,left=' + (screen.width / 2 - 640) + ',top=' + (screen.height / 2 - 360));
 	}
-
-	function deleteMovie(id) {
-		var deleteConfirm = confirm("Are you sure you want to delete this movie?");
-		if(deleteConfirm) fetch(`/deleteMovie/${id}`).then(() => document.getElementById(id).remove());
-	}
-</script>
+	</script>
 
 </html>
