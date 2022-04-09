@@ -44,6 +44,7 @@ Redrawn:
 | IdiotKid     | Developer, backend (Helped with importing) |
 | tonyanifire  | Developer |
 | davidstv     | Developer, contributed to importing |
+| florrza      | Achieve person (Mostly backend / fixes) |
 
 Original Wrapper, Wrapper offline, and unaffiliated credits:
 | Name         | Contribution         |
