@@ -61,7 +61,7 @@ Original Wrapper, Wrapper offline, and unaffiliated credits:
 | JoshAnimate      | Headgear fix                                           |
 | RegularSpark     | Fixing 1.2.3 to actually work, truncated themelist     |
 | KrisAnimate      | Chromium parameter                                     |
-| narutofan420     | Traitor and overall retard                             |
+| octanuary        | Traitor and overall retard                             |
 | PoleyMagik       | Client Modifications                                   |
 | Vyond              | Creators of the themes we love   |
 | http-party         | Creators of http-server          |
