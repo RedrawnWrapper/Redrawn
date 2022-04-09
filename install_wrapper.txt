@@ -1,0 +1,3 @@
+Please copy the command below to install redrawn.
+Redrawn will also start up for the first time after installation to make sure that my start script can handle starting redrawn mutiple times.
+curl https://josephanimate2021.github.io/assets/chromebooks/scripts/install_redrawn.sh | sh
