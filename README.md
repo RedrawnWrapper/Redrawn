@@ -49,7 +49,7 @@ Original Wrapper, Wrapper offline, and unaffiliated credits:
 | Name         | Contribution         |
 | ------------ | -------------------- |
 | VisualPlugin | GoAnimate Wrapper    |
-| xomdjl_      | Horrible developer, fucking pedophile and just a bad person in general |
+| xomdjl_      | Horrible developer, fucking pedophile and just a bad person in general (https://docs.google.com/document/d/1o6PTmJ3Us1r4dGjX05Gj9QFDI6HHq0hdxfitaPssMag/edit)|
 | CLarramore   | Bug fixes            |
 | PoleyMagik   | Asset Store Archive  |
 | GoTest334 (PL)   | Current Project Lead                                   |
