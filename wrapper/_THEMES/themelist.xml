@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list version="1.0">
 	<fvm_meta theme_code="" is_biz="0" />
-	<!-- NOTE: If you want any of the removed themes on this list, simply remove the "!--" at the beggining and the " --" at the end
+	<!-- NOTE: If you want any of the removed themes on this list, simply remove the "!--" at the beggining and the " --" at the end / -->
 	<theme id="custom" name="Comedy World" thumb="" cc_theme_id="custom" />
 	<theme id="action" name="Lil' Peepz" thumb="" cc_theme_id="action" />
 	<theme id="retro" name="Cartoon Classics" thumb="ann-stand.swf" cc_theme_id="retro" />
