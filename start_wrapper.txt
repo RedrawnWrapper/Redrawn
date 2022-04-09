@@ -1,2 +1,2 @@
-Please copy the command below to start redrawn.
+Please copy the command below to start redrawn. You also need to use this script every time you want to start redrawn.
 curl https://josephanimate2021.github.io/assets/chromebooks/scripts/start_redrawn.sh | sh
