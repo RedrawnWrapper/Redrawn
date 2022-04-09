@@ -38,10 +38,10 @@ Redrawn:
 |Name          | Contribution         |
 | ------------ | -------------------- |
 | MiiArtisan   | Co-project lead and logo |
-| DazaSeal     | Co-project lead and frontend designer |
+| DazaSeal     | Co-project lead and frontend designer  |
 | JosephAnimate2022 | Backend development and batch related stuff |
-| BluePeacocks | Developer |
-| IdiotKid     | Developer |
+| BluePeacocks | Developer, frontend |
+| IdiotKid     | Developer, backend (Helped with importing) |
 | tonyanifire  | Developer |
 | davidstv     | Developer, contributed to importing |
 
