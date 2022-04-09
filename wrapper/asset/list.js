@@ -64,6 +64,7 @@ module.exports = function (req, res, url) {
 		case '/api_v2/assets/team':
 		case '/api_v2/assets/shared': { makeZip = true; break; }
 		case '/goapi/getUserAssetsXml/': break;
+		case "/goapi/deleteUserTemplate/": { starter.delete(); break; }
 		default: return;
 	}
 
