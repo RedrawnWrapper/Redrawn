@@ -136,8 +136,8 @@ module.exports = function (req, res, url) {
 				}
 			}
 		</script>
-		<link rel="stylesheet" type="text/css" href="/pages/css/modern-normalize.css">
-		<link rel="stylesheet" type="text/css" href="/pages/css/global.css">
+		<link rel="stylesheet" type="text/css" href="../css/modern-normalize.css" />
+		<link rel="stylesheet" type="text/css" href="../css/global.css" />
 		<style>
 			body {
 				background: #eee;
