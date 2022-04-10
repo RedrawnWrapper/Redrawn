@@ -9,6 +9,7 @@ const get = require('../request/get');
 const fs = require('fs');
 const themes = {};
 const StreamZip = require('node-stream-zip');
+const cachéFolder = process.env.CACHÉ_FOLDER;
 
 function addTheme(id, buffer) {
 	const beg = buffer.indexOf(`theme_id="`) + 10;
@@ -21,6 +22,19 @@ function save(id, data) {
 	fs.writeFileSync(fUtil.getFileIndex('char-', '.xml', id), data);
 	addTheme(id, data);
 	return id;
+}
+
+function deleteChar(id) {
+	var i = id.indexOf('-');
+	var prefix = id.substr(0, i);
+	var suffix = id.substr(i + 1);
+	switch (prefix) {
+		case 'c':
+			fs.unlinkSync(fUtil.getFileIndex('char-', '.xml', suffix));
+		case 'C':
+		default:
+			fs.unlinkSync(`${cachéFolder}/char.${id}.xml`);
+	}
 }
 
 fUtil.getValidFileIndicies('char-', '.xml').map(n => {
@@ -127,6 +141,18 @@ module.exports = {
 				saveId = fUtil.getNextFileId('char-', '.xml');
 				res(save(saveId, data));
 			};
+		});
+	},
+	delete(id) {
+		return new Promise((res, rej) => {
+			fs.readFile(deleteChar(id), (e, b) => {
+				if (e) {
+					var fXml = util.xmlFail();
+					rej(Buffer.from(fXml));
+				} else {
+					res(b);
+				}
+			});
 		});
 	},
 }
