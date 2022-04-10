@@ -33,7 +33,7 @@ function deleteChar(id) {
 			fs.unlinkSync(fUtil.getFileIndex('char-', '.xml', suffix));
 		case 'C':
 		default:
-			fs.unlinkSync(`${cachéFolder}/char.${id}.xml`);
+			console.log('i wish that we could delete cache chars. but we can\'t do that.');
 	}
 }
 
@@ -145,14 +145,46 @@ module.exports = {
 	},
 	delete(id) {
 		return new Promise((res, rej) => {
-			fs.readFile(deleteChar(id), (e, b) => {
-				if (e) {
-					var fXml = util.xmlFail();
-					rej(Buffer.from(fXml));
-				} else {
-					res(b);
+			var i = id.indexOf('-');
+			var prefix = id.substr(0, i);
+			var suffix = id.substr(i + 1);
+
+			switch (prefix) {
+				case 'c':
+				case 'C':
+					fs.readFile(deleteChar(id), (e, b) => {
+						if (e) {
+							rej(Buffer.from(fXml));
+						} else {
+							res(b);
+						}
+					});
+					break;
+
+				case '':
+				default: {
+					// Blank prefix is left here for backwards-compatibility purposes.
+					var nId = Number.parseInt(suffix);
+					var xmlSubId = nId % fw;
+					var fileId = nId - xmlSubId;
+					var lnNum = fUtil.padZero(xmlSubId, xNumWidth);
+					var url = `${baseUrl}/${fUtil.padZero(fileId)}.txt`;
+
+					get(url)
+						.then((b) => {
+							var line = b
+								.toString('utf8')
+								.split('\n')
+								.find((v) => v.substr(0, xNumWidth) == lnNum);
+							if (line) {
+								res(Buffer.from(line.substr(xNumWidth)));
+							} else {
+								rej(Buffer.from(fXml));
+							}
+						})
+						.catch((e) => rej(Buffer.from(fXml)));
 				}
-			});
+			}
 		});
 	},
 }
