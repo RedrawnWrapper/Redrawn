@@ -37,7 +37,7 @@ module.exports = function (req, res, url) {
 				flashvars: {
 					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>',
 					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'original_asset_id': query['id'] || null,
-					'themeId': 'family', 'ut': 20, 'bs': 'adam', 'appCode': 'go', 'page': '', 'siteId': 'go',
+					'themeId': 'family', 'ut': 60, 'bs': 'adam', 'appCode': 'go', 'page': '', 'siteId': 'go',
 					'm_mode': 'school', 'isLogin': 'Y', 'isEmbed': 1, 'ctc': 'go', 'tlang': 'en_US',
 				},
 				allowScriptAccess: 'always',
@@ -63,7 +63,7 @@ module.exports = function (req, res, url) {
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
 					original_asset_id: query["id"] || null,
 					themeId: "family",
-					ut: 20,
+					ut: 60,
 					appCode: "go",
 					page: "",
 					siteId: "go",
@@ -93,7 +93,7 @@ module.exports = function (req, res, url) {
 			params = {
 				flashvars: {
 					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'isEmbed': 1, 'ctc': 'go',
-					'ut': 20, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go', 'lid': 13, 'isLogin': 'Y', 'retut': 1,
+					'ut': 60, 'bs': 'default', 'appCode': 'go', 'page': '', 'siteId': 'go', 'lid': 13, 'isLogin': 'Y', 'retut': 1,
 					'clientThemePath': process.env.CLIENT_URL + '/<client_theme>', 'themeId': 'business', 'tlang': 'en_US',
 					'presaveId': presave, 'goteam_draft_only': 1, 'isWide': 1, 'nextUrl': '/pages/html/list.html',
 				},
@@ -111,7 +111,7 @@ module.exports = function (req, res, url) {
 			};
 			params = {
 				flashvars: {
-					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'ut': 20,
+					'apiserver': '/', 'storePath': process.env.STORE_URL + '/<store>', 'ut': 60,
 					'autostart': 1, 'isWide': 1, 'clientThemePath': process.env.CLIENT_URL + '/<client_theme>',
 				},
 				allowScriptAccess: 'always',
