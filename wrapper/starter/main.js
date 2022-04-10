@@ -36,7 +36,6 @@ module.exports = {
 			var thumbPath = fUtil.getFileIndex('starter-', '.png', starterId);
 			fs.unlinkSync(moviePath);
 			fs.unlinkSync(thumbPath);
-			caché.clearTable('0-' + starterId);
 			res('0-' + starterId);
 			
 		});
