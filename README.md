@@ -39,12 +39,13 @@ Redrawn:
 | ------------ | -------------------- |
 | MiiArtisan   | Co-project lead and logo |
 | DazaSeal     | Co-project lead and frontend designer  |
-| JosephAnimate2022 | Backend development and batch related stuff |
+| JosephAnimate2022 | Backend development and batch related stuff (Helped with Chromebook support) |
 | BluePeacocks | Developer, frontend |
 | IdiotKid     | Developer, backend (Helped with importing) |
-| tonyanifire  | Developer |
+| Sage  | Developer |
 | davidstv     | Developer, contributed to importing |
 | florrza      | Achieve person (Mostly backend / fixes) |
+| Jerry2006    | Achieve person (Found most of important files for backend / frontend) |
 
 Original Wrapper, Wrapper offline, and unaffiliated credits:
 | Name         | Contribution         |
