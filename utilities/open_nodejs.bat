@@ -5,7 +5,12 @@
 pushd "%~dp0"
 title NODE.JS HASN'T STARTED YET
 pushd ..\wrapper
+if not exist node_modules (
+npm install
 npm start
+) else (
+node main.js
+)
 echo:
 echo If you see an error saying "npm is not recognized",
 echo please install Node.js from nodejs.org.
