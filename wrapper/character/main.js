@@ -33,7 +33,7 @@ function deleteChar(id) {
 			fs.unlinkSync(fUtil.getFileIndex('char-', '.xml', suffix));
 		case 'C':
 		default:
-			console.log('i wish that we could delete cache chars. but we can\'t do that.');
+			console.log('Fuck you sparkz');
 	}
 }
 
