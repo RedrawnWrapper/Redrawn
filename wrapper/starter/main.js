@@ -32,10 +32,8 @@ module.exports = {
 	delete() {
 		return new Promise(async (res, rej) => {
 			var starterId = fUtil.getValidFileIndicies('starter-', '.xml');
-			var moviePath = fUtil.getFileIndex('starter-', '.xml', starterId);
-			var thumbPath = fUtil.getFileIndex('starter-', '.png', starterId);
-			fs.unlinkSync(moviePath);
-			fs.unlinkSync(thumbPath);
+			var starterPath = fUtil.getFileIndex('starter-', '.xml', starterId), fUtil.getFileIndex('starter-', '.png', starterId);
+			fs.unlinkSync(starterPath);
 			res('0-' + starterId);
 			
 		});
