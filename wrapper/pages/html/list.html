@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link rel="icon" href="../../favicon.ico" type="image/png">
 	<title>Video List</title>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
 	<meta name="description" content="Wrapper: Offline's Video List">
 	<link rel="stylesheet" type="text/css" href="../css/modern-normalize.css" />
 	<link rel="stylesheet" type="text/css" href="../css/global.css" />
@@ -92,7 +93,7 @@
 	<nav id="foot-left">
 		<a href="./settings.html" class="fas fa-cog"></a>
 		<a href="./faq.html " class="fas fa-question-circle"></a>
-		<a href="https://discord.gg/aBw3wNs9xX" title="Join our community server!" class="fab fa-discord"></a>
+		<a href="" title="Join our community server!" class="fab fa-discord"></a>
 	</nav>
 
 	<nav id="foot-right">
@@ -129,7 +130,7 @@
 
 			const tbl = json[c];
 			const date = tbl.date.substr(0, 10) + ' ' + tbl.date.substr(11);
-			tbody.insertAdjacentHTML('beforeend','<tr><td><img src="/movie_thumbs/' + tbl.id + '.png"></td><td><div>' + tbl.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a></td></tr>');
+			tbody.insertAdjacentHTML('beforeend','<tr><td><img src="/movie_thumbs/' + tbl.id + '.png"></td><td><div>' + tbl.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a><a class="bi bi-record-circle" href="https://josephanimate2021.github.io/lvm-static/offline-player?movieId=' + tbl.id + '&lvpIsModded=true"></a></td></tr>');
 		}
 	}
 
