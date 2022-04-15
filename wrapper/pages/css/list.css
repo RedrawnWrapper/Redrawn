@@ -144,10 +144,6 @@ tr>:nth-child(4)>:nth-child(2)::before {
 tr>:nth-child(4)>:nth-child(3)::before {
 	content: '\E182';
 }
-/* delete button */
-tr>:nth-child(4)>:nth-child(4)::before {
-	content: '\E017';
-}
 
 /**
 table footer stuff
