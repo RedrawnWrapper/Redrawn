@@ -1,7 +1,7 @@
-:: Wrapper: Offline Updater
+:: Redrawn Updater
 :: Author: MiiArtisan#1687 (fuck octanuary)
 :: License: MIT
-title Wrapper: Offline Updater [Initializing...]
+title Redrawn Updater [Initializing...]
 
 ::::::::::::::::::::
 :: Initialization ::
@@ -21,7 +21,7 @@ if not exist wrapper ( goto error_location )
 if not exist server ( goto error_location )
 goto noerror_location
 :error_location
-echo Doesn't seem like this script is in a Wrapper: Offline folder.
+echo Doesn't seem like this script is in the Redrawn folder.
 pause && exit
 :noerror_location
 
@@ -29,19 +29,19 @@ pause && exit
 :: Post-Initialization ::
 :::::::::::::::::::::::::
 
-title Wrapper: Offline Updater
+title Redrawn Updater
 
 if not exist .git ( goto nogit )
 :yesgit
-echo Wrapper: Offline Updater
-echo A project from VisualPlugin adapted by Benson and the Wrapper: Offline Team
+echo Redrawn
+echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn Team
 echo:
-echo Enter 1 to update Wrapper: Offline
+echo Enter 1 to update Redrawn
 echo Enter 0 to close the updater
 goto wrapperidle
 :nogit
-echo You have not downloaded Wrapper: Offline using the batch installer.
-echo Please download install_wrapper_offline.zip and run the batch file inside.
+echo You have not downloaded Redrawn using the batch installer.
+echo Please download and run the batch file inside.
 pause & exit
 :wrapperidle
 echo:
@@ -58,10 +58,10 @@ echo Time to choose. && goto wrapperidle
 :update
 cls
 pushd "%~dp0"
-echo Pulling repository from GitHub...
+echo Pulling the repository from GitHub...
 git pull
 cls
-echo Wrapper: Offline has been updated^^!
+echo Redrawn has been updated successfully^^!
 start "" "%~dp0"
 pause & exit
 
