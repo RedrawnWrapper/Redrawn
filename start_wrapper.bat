@@ -127,10 +127,10 @@ if !INCLUDEDCHROMIUM!==y set BROWSER_TYPE=chrome
 
 :: Flash Player
 if !VERBOSEWRAPPER!==y ( echo Checking for Flash installation... )
-if exist "!windir!\SysWOW64\Macromed\Flash\*pepper.exe" set FLASH_CHROMIUM_DETECTED=y
-if exist "!windir!\System32\Macromed\Flash\*pepper.exe" set FLASH_CHROMIUM_DETECTED=y
-if exist "!windir!\SysWOW64\Macromed\Flash\*plugin.exe" set FLASH_FIREFOX_DETECTED=y
-if exist "!windir!\System32\Macromed\Flash\*plugin.exe" set FLASH_FIREFOX_DETECTED=y
+if exist "!windir!\SysWOW64\Macromed\Flash" set FLASH_CHROMIUM_DETECTED=y
+if exist "!windir!\System32\Macromed\Flash" set FLASH_CHROMIUM_DETECTED=y
+if exist "!windir!\SysWOW64\Macromed\Flash\plugin.exe" set FLASH_FIREFOX_DETECTED=y
+if exist "!windir!\System32\Macromed\Flash\plugin.exe" set FLASH_FIREFOX_DETECTED=y
 if !BROWSER_TYPE!==chrome (
 	if !FLASH_CHROMIUM_DETECTED!==n (
 		echo Flash for Chrome could not be found.
