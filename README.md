@@ -46,6 +46,7 @@ Redrawn:
 | davidstv     | Developer, contributed to importing |
 | florrza      | Achieve person (Mostly backend / fixes) |
 | Jerry2006    | Achieve person (Found most of important files for backend / frontend) |
+| JC Video     | Developer, Helped with TTS fixes |
 
 Original Wrapper, Wrapper offline, and unaffiliated credits:
 | Name         | Contribution         |
