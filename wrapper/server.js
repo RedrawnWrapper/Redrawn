@@ -65,5 +65,3 @@ module.exports = http.createServer((req, res) => {
 	const found = functions.find(f => f(req, res, parsedUrl));
 	if (!found) { res.statusCode = 404; res.end(); }
 }).listen(env.PORT || env.SERVER_PORT, console.log);
-
-// Hey look you found your way here. Nobody cares and who asks 
