@@ -1,4 +1,4 @@
-title Redrawn settings script
+title Redrawn Settings Script
 :: Interactive config.bat changer
 :: Author: benson#0411
 :: License: MIT
@@ -16,7 +16,7 @@ if not exist utilities\config.bat ( goto error_location )
 if not exist start_redrawn.bat ( goto error_location )
 goto noerror_location
 :error_location
-echo Doesn't seem like this script is in the Wrapper: Offline folder.
+echo Doesn't seem like this script is in the Redrawn folder.
 goto end
 :noerror_location
 
