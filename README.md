@@ -47,6 +47,7 @@ Redrawn:
 | florrza      | Achieve person (Mostly backend / fixes) |
 | Jerry2006    | Achieve person (Found most of important files for backend / frontend) |
 | JC Video     | Developer, helped with TTS fixes |
+| OwenTheGoAnimator/PIXBits2 | Developer? |
 
 Original Wrapper, Wrapper offline, and unaffiliated credits:
 | Name         | Contribution         |
