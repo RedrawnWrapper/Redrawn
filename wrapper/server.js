@@ -66,4 +66,4 @@ module.exports = http.createServer((req, res) => {
 	if (!found) { res.statusCode = 404; res.end(); }
 }).listen(env.PORT || env.SERVER_PORT, console.log);
 
-// Fuck you Octanuary 
+// Worship Rage
