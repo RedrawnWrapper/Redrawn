@@ -1,4 +1,4 @@
-title Wrapper: Offline Settings Script
+title Redrawn settings script
 :: Interactive config.bat changer
 :: Author: benson#0411
 :: License: MIT
@@ -13,7 +13,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 pushd "%~dp0"
 if !errorlevel! NEQ 0 goto error_location
 if not exist utilities\config.bat ( goto error_location )
-if not exist start_wrapper.bat ( goto error_location )
+if not exist start_redrawn.bat ( goto error_location )
 goto noerror_location
 :error_location
 echo Doesn't seem like this script is in the Wrapper: Offline folder.
