@@ -31,8 +31,7 @@ rpc.on("ready", () => {
 	console.log("Rich presence is on!")
 });
 // Connects RPC to app
-rpc
-	.login({
+rpc.login({
 		clientId: "968661897295564820"
 	}).catch((err) => console.log('RPC connection failed.'));
 
