@@ -33,6 +33,6 @@ rpc.on("ready", () => {
 // Connects RPC to app
 rpc
 	.login({
-		clientId: "967686973844226088"
+		clientId: "968661897295564820"
 	}).catch((err) => console.log('RPC connection failed.'));
 
