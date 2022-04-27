@@ -20,7 +20,7 @@ rpc.on("ready", () => {
 	rpc.setActivity({
 		// state: "Video List",
 		// disabled until automatic rpc status is done
-		details: "Version " + version +", build " + build,
+		details: "Version " + version +", build " + build + "(Closed Beta)",
 		startTimestamp: new Date(),
 		largeImageKey: "icon",
 		largeImageText: "Redrawn",
