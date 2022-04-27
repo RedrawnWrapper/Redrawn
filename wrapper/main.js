@@ -18,17 +18,17 @@ const rpc = new RPC.Client({
 rpc.on("ready", () => {
 	// Sets RPC activity
 	rpc.setActivity({
-		// state: "Video List",
-		// disabled until automatic rpc status is done
-		details: "Version " + version +", build " + build,
+		state: "Making videos...",
+		details: "Version " + version +", build " + build + " (Closed Beta)",
 		startTimestamp: new Date(),
 		largeImageKey: "icon",
 		largeImageText: "Redrawn",
 		smallImageKey: "Redrawn",
 		smallImagetext: "Redrawn",
+		
 	});
 	// Logs "Rich presence is on!" in the console
-	console.log("Rich presence is on!")
+	console.log("Redrawn is now boardcasting on your Discord account!")
 });
 // Connects RPC to app
 rpc.login({
