@@ -19806,6 +19806,30 @@
 		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
 		<text rgb="0" font="Noto" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
 	</bubble>
+	<bubble id="blank19" x="-90" y="-45" w="180" h="90" rotate="0" type="BLANK" enable="Y" is_premium="N" aid="57628" money="0" sharing="0" hasTail="0" display_order="13">
+		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
+		<text rgb="0" font="Mail Ray Stuff" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
+	</bubble>
+	<bubble id="blank20" x="-90" y="-45" w="180" h="90" rotate="0" type="BLANK" enable="Y" is_premium="N" aid="57628" money="0" sharing="0" hasTail="0" display_order="14">
+		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
+		<text rgb="0" font="loco tv" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
+    </bubble>
+	 <bubble id="blank21" x="-90" y="-45" w="180" h="90" rotate="0" type="BLANK" enable="Y" is_premium="N" aid="58628" money="0" sharing="0" hasTail="0" display_order="15">
+		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
+		<text rgb="0" font="HeartlandRegular" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
+    </bubble>
+	 <bubble id="blank22" x="-90" y="-45" w="180" h="90" rotate="0" type="BLANK" enable="Y" is_premium="N" aid="58638" money="0" sharing="0" hasTail="0" display_order="16">
+		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
+		<text rgb="0" font="Sriracha" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
+    </bubble>
+	<bubble id="blank23" x="-90" y="-45" w="180" h="90" rotate="0" type="BLANK" enable="Y" is_premium="N" aid="58634" money="0" sharing="0" hasTail="0" display_order="17">
+		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
+		<text rgb="0" font="Shanghai" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
+    </bubble>
+	<bubble id="blank24" x="-90" y="-45" w="180" h="90" rotate="0" type="BLANK" enable="Y" is_premium="N" aid="58334" money="0" sharing="0" hasTail="0" display_order="18">
+		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
+		<text rgb="0" font="Lobster" size="20" align="center" bold="false" italic="false">Double-click to input text</text>
+    </bubble>
 	<bubble id="ellipse" x="-90" y="-45" w="180" h="90" rotate="0" type="ELLIPSE" enable="Y" is_premium="N" aid="3425" money="0" sharing="0" hasTail="1" display_order="20">
 		<body rgb="0xFFFFFF" linergb="0" tailx="90" taily="65" />
 		<text rgb="0" font="Coming Soon" size="14" align="center" bold="true" italic="false">Double-click to input text</text>
