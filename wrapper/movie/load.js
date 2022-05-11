@@ -23,21 +23,26 @@ module.exports = function (req, res, url) {
 		}
 
 		case 'POST': {
+			var movieId;
 			switch (url.pathname) {
 				case '/goapi/getMovie/': {
+					movieId = url.query.movieId;
 					res.setHeader('Content-Type', 'application/zip');
 					process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
-					movie.loadZip(url.query.movieId).then(b =>
+					movie.loadZip(movieId).then(b =>
 				                res.end(Buffer.concat([base, b]))).catch(e => res.end('1'));
 					return true;
 				}
 				case '/ajax/deleteMovie/': {
+					movieId = url.query.movieId;
 					res.setHeader('Content-Type', 'application/zip');
 					process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-
-					movie.delete(url.query.movieId);
-                                        movie.deleteThumb(url.query.movieId);
+					
+					movie.delete(movieId).then(b =>
+				                console.log(`Deleting Movie: ${movieId}`)).catch(e => { console.log(`Error Deleting Movie: ${movieId}`); });
+                                        movie.deleteThumb(movieId).then(b =>
+				                console.log(`Deleting Movie Thumb: ${movieId}`)).catch(e => { console.log(`Error Deleting Movie Thumb: ${movieId}`); }); 
 					return true;
 				}
 			}
