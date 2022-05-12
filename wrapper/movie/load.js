@@ -12,12 +12,12 @@ module.exports = function (req, res, url) {
 				case 'zip':
 					res.setHeader('Content-Type', 'application/zip');
 					movie.loadZip(id).then(v => { res.statusCode = 200, res.end(v) })
-						.catch(e => { res.statusCode = 404, res.end() })
+						.catch(e => { console.log(`Error Fetching Movie Zip: ${id}`); })
 					break;
 				default:
 					res.setHeader('Content-Type', 'text/xml');
 					movie.loadXml(id).then(v => { res.statusCode = 200, res.end(v) })
-						.catch(e => { res.statusCode = 404, res.end() })
+						.catch(e => { console.log(`Error Fetching Movie Xml: ${id}`); })
 			}
 			return true;
 		}
@@ -31,7 +31,7 @@ module.exports = function (req, res, url) {
 					process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 					movie.loadZip(movieId).then(b =>
-				                res.end(Buffer.concat([base, b]))).catch(e => res.end('1'));
+				                res.end(Buffer.concat([base, b]))).catch(e => console.log(`Error Loading Movie: ${movieId}`));
 					return true;
 				}
 				case '/ajax/deleteMovie/': {
