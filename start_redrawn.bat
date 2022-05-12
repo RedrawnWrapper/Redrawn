@@ -3,6 +3,7 @@
 :: Author: benson#0411
 :: Project Runner: MiiArtisan#1687
 :: License: MIT
+set SUBSCRIPT=autoupdatingwrapper && call utilities\config.bat
 set WRAPPER_VER=0.0.1
 set WRAPPER_BLD=1
 title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
@@ -21,9 +22,7 @@ if !AUTOUPDATE!==y (
 	pushd "%~dp0"
 	if exist .git (
 		echo Updating...
-		call utilities\PortableGit\bin\git.exe checkout main
-		call utilities\PortableGit\bin\git.exe fetch --all
-		call utilities\PortableGit\bin\git.exe reset --hard origin/main
+		call utilities\PortableGit\bin\git.exe pull
 		PING -n 3 127.0.0.1>nul
 		cls
 	) else (
