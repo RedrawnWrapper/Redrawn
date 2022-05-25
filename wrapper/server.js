@@ -21,6 +21,7 @@ const thm = require('./static/pagethemelist');
 const str = require('./starter/save');
 const stt = require('./starter/thmb');
 const del = require('./starter/delete');
+const stu = require('./starter/upload'):
 const mvl = require('./movie/load');
 const mvL = require('./movie/list');
 const mvm = require('./movie/meta');
@@ -46,6 +47,7 @@ const functions = [
 	chu,
 	stl,
 	stp,
+        stu,
 	mvl,
 	mvL,
 	chd,
