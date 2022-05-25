@@ -3,6 +3,7 @@
 :: Author: benson#0411
 :: Project Runner: MiiArtisan#1687
 :: License: MIT
+@echo off
 set SUBSCRIPT=autoupdatingwrapper && call utilities\config.bat
 set WRAPPER_VER=0.0.1
 set WRAPPER_BLD=1
@@ -13,7 +14,7 @@ title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
 ::::::::::::::::::::
 
 :: Stop commands from spamming stuff, cleans up the screen
-@echo off && cls
+cls
 
 :: check for updates
 
