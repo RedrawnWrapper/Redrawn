@@ -24,7 +24,7 @@ module.exports = function (req, res, url) {
 	var attrs, params, title;
 	switch (url.pathname) {
 		case '/cc': {
-			title = 'The Character Creator From GoAnimate 2016 Offline - Make Characters Offline For Free!';
+			title = 'The Character Creator From Redrawn - Make Characters Offline For Free!';
 			attrs = {
 				data: process.env.SWF_URL + '/cc.swf', // data: 'cc.swf',
 				type: 'application/x-shockwave-flash', 
@@ -47,7 +47,7 @@ module.exports = function (req, res, url) {
 		}
 		
 		case "/cc_browser": {
-			title = "The CC Browser From GoAnimate 2016 Offline - Copy Or Create Characters Offline For Free!";
+			title = "The CC Browser From Redrawn - Copy Or Create Characters Offline For Free!";
 			attrs = {
 				data: process.env.SWF_URL + "/cc_browser.swf", // data: 'cc_browser.swf',
 				type: "application/x-shockwave-flash",
@@ -85,7 +85,7 @@ module.exports = function (req, res, url) {
 		case '/go_full': {
 			let presave = query.movieId && query.movieId.startsWith('m') ? query.movieId :
 				`m-${fUtil[query.noAutosave ? 'getNextFileId' : 'fillNextFileId']('movie-', '.xml')}`;
-			title = 'The Video Maker From GoAnimate 2016 Offline - Make Your Favorite Animations For Free!';
+			title = 'The Video Maker From Redrawn - Make Your Favorite Animations For Free!';
 			attrs = {
 				data: process.env.SWF_URL + '/go_full.swf',
 				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
@@ -104,7 +104,7 @@ module.exports = function (req, res, url) {
 		}
 
 		case '/player': {
-			title = 'The Video Player From GoAnimate 2016 Offline - Watch Or Record Your Animation!';
+			title = 'The Video Player From Redrawn - Watch Or Record Your Animation!';
 			attrs = {
 				data: process.env.SWF_URL + '/player.swf',
 				type: 'application/x-shockwave-flash', width: '100%', height: '100%',
@@ -148,14 +148,14 @@ module.exports = function (req, res, url) {
 	
 	<header id="header">
 		<a href="/">
-			<h1 style="margin:0"><img id="logo" src="https://raw.githubusercontent.com/ykranimate2021-ga/GA2016O3.0/bc4de0513bf2fdccebe433d9fd562db894db4cc8/wrapper/pages/img/goanimate.png" alt="Wrapper: Offline"/></h1>
-		</a>
+			<h1 style="margin:0"><img id="logo" src="/pages/img/list_logo.png" alt="Wrapper: Offline"/></h1>
 		<nav id="headbuttons">
 			<div class="dropdown_contain button_small">
 				<div class="dropdown_button upload_button">UPLOAD</div>
 				<nav class="dropdown_menu">
 					<a onclick="document.getElementById('file').click()">Movie</a>
 					<a onclick="document.getElementById('file2').click()">Character</a>
+					<a onclick="document.getElementById('file3').click()">Starter</a>
 				</nav>
 			</div>	
 			<div class="dropdown_contain button_small">
@@ -200,6 +200,18 @@ module.exports = function (req, res, url) {
 	</header>
 	
 	<body style="margin:0px" onload="hideHeader()">${toObjectString(attrs, params)
-		}</body>${stuff.pages[url.pathname] || ''}`);
+		}</body>${stuff.pages[url.pathname] || ''}
+<iframe style="display:none" name="dummy"></iframe>
+<form enctype="multipart/form-data" action="/upload_movie" method="post" target="dummy">
+	<input id="file" type="file" onchange="this.form.submit()" name="import">
+</form>
+
+<form enctype="multipart/form-data" action="/upload_character" method="post" target="dummy">
+	<input id="file2" type="file" onchange="this.form.submit()" name="import">
+</form>
+	
+<form enctype="multipart/form-data" action="/upload_starter" method="post" target="dummy">
+	<input id="file3" type="file" onchange="this.form.submit()" name="import">
+</form>`);
 	return true;
 }
