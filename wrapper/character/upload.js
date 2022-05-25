@@ -35,6 +35,7 @@ module.exports = function (req, res, url, window) {
 				});
 				return true;
 			}
+			default: return;
 		}
 	}
 }
