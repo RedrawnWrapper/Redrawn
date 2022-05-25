@@ -706,6 +706,9 @@ if !CEPSTRAL!==n (
 pushd utilities
 if !VERBOSEWRAPPER!==y (
 	if !DRYRUN!==n ( start /MIN open_http-server.bat )
+        if !DRYRUN!==n ( start /MIN open_http-server2.bat )
+        if !DRYRUN!==n ( start /MIN open_http-server3.bat )
+        if !DRYRUN!==n ( start /MIN open_http-server4.bat )
 	if !DRYRUN!==n ( start /MIN open_nodejs.bat )
 	if !DRYRUN!==n ( 
 		if !CEPSTRAL!==n ( 
@@ -714,6 +717,9 @@ if !VERBOSEWRAPPER!==y (
 	)
 ) else (
 	if !DRYRUN!==n ( start SilentCMD open_http-server.bat )
+        if !DRYRUN!==n ( start SilentCMD open_http-server2.bat )
+        if !DRYRUN!==n ( start SilentCMD open_http-server3.bat )
+        if !DRYRUN!==n ( start SilentCMD open_http-server4.bat )
 	if !DRYRUN!==n ( start SilentCMD open_nodejs.bat )
 	if !DRYRUN!==n ( 
 		if !CEPSTRAL!==n (
