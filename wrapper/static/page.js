@@ -196,6 +196,7 @@ module.exports = function (req, res, url) {
 				</nav>
 			</div>
 			<a href="/go_full" class="button_big">MAKE A VIDEO</a>
+			<button onclick="hideHeader()">❌</button>
 		</nav>
 	</header>
 	
