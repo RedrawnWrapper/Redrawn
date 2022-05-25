@@ -18,7 +18,14 @@
 	
 	<h1 style="margin:0"><img id="logo" src="../img/list_logo.png" alt="Wrapper: Offline"></h1>
 	<nav id="headbuttons">
-		<a onclick="document.getElementById('file2').click()" class="button_small">UPLOAD A CHARACTER</a>
+		<div class="dropdown_contain button_small">
+			<div class="dropdown_button">UPLOAD</div>
+			<nav class="dropdown_menu">
+				<a onclick="document.getElementById('file').click()">Movie</a>
+				<a onclick="document.getElementById('file2').click()">Character</a>
+                                <a onclick="document.getElementById('file3').click()">Starter</a>
+			</nav>
+		</div>
 		<div class="dropdown_contain button_small">
 			<div class="dropdown_button">CREATE A CHARACTER</div>
 			<nav class="dropdown_menu">
@@ -103,6 +110,11 @@
 <form enctype="multipart/form-data" action="/upload_character" method="post">
 	<input id="file2" type="file" onchange="this.form.submit()" name="import">
 </form>
+	
+<form enctype="multipart/form-data" action="/upload_starter" method="post">
+	<input id="file3" type="file" onchange="this.form.submit()" name="import">
+</form>
+
 
 
 
