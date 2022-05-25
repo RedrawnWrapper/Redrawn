@@ -1,0 +1,37 @@
+@font-face {
+			font-family: 'Sailec';
+			font-weight: 100;
+			src: url('/pages/fonts/Sailec-Thin.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 200;
+			src: url('/pages/fonts/Sailec-Light.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 400;
+			src: url('/pages/fonts/Sailec-Regular.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 500;
+			src: url('/pages/fonts/Sailec-Medium.woff') format('woff');
+		}
+
+		/* font weight 500 and font weight 700 (bold) are the same for better integration support */
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 700;
+			src: url('/pages/fonts/Sailec-Medium.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'GlyphiconsRegular';
+			src: url('/pages/fonts/glyphicons-regular.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}

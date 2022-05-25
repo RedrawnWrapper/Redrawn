@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- LINK USAGE || /filehosting.html?n={IMAGE NAME}&t={TYPE (i = image | v = video | a = audio | p = plaintext)} -->
+<html>
+    <head id="headelem">
+        <title id="title">Video Player</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/style.css" />
+        <meta content="spark file hosting" property="og:title" />
+        <meta content="click for file if it doesn't embed" property="og:description" />
+        <script>
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            let movieId = params.videoId;
+            let thumbnail = params.thmburl;
+            switch (thumbnail) {
+                case "movieThumbnail": {
+                    const meta = document.createElement("meta");
+                    meta.setAttribute('content', `http://localhost:4343/movie_thumbs/${movieId}.png`);
+                    meta.setAttribute('property', 'og:image');
+                    document.getElementById("headelem").appendChild(meta);
+                    break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+         <header>
+          <a href="/" title="back to index page">
+            <img src="/dumb-files/logo.png" class="logo">
+          </a>
+        </header>
+        <pre class="plaintext hidden" id="pt"></pre>
+        <div class="assetcont" id="assetstuff">
+            <div class="name" id="name">
+            </div>
+            <div class="type" id="type">
+            </div>
+            <hr style="margin: 0 0 20px 0;">
+            <div id="assetcont">
+            <div>
+        </div>
+        <script>
+            switch (type) {
+                case "i": {
+                    document.getElementById('name').innerHTML = `<h1>${name}</h1>`
+                    document.getElementById('type').innerHTML = `<h2>Image</h2>`
+                    document.getElementById('assetcont').innerHTML = `<img class="file" src="./dumb-files/${name}" alt="There's supposed to be an image here, either it was deleted or you have the wrong URL." />`
+                    break;
+                }
+                case "v": {
+                    document.getElementById('name').innerHTML = `<h1>${name}</h1>`
+                    document.getElementById('type').innerHTML = `<h2>Video</h2>`
+                    document.getElementById('assetcont').innerHTML = `<video class="file" src="./dumb-files/${name}" controls autoplay />`
+                    break;
+                }
+                case "a": {
+                    document.getElementById('name').innerHTML = `<h1>${name}</h1>`
+                    document.getElementById('type').innerHTML = `<h2>Audio</h2>`
+                    document.getElementById('assetcont').innerHTML = `<audio class="file" src="./dumb-files/${name}" controls />`
+                    break;
+                }
+                case "p": {
+                    document.getElementById('assetstuff').setAttribute('class', 'assetcont hidden')
+                    document.getElementById('pt').setAttribute('class', 'plaintext')
+                    var toRead;
+                    fetch(`./dumb-files/${name}`)
+                      .then(response => response.text())
+                      .then(text => 
+                        document.getElementById('pt').innerHTML = text
+                            .replace(/&/g, "&amp;")
+                            .replace(/</g, "&lt;")
+                            .replace(/>/g, "&gt;")
+                            .replace(/"/g, "&quot;")
+                            .replace(/'/g, "&#039;"))
+
+                    break;
+                }
+                default: {
+                    document.getElementById('name').innerHTML = `<h1>Type not defined</h1>`
+                    document.getElementById('type').innerHTML = `<h2>Bad request</h2>`
+                    document.getElementById('assetcont').innerHTML = `<p class="screwup">Type wasn't defined or was incorrect, so whatever this was couldn't be displayed.</p>`
+                    break;
+                }
+            }
+        </script>
+        <style>
+            h1, h2 {
+                margin-top: 0;
+            }
+            .assetcont {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 50px;
+                border-radius: 10px;
+                background: linear-gradient(#2b2b2b, #141414);
+                box-shadow: 0px 1px 6px 0px #0000005c;
+            }
+            .hidden {
+                display: none;
+            }
+            .file {
+                min-width: 100%;
+                max-width: 1100px;
+                max-height: 940px;
+            }
+        </style>
+    </body>
+</html>

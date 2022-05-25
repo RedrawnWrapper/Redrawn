@@ -1,0 +1,24 @@
+{
+  "name": "node-zip",
+  "version": "1.0.0",
+  "description": "A Node.JS zip file interpreter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kyriosli/node-zip.git"
+  },
+  "keywords": [
+    "Node.JS",
+    "zip",
+    "PKZIP"
+  ],
+  "author": "kyriosli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyriosli/node-zip/issues"
+  },
+  "homepage": "https://github.com/kyriosli/node-zip"
+}
