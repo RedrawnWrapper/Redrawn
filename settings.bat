@@ -1,4 +1,4 @@
-title Vyond Legacy Offline Settings Script
+title Redrawn Settings Script
 :: Interactive config.bat changer
 :: Author: joseph the animator#2292
 :: License: MIT
@@ -16,7 +16,7 @@ if not exist utilities\config.bat ( goto error_location )
 if not exist start_vyond.bat ( goto error_location )
 goto noerror_location
 :error_location
-echo Doesn't seem like this script is in the Vyond Legacy Offline folder.
+echo Doesn't seem like this script is in the Redrawn folder.
 goto end
 :noerror_location
 
@@ -258,7 +258,7 @@ if "!choice!"=="?8" (
 )
 if "!choice!"=="9" goto vfproxyserverchange
 if "!choice!"=="?9" (
-	echo If you think that the offline lvm is the reason why vyond legacy offline got buggy at your end,
+	echo If you think that the offline lvm is the reason why Redrawn got buggy at your end,
 	echo you may enable the online lvm thing to fix the issue at your end.
 	echo:
 	echo However, the offline lvm is enabled by default. i just forgot to mention that at the beginning.
