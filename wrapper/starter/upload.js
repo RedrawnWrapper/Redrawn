@@ -5,7 +5,7 @@ const fs = require('fs');
 
 module.exports = function (req, res, url, window) {
 	if (req.method != 'POST') {
-		switch (url.pathname) {
+		switch (url.path) {
 			case '/upload_starter': {
 				new formidable.IncomingForm().parse(req, (e, f, files) => {
 					const path = files.import.path, buffer = fs.readFileSync(path);
@@ -28,7 +28,6 @@ module.exports = function (req, res, url, window) {
 					fs.unlinkSync(path);
 
 					res.statusCode = 302;
-					window.alert(`Your Starter Has Been Uploaded. Id: s-${numId}`);
 					res.end();
 				});
 				return true;
