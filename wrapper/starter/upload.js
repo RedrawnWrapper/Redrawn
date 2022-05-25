@@ -3,9 +3,9 @@ const parse = require('../data/parse');
 const fUtil = require('../fileUtil');
 const fs = require('fs');
 
-module.exports = function (req, res, url, window) {
+module.exports = function (req, res, url) {
 	if (req.method != 'POST') {
-		switch (url.path) {
+		switch (url.pathname) {
 			case '/upload_starter': {
 				new formidable.IncomingForm().parse(req, (e, f, files) => {
 					const path = files.import.path, buffer = fs.readFileSync(path);
