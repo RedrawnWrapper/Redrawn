@@ -33,5 +33,4 @@ set BROWSER_TYPE=chrome
 
 :: Runs through all of the scripts code, while never launching or installing anything. Useful for development. Default: n
 set DRYRUN=n
-set AUTOUPDATE=y
 

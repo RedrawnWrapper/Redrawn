@@ -54,6 +54,7 @@
 		<motion id="stand.swf" name="Displace" loop="Y" totalframe="80"></motion>
 	</char>
 	<char id="matchBoy" name="Match Boy" thumb="stand.swf" facing="left" default="stand.swf" motion="walk.swf" enable="N">
+		<!--  MatchBoy is depreciated due to mistake in facing. Please use matchBoyNew instead -->
 		<action id="dance.swf" name="Dance" loop="Y" totalframe="44" />
 		<action id="die.swf" name="Die" loop="N" totalframe="72" />
 		<action id="fart.swf" name="Fart" loop="Y" totalframe="48" />
@@ -728,14 +729,14 @@
 		<action id="disagree01.swf" name="disagree" loop="Y" totalframe="45" />
 		<action id="dance01.swf" name="dance (twist)" loop="Y" totalframe="48" />
 		<action id="dance02.swf" name="dance (disco)" loop="Y" totalframe="18" />
-		<action id="dance03.swf" name="dance03" loop="Y" totalframe="20" />
-		<action id="shakehead01.swf" name="disagree (b)" loop="Y" totalframe="24" />
+<!--		<action id="dance03.swf" name="dance03" loop="Y" totalframe="20" />-->
+<!--		<action id="shakehead01.swf" name="disagree (b)" loop="Y" totalframe="24" />-->
 		<action id="fear01.swf" name="fear" loop="Y" totalframe="2" />
-		<action id="greeting01.swf" name="greet" loop="Y" totalframe="30" />
-		<action id="handsup01.swf" name="raise hand" loop="Y" totalframe="60" />
+<!--		<action id="greeting01.swf" name="greet" loop="Y" totalframe="30" />-->
+<!--		<action id="handsup01.swf" name="raise hand" loop="Y" totalframe="60" />-->
 		<action id="laugh01.swf" name="laugh" loop="Y" totalframe="4" />
-		<action id="laugh02.swf" name="laugh (b)" loop="Y" totalframe="43" />
-		<action id="laugh03.swf" name="laugh (c)" loop="Y" totalframe="44" />
+<!--		<action id="laugh02.swf" name="laugh (b)" loop="Y" totalframe="43" />
+		<action id="laugh03.swf" name="laugh (c)" loop="Y" totalframe="44" />-->
 		<action id="sad01.swf" name="sad" loop="Y" totalframe="70" />
 		<category name="sit">
 			<action id="sitdown01_laugh.swf" name="laugh" loop="Y" totalframe="4" />
@@ -743,8 +744,8 @@
 			<action id="sitdown03_sad.swf" name="sigh" loop="Y" totalframe="80" />
 			<action id="sitdown04_think.swf" name="think" loop="Y" totalframe="70" />
 		</category>
-		<action id="sleep01.swf" name="fall asleep" loop="Y" totalframe="55" />
-		<action id="split01.swf" name="split" loop="Y" totalframe="35" />
+<!--		<action id="sleep01.swf" name="fall asleep" loop="Y" totalframe="55" />
+		<action id="split01.swf" name="split" loop="Y" totalframe="35" />-->
 		<action id="stand.swf" name="stand" loop="Y" totalframe="50" />
 
 		<action id="talk03_point.swf" name="cool" loop="Y" totalframe="44" />
@@ -756,7 +757,7 @@
 		<action id="think01.swf" name="think" loop="Y" totalframe="60" />
 		<action id="think03.swf" name="ponder" loop="Y" totalframe="74" />
 		<action id="think04.swf" name="scheme" loop="Y" totalframe="74" />
-		<action id="turnhead01.swf" name="spin head" loop="Y" totalframe="44" />
+<!--		<action id="turnhead01.swf" name="spin head" loop="Y" totalframe="44" />-->
 		<motion id="walk.swf" name="walk" loop="Y" totalframe="16" />
 	</char>
 
@@ -973,7 +974,7 @@
 			<action id="think04.swf" name="Think (C)" loop="Y" totalframe="74" />	
 		</category>
 		<action id="turnhead01.swf" name="Turn Head" loop="Y" totalframe="44" />	
-		<action id="walk.swf" name="walk" loop="Y" totalframe="16" />
+		<!--<action id="walk.swf" name="walk" loop="Y" totalframe="16" />-->
 		<motion id="walk.swf" name="Walk" loop="Y" totalframe="16" />
 	</char>
 
@@ -1158,7 +1159,7 @@
 		<action id="34_tick.swf" name="tickle" loop="Y" totalframe="100"  reactionid="35_shak.swf" />	
 		<action id="35_shak.swf" name="get tickled by" loop="Y" totalframe="100" ymeenable="N" />
 
-		<action id="40_laugh.swf" name="laugh at" loop="Y" totalframe="100" ymeenable="N" />
+		<!--<action id="40_laugh.swf" name="laugh at" loop="Y" totalframe="100" ymeenable="N" />-->
 		<action id="gotShoot.swf" name="get shoot by" loop="Y" totalframe="100" ymeenable="N" enable="N"/>
 
 		<action id="11_laugh.swf" name="laugh at" loop="Y" totalframe="100" />
@@ -1455,8 +1456,8 @@
 	<background id="hawaii beach_night.swf" name="Hawaii Beach_Night" enable="Y" />
 	<background id="hawaii beach.swf" name="Hawaii Beach" enable="Y"/>
 	<background id="eiffel tower.swf" name="Eiffel Tower" enable="Y"/>
-	<background id="diamond.swf" name="Diamond" enable="Y"/>
-	<background id="skateboard boy.swf" name="Skateboard Boy" enable="Y"/>
+	<!--<background id="diamond.swf" name="Diamond" enable="Y"/>
+	<background id="skateboard boy.swf" name="Skateboard Boy" enable="Y"/>-->
 
 	<background id="boxing_bg.swf" name="Boxing" enable="Y"/>
 
@@ -1505,16 +1506,16 @@
 	<prop id="diamond.swf" name="Diamond" placeable="1" holdable="1" wearable="0" facing="left" enable="Y" />
 	<prop id="table.swf" name="Ballon" placeable="1" holdable="1" wearable="0" facing="left" enable="Y" />
 
-	<prop id="skateboard boy.swf" name="Skateboard Boy" placeable="0" holdable="0" wearable="0" facing="left" enable="Y" />
+	<!--<prop id="skateboard boy.swf" name="Skateboard Boy" placeable="0" holdable="0" wearable="0" facing="left" enable="Y" />-->
 	<prop id="loveEffect.swf" name="Love (A)" placeable="0" holdable="0" wearable="0" facing="left" enable="Y" />
 	<prop id="love_effect3.swf" name="Love (B)" placeable="0" holdable="0" wearable="0" facing="left" enable="Y" />
 
 
 
 	<prop id="sword.swf" name="Sword" placeable="0" holdable="1" facing="left" enable="N"/>
-	<prop id="guitar.swf" name="Guitar" placeable="1" holdable="1" facing="left" enable="Y"/>
+	<!--<prop id="guitar.swf" name="Guitar" placeable="1" holdable="1" facing="left" enable="Y"/>-->
 	<prop id="mic.swf" name="Mic" placeable="0" holdable="1" facing="left" enable="N"/>
-	<prop id="saxophone.swf" name="Saxophone" placeable="0" holdable="1" facing="left" enable="Y"/>
+<!--	<prop id="saxophone.swf" name="Saxophone" placeable="0" holdable="1" facing="left" enable="Y"/>-->
 	<prop id="gas.swf" name="Gas" placeable="1" holdable="0" facing="left" enable="N"/>
 	<prop id="speaker_red.swf" name="Red Speaker" placeable="1" holdable="0" facing="left" enable="Y"/>
 	<prop id="speaker_black.swf" name="Black Speaker" placeable="1" holdable="0" facing="left" enable="Y"/>
@@ -1597,10 +1598,10 @@
 	<prop id="flag.swf" name="Flag" placeable="1" holdable="1" facing="left" enable="Y" />
 	<prop id="interview_cup.swf" name="Interview Cup" placeable="1" holdable="1" facing="left" enable="Y" />
 	
-	<prop id="boxA-Open.swf" name="boxA-Open.swf" placeable="1" holdable="1" facing="left" enable="Y" />
+	<!--<prop id="boxA-Open.swf" name="boxA-Open.swf" placeable="1" holdable="1" facing="left" enable="Y" />
 	<prop id="firework.swf" name="firework.swf" placeable="1" holdable="1" facing="left" enable="Y" />
 	<prop id="firework03.swf" name="firework03.swf" placeable="1" holdable="1" facing="left" enable="Y" />
-	<prop id="firework05.swf" name="firework05.swf" placeable="1" holdable="1" facing="left" enable="Y" />
+	<prop id="firework05.swf" name="firework05.swf" placeable="1" holdable="1" facing="left" enable="Y" />-->
 	<sound id="joy and fun.swf" name="Joy and Fun" enable="Y" downloadtype="embed" subtype="bgmusic" />
 	<sound id="roadSide.swf" name="Rock at the road side" enable="Y" downloadtype="embed" subtype="bgmusic" />
 	<sound id="rockMain.swf" name="Rock &amp; Roll" enable="Y" downloadtype="embed" subtype="bgmusic" />
@@ -1667,9 +1668,9 @@
 	<effect id="hyper_snow.swf" type="ANIME" resize="false" move="false" name="Hyper Snow" enable="Y"/>
 	<effect id="snow01.swf" type="ANIME" resize="false" move="false" name="Snow01" enable="Y"/>
 	<effect id="snow02.swf" type="ANIME" resize="false" move="false" name="Snow02" enable="Y"/>
-	<effect id="boxA-Open.swf" type="ANIME" resize="true" move="true" name="boxA-Open" enable="Y"/>
+<!--	<effect id="boxA-Open.swf" type="ANIME" resize="true" move="true" name="boxA-Open" enable="Y"/>
 	<effect id="firework03.swf" type="ANIME" resize="true" move="true" name="firework03" enable="Y"/>
-	<effect id="firework05.swf" type="ANIME" resize="true" move="true" name="firework05" enable="Y"/>
+	<effect id="firework05.swf" type="ANIME" resize="true" move="true" name="firework05" enable="Y"/>-->
 	<effect id="old_film_effect.swf" type="ANIME" resize="false" move="false" name="Old Film" enable="Y"/>
 	<effect id="hearts.swf" type="ANIME" resize="false" move="false" name="Heart" enable="Y"/>
 </theme>

@@ -1,54 +1,38 @@
-:: Redrawn Launcher
-:: made with love by daza and miiartisan
-:: Author: benson#0411
-:: Project Runner: MiiArtisan#1687
-:: License: MIT
 @echo off
-set SUBSCRIPT=autoupdatingwrapper && call utilities\config.bat
+:: Redrawn Launcher
+:: Original Author: ! !#0483 (VisualPlugin)
+:: Project Runner: MiiArtisan#3461
+:: License: MIT
 set WRAPPER_VER=0.0.1
-set WRAPPER_BLD=1
+set WRAPPER_BLD=01
 title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
 
 ::::::::::::::::::::
 :: Initialization ::
 ::::::::::::::::::::
-
-:: Stop commands from spamming stuff, cleans up the screen
-cls
-
-:: check for updates
-
-pushd "%~dp0"
-if !AUTOUPDATE!==y ( 
-	pushd "%~dp0"
-	if exist .git (
-		echo Updating...
-		call utilities\PortableGit\bin\git.exe pull
-		PING -n 3 127.0.0.1>nul
-		cls
-	) else (
-		echo Git not found. Skipping update.
-		PING -n 3 127.0.0.1>nul
-		cls
-	)
-) else (
-	echo Auto-updating is off. Skipping update.
-	PING -n 3 127.0.0.1>nul
-	cls
-)
-
 :: Lets variables work or something idk im not a nerd
 SETLOCAL ENABLEDELAYEDEXPANSION
 
 :: Make sure we're starting in the correct folder, and that it worked (otherwise things would go horribly wrong)
 pushd "%~dp0"
+pushd "%~dp0"
 if !errorlevel! NEQ 0 goto error_location
 if not exist utilities ( goto error_location )
 if not exist wrapper ( goto error_location )
 if not exist server ( goto error_location )
+cd %USERPROFILE%\Downloads
+if not exist Redrawn ( goto install_error )
+pushd "%~dp0"
+pushd "%~dp0"
 goto noerror_location
 :error_location
-echo File is missing. Verify everything is at where it should be or redownload Redrawn.
+echo Doesn't seem like this script is in a Redrawn folder.
+pause && exit
+:install_error
+echo You have not downloaded Redrawn using the installer.
+echo Please run the install_redrawn.bat file as admin and try again later.
+echo Unless you dont have admin rights on your computer. 
+echo You may check by running the file as admin by right clicking the file and click on run as administrator.
 pause && exit
 :noerror_location
 
@@ -72,9 +56,45 @@ if not exist server ( goto error_location )
 :: Create checks folder if nonexistent
 if not exist "utilities\checks" md utilities\checks
 
+:: Operator, attention!
+if not exist "utilities\checks\disclaimer.txt" (
+	echo DISCLAIMER
+  echo:
+	echo Redrawn is a project to preserve the original GoAnimate flash-based themes.
+	echo I believe that they should be archived for others to use and learn about in the future.
+	echo This is still unlawful use of copyrighted material, but ^(in our opinion^) morally justifiable use.
+	echo:
+	echo i am not affiliated in any form with Vyond or GoAnimate Inc. i generate have no profit from this.
+	echo i do not wish to promote piracy, and i avoid distributing content that is still in use by GoAnimate Inc.
+	echo i have tried to reduce any harm i could do to GoAnimate Inc while making this project.
+	echo:
+	echo Excluding Adobe Flash and GoAnimate Inc's assets, Redrawn is free/libre software.
+	echo You are free to redistribute and/or modify it under the terms of the MIT ^(aka Expat^) license,
+	echo except for some dependencies which have different licenses with slightly different rights.
+	echo Read the LICENSE file in Offline's base folder and the licenses in utilities/sourcecode for more info.
+	echo:
+	echo By continuing to use Redrawn, you acknowledge the nature of this project, and your right to use it.
+	echo If you object to any of this, feel free to close Redrawn now.
+	echo You will be allowed to accept 20 seconds after this message has appeared.
+	echo: 
+	PING -n 21 127.0.0.1>nul
+	echo If you still want to use Redrawn, press Y. If you no longer want to, press N.
+	:disclaimacceptretry
+	set /p ACCEPTCHOICE= Response:
+	echo:
+	if not '!acceptchoice!'=='' set acceptchoice=%acceptchoice:~0,1%
+	if /i "!acceptchoice!"=="y" goto disclaimaccepted
+	if /i "!acceptchoice!"=="n" exit
+	goto disclaimacceptretry
+	:disclaimaccepted
+	echo: 
+	echo Sorry for all the legalese, let's get back on track.
+	echo You've accepted the disclaimer. To reread it, remove this file. > utilities\checks\disclaimer.txt
+)
+
 :: Welcome, Director Ford!
 echo Redrawn
-echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn Team
+echo A project from VisualPlugin adapted by The Redrawn Team
 echo Version !WRAPPER_VER!, build !WRAPPER_BLD!
 echo:
 
@@ -96,6 +116,61 @@ goto configcopy
 if not exist utilities\config.bat ( echo Something is horribly wrong. You may be in a read-only system/admin folder. & pause & exit )
 call utilities\config.bat
 :configavailable
+
+if not exist wrapper\env.json ( goto envmissing ) else ( goto envavailable )
+
+:: Restore env
+:envmissing
+echo Creating env.json...
+goto envcopy
+:returnfromenvcopy
+if not exist wrapper\env.json ( echo Something is horribly wrong. You may be in a read-only system/admin folder. & pause & exit )
+:envavailable
+
+:: Auto Update Redrawn On First Start
+
+if !VERBOSEWRAPPER!==y (
+echo Updating....
+pushd "%~dp0\utilities"
+:: Save the config in a temp copy before the update.
+if exist config.bat (
+ren config.bat tempconfig.bat
+)
+call PortableGit\bin\git.exe pull || call PortableGit\bin\git.exe stash && call PortableGit\bin\git.exe pull
+:: Delete any files added when the online lvm feature and debug mode is turned on.
+pushd ..\wrapper
+if exist config-offline.json (
+if exist config-online.json (
+del config-online.json
+)
+)
+if exist env-nodebug.json (
+if exist env-debug.json (
+del env-debug.json
+)
+)
+pushd ..\
+if exist 405-error-redirect-fix.js (
+del 405-error-redirect-fix.js
+)
+:: Rename the temp copy of the config.bat file to the main copy of the config.bat file after the update.
+pushd utilities
+if exist tempconfig.bat (
+if exist config.bat (
+del config.bat
+)
+ren tempconfig.bat config.bat
+)
+pushd ..\
+:: Delete some modded revision stuff cuz thats not needed to run RD
+pushd wrapper
+if exist revision (
+rd /q /s revision
+)
+pushd ..\
+echo Redrawn has been updated! Starting Redrawn...
+PING -n 2 127.0.0.1>nul
+) else ( echo Verbose Mode Is Not Enabled. Skipping Update... && PING -n 2 127.0.0.1>nul )
 
 ::::::::::::::::::::::
 :: Dependency Check ::
@@ -127,10 +202,10 @@ if !INCLUDEDCHROMIUM!==y set BROWSER_TYPE=chrome
 
 :: Flash Player
 if !VERBOSEWRAPPER!==y ( echo Checking for Flash installation... )
-if exist "!windir!\SysWOW64\Macromed\Flash" set FLASH_CHROMIUM_DETECTED=y
-if exist "!windir!\System32\Macromed\Flash" set FLASH_CHROMIUM_DETECTED=y
-if exist "!windir!\SysWOW64\Macromed\Flash\plugin.exe" set FLASH_FIREFOX_DETECTED=y
-if exist "!windir!\System32\Macromed\Flash\plugin.exe" set FLASH_FIREFOX_DETECTED=y
+if exist "!windir!\SysWOW64\Macromed\Flash\*pepper.exe" set FLASH_CHROMIUM_DETECTED=y
+if exist "!windir!\System32\Macromed\Flash\*pepper.exe" set FLASH_CHROMIUM_DETECTED=y
+if exist "!windir!\SysWOW64\Macromed\Flash\*plugin.exe" set FLASH_FIREFOX_DETECTED=y
+if exist "!windir!\System32\Macromed\Flash\*plugin.exe" set FLASH_FIREFOX_DETECTED=y
 if !BROWSER_TYPE!==chrome (
 	if !FLASH_CHROMIUM_DETECTED!==n (
 		echo Flash for Chrome could not be found.
@@ -223,7 +298,6 @@ if !errorlevel! == 0 (
 		echo HTTPS cert could not be found.
 		echo:
 		set NEEDTHEDEPENDERS=y
-
 	)
 )
 popd
@@ -324,7 +398,6 @@ if !ADMINREQUIRED!==y (
 			echo:
 			echo Close this window and re-open Redrawn as an Admin.
 			echo ^(right-click start_wrapper.bat and click "Run as Administrator"^)
-			echo If you have this installed already, go into settings and disable dependency checking.
 			echo:
 			if !DRYRUN!==y (
 				echo ...yep, dry run is going great so far, let's skip the exit
@@ -407,7 +480,7 @@ if !FLASH_DETECTED!==n (
 	)
 	:lurebrowserslayer
 	echo:
-
+	
 	if !BROWSER_TYPE!==chrome (
 		echo Starting Flash for Chrome installer...
 		if not exist "utilities\installers\flash_windows_chromium.msi" (
@@ -415,8 +488,7 @@ if !FLASH_DETECTED!==n (
 			echo A normal copy of Redrawn should come with one.
 			echo You may be able to find a copy on this website:
 			echo https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
-			echo Although Flash is needed, Redrawn will continue launching.
-			echo If you have Flash Player installed already, go into settings, disable dependency checking and restart
+			echo Although Flash is needed, Offline will continue launching.
 			pause
 		)
 		if !DRYRUN!==n ( msiexec /i "utilities\installers\flash_windows_chromium.msi" !INSTALL_FLAGS! /quiet )
@@ -428,7 +500,7 @@ if !FLASH_DETECTED!==n (
 			echo A normal copy of Redrawn should come with one.
 			echo You may be able to find a copy on this website:
 			echo https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
-			echo Although Flash is needed, Redrawn will try to install anything else it can.
+			echo Although Flash is needed, Offline will try to install anything else it can.
 			pause
 			goto after_flash_install
 		)
@@ -703,13 +775,19 @@ if !CEPSTRAL!==n (
 	echo Loading Node.js, http-server and PHP ^(for VFProxy only^)...
 ) else (
 	echo Loading Node.js and http-server...
+	echo If localhost does not start in the next 30 seconds, you may have either not installed node.js or it's something unknown.
+	if !VERBOSEWRAPPER!==y (
+	echo to view the error, go to the npm window or the Node.js Has Started window and send the logs to joseph the animator#2292 by messaging him on discord by dm.
+	) else (
+	echo Verbose mode is not enabled. to view the error in the npm window or the Node.js Has Started window, you need to turn on verbose mode in settings.
+	)
 )
-pushd utilities
+pushd "%~dp0\utilities"
 if !VERBOSEWRAPPER!==y (
 	if !DRYRUN!==n ( start /MIN open_http-server.bat )
-        if !DRYRUN!==n ( start /MIN open_http-server2.bat )
+	if !DRYRUN!==n ( start /MIN open_http-server2.bat )
         if !DRYRUN!==n ( start /MIN open_http-server3.bat )
-        if !DRYRUN!==n ( start /MIN open_http-server4.bat )
+	if !DRYRUN!==n ( start /MIN open_http-server4.bat )
 	if !DRYRUN!==n ( start /MIN open_nodejs.bat )
 	if !DRYRUN!==n ( 
 		if !CEPSTRAL!==n ( 
@@ -718,9 +796,9 @@ if !VERBOSEWRAPPER!==y (
 	)
 ) else (
 	if !DRYRUN!==n ( start SilentCMD open_http-server.bat )
-        if !DRYRUN!==n ( start SilentCMD open_http-server2.bat )
+	if !DRYRUN!==n ( start SilentCMD open_http-server2.bat )
         if !DRYRUN!==n ( start SilentCMD open_http-server3.bat )
-        if !DRYRUN!==n ( start SilentCMD open_http-server4.bat )
+	if !DRYRUN!==n ( start SilentCMD open_http-server4.bat )
 	if !DRYRUN!==n ( start SilentCMD open_nodejs.bat )
 	if !DRYRUN!==n ( 
 		if !CEPSTRAL!==n (
@@ -732,7 +810,8 @@ popd
 
 :: Pause to allow startup
 :: Prevents the video list opening too fast
-PING -n 16 127.0.0.1>nul
+:: Why is this at 30? to give the npm some time to install and start because it sometimes starts after a long time.
+PING -n 30 127.0.0.1>nul
 
 :: Open Wrapper in preferred browser
 if !INCLUDEDCHROMIUM!==n (
@@ -766,10 +845,10 @@ if !VERBOSEWRAPPER!==y ( goto wrapperstarted )
 :wrapperstartedcls
 cls
 :wrapperstarted
-
+title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
 echo:
 echo Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) running
-echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn team
+echo A project from VisualPlugin adapted by MiiArtisan and The Redrawn Team
 echo:
 if !VERBOSEWRAPPER!==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
 if !VERBOSEWRAPPER!==y ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
@@ -778,10 +857,12 @@ if !JUSTIMPORTED!==y ( echo Note: You'll need to reload the editor for your file
 :: Hello, code wanderer. Enjoy seeing all the secret options easily instead of finding them yourself.
 echo:
 echo Enter 1 to reopen the video list
-echo Enter 2 to open the server page
+echo Enter 2 to import a file
+echo Enter 3 to open the server page
 echo Enter ? to open the FAQ
 echo Enter clr to clean up the screen
 echo Enter 0 to close Redrawn
+echo Enter restart to restart Redrawn
 set /a _rand=(!RANDOM!*67/32768)+1
 if !_rand!==25 echo Enter things you think'll show a secret if you're feeling adventurous
 :wrapperidle
@@ -790,7 +871,8 @@ set /p CHOICE=Choice:
 if "!choice!"=="0" goto exitwrapperconfirm
 set FUCKOFF=n
 if "!choice!"=="1" goto reopen_webpage
-if "!choice!"=="2" goto open_server
+if "!choice!"=="2" goto start_importer
+if "!choice!"=="3" goto open_server
 if "!choice!"=="?" goto open_faq
 if /i "!choice!"=="clr" goto wrapperstartedcls
 if /i "!choice!"=="cls" goto wrapperstartedcls
@@ -808,10 +890,10 @@ if /i "!choice!"=="watch benson on youtube" goto w_a_t_c_h
 if /i "!choice!"=="browser slayer" goto slayerstestaments
 if /i "!choice!"=="patch" goto patchtime
 if /i "!choice!"=="random" goto sayarandom
-if /i "!choice!"=="octanuary" echo i am a traitor and retard & goto wrapperidle
+if /i "!choice!"=="narutofan420" echo i am narutofan420 i am a naruto fan i watch naruto i watched all 3 series and still watch it & goto wrapperidle
 if /i "!choice!"=="die" echo die please & goto wrapperidle
 if /i "!choice!"=="aaron doan" echo YOU^^!^^!^^! Noo Wrapper Is Patched Forever^^!^^!^^! Cries And Hits You So Many Times & goto wrapperidle
-if /i "!choice!"=="spark" echo OOOOH GUYS IM A FUCKING DICK & goto wrapperidle
+if /i "!choice!"=="spark" echo WHY DID SOMEONE FUCK UP THE LAUNCHER? & goto wrapperidle
 :: dev options
 if /i "!choice!"=="amnesia" goto wipe_save
 if /i "!choice!"=="restart" goto restart
@@ -866,6 +948,21 @@ echo Opening the wrapper-offline folder...
 start explorer.exe wrapper-offline
 popd
 goto wrapperidle
+
+:start_importer
+echo Opening the importer...
+call utilities\import.bat
+cls
+title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
+set JUSTIMPORTED=y
+goto wrapperstartedcls
+
+:start_wrapper_installer
+echo Opening the installer for the wrapper offline portable installer...
+cls
+call install_wrapper_offline_portable_installer.bat
+cls
+echo You desided to read the message. if you want to read it again, then you must delete this file.>> utilities\checks\message.txt & goto vyondStarted
 
 :youfuckoff
 echo You fuck off.
@@ -927,7 +1024,6 @@ if !_rand!==12 echo try typing "with style" when exiting
 if !_rand!==13 echo elmo
 if !_rand!==14 echo gnorm gnat says: trans rights are human rights
 if !_rand!==15 echo wrapper inline
-if !_rand!==16 echo SUS
 goto wrapperidle
 
 :slayerstestaments
@@ -1030,9 +1126,9 @@ echo This window will now close.
 if !INCLUDEDCHROMIUM!==y (
 	echo You can close the web browser now.
 )
-echo Open start_wrapper.bat again to start W:O again.
+echo Open start_vyond.bat again to start VLO again.
 if !DRYRUN!==y ( echo Go wet your run next time. ) 
-pause & exit
+pause & TASKKILL /IM cmd.exe /F
 
 :exitwithstyle
 title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down... WITH STYLE]
@@ -1053,7 +1149,7 @@ echo BOBOOBOBMWBOMBOM SOUND EFFECTSSSSS
 PING -n 3 127.0.0.1>nul
 echo WRAPPER OFFLINE ALSO ANNIHILA
 PING -n 2 127.0.0.1>nul
-exit
+TASKKILL /IM cmd.exe /F
 
 :patched
 title candypaper nointernet PATCHED edition
@@ -1106,3 +1202,29 @@ echo :: Runs through all of the scripts code, while never launching or installin
 echo set DRYRUN=n>> utilities\config.bat
 echo:>> utilities\config.bat
 goto returnfromconfigcopy
+
+:envcopy
+	set ENV=wrapper\env.json
+	echo {>> !env!
+	echo 	"CHAR_BASE_URL": "https://localhost:4664/characters",>> !env!
+	echo 	"THUMB_BASE_URL": "https://localhost:4664/thumbnails",>> !env!
+	echo 	"XML_HEADER": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n",>> !env!
+	echo 	"FAILURE_XML": "<error><code>ERR_ASSET_404</code><message>Something broke and got grounded.</message><text></text></error>",>> !env!
+	echo 	"CROSSDOMAIN": "<cross-domain-policy><allow-access-from domain=\"*\"/></cross-domain-policy>",>> !env!
+	echo 	"FILE_WIDTH": 1000,>> !env!
+	echo 	"GATHER_THREADS": 100,>> !env!
+	echo 	"GATHER_THRESH1": 250000000,>> !env!
+	echo 	"GATHER_THRESH2": 328493000,>> !env!
+	echo 	"GATHER_THRESH3": 400000000,>> !env!
+	echo 	"FILE_NUM_WIDTH": 9,>> !env!
+	echo 	"XML_NUM_WIDTH": 3,>> !env!
+	echo 	"SERVER_PORT": 4343,>> !env!
+	echo 	"SAVED_FOLDER": "./_SAVED",>> !env!
+	echo 	"CACHÉ_FOLDER": "./_CACHÉ",>> !env!
+	echo 	"THEME_FOLDER": "./_THEMES",>> !env!
+	echo 	"PREMADE_FOLDER": "./_PREMADE",>> !env!
+	echo 	"EXAMPLE_FOLDER": "./_EXAMPLES",>> !env!
+	echo 	"WRAPPER_VER": "1.2.3",>> !env!
+	echo 	"NODE_TLS_REJECT_UNAUTHORIZED": "0">> !env!
+	echo }>> !env!
+goto returnfromenvcopy
