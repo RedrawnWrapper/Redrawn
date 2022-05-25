@@ -203,15 +203,15 @@ module.exports = function (req, res, url) {
 	<body style="margin:0px" onload="hideHeader()">${toObjectString(attrs, params)
 		}</body>${stuff.pages[url.pathname] || ''}
 <iframe style="display:none" name="dummy"></iframe>
-<form enctype="multipart/form-data" action="/upload_movie" method="post" target="dummy">
+<form style="display:none" enctype="multipart/form-data" action="/upload_movie" method="post" target="dummy">
 	<input id="file" type="file" onchange="this.form.submit()" name="import">
 </form>
 
-<form enctype="multipart/form-data" action="/upload_character" method="post" target="dummy">
+<form style="display:none" enctype="multipart/form-data" action="/upload_character" method="post" target="dummy">
 	<input id="file2" type="file" onchange="this.form.submit()" name="import">
 </form>
 	
-<form enctype="multipart/form-data" action="/upload_starter" method="post" target="dummy">
+<form style="display:none" enctype="multipart/form-data" action="/upload_starter" method="post" target="dummy">
 	<input id="file3" type="file" onchange="this.form.submit()" name="import">
 </form>`);
 	return true;
