@@ -1,7 +1,7 @@
 @echo off
 :: Redrawn Launcher
 :: Original Author: Daza#5505
-:: Project Runner: joseph the animator#2292
+:: Project Runner: MiiArtisan#3461
 :: License: MIT
 set WRAPPER_VER=0.0.1
 set WRAPPER_BLD=01
@@ -30,7 +30,7 @@ echo Doesn't seem like this script is in a Redrawn folder.
 pause && exit
 :install_error
 echo You have not downloaded Redrawn using the installer.
-echo Please run the install_vyond_legacy_offline.bat file as admin and try again later.
+echo Please run the install_redrawn.bat file as admin and try again later.
 echo Unless you dont have admin rights on your computer. 
 echo You may check by running the file as admin by right clicking the file and click on run as administrator.
 pause && exit
@@ -94,8 +94,8 @@ if not exist "utilities\checks\disclaimer.txt" (
 
 :: Welcome, Director Ford!
 echo Redrawn
-echo A project from VisualPlugin originally adapted by JoshTheVideomaker2022
-echo Adapted by Joseph Animate 2022
+echo A project from MiiArtisan originally adapted by Dazaseal
+echo Adapted by The Redrawn Team
 echo Version !WRAPPER_VER!, build !WRAPPER_BLD!
 echo:
 
@@ -128,7 +128,7 @@ goto envcopy
 if not exist wrapper\env.json ( echo Something is horribly wrong. You may be in a read-only system/admin folder. & pause & exit )
 :envavailable
 
-:: Auto Update Vyond On First Start
+:: Auto Update Redrawn On First Start
 
 if !VERBOSEWRAPPER!==y (
 echo Updating....
@@ -163,13 +163,13 @@ del config.bat
 ren tempconfig.bat config.bat
 )
 pushd ..\
-:: Delete some modded revision stuff cuz thats not needed to run VLO
+:: Delete some modded revision stuff cuz thats not needed to run RD
 pushd wrapper
 if exist revision (
 rd /q /s revision
 )
 pushd ..\
-echo Redrawn has been updated! Starting Vyond...
+echo Redrawn has been updated! Starting Redrawn...
 PING -n 2 127.0.0.1>nul
 ) else ( echo Verbose Mode Is Not Enabled. Skipping Update... && PING -n 2 127.0.0.1>nul )
 
@@ -374,7 +374,7 @@ if /i "!processor_architecture!"=="AMD64" set CPU_ARCHITECTURE=64
 if /i "!PROCESSOR_ARCHITEW6432!"=="AMD64" set CPU_ARCHITECTURE=64
 
 :: Check for admin if installing Flash or Node.js
-:: Skipped in Safe Mode, just in case anyone is running Wrapper in safe mode... for some reason
+:: Skipped in Safe Mode, just in case anyone is running Redrawn in safe mode... for some reason
 :: and also because that was just there in the code i used for this and i was like "eh screw it why remove it"
 if !ADMINREQUIRED!==y (
 	if !VERBOSEWRAPPER!==y ( echo Checking for Administrator rights... && echo:)
@@ -550,7 +550,7 @@ if !NODEJS_DETECTED!==n (
 		if !DRYRUN!==n ( msiexec /i "utilities\installers\node_windows_x32.msi" !INSTALL_FLAGS! )
 		goto nodejs_installed
 	)
-	if !CPU_ARCHITECTURE!==what (
+	if "!CPU_ARCHITECTURE!"=="" (
 		echo:
 		echo Well, this is a little embarassing.
 		echo Redrawn can't tell if you're on a 32-bit or 64-bit system.
@@ -663,7 +663,7 @@ if !HTTPSCERT_DETECTED!==n (
 			if !VERBOSEWRAPPER!==n ( cls )
 			echo For Redrawn to work, it needs an HTTPS certificate to be installed.
 			echo If you have administrator privileges, you should reopen start_wrapper.bat as Admin.
-			echo ^(do this by right-clicking start_wrapper.bat and click "Run as Administrator"^)
+			echo ^(do this by right-clicking start_redrawn.bat and click "Run as Administrator"^)
 			echo:
 			echo If you can't do that, there's another method, but it's less reliable and is done per-browser.
 			echo: 
