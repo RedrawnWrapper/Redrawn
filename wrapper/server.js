@@ -20,7 +20,7 @@ const lvp = require('./static/pagelvp');
 const thm = require('./static/pagethemelist');
 const str = require('./starter/save');
 const stt = require('./starter/thmb');
-const stu = require('./starter/upload');
+const del = require('./starter/delete');
 const mvl = require('./movie/load');
 const mvL = require('./movie/list');
 const mvm = require('./movie/meta');
@@ -62,8 +62,8 @@ const functions = [
 	stt,
 	stc,
 	lvp,
-        stu,
-	thm
+	thm,
+	del,
 ];
 
 // Creates an HTTP server
