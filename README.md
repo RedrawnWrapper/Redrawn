@@ -1,4 +1,6 @@
-# Redrawn
+REDRAWN IS DEAD. DONT EXPECT ANYTHING ELSE FROM US
+
+
 ## What Is Redrawn?
 Redrawn is an lvm project made by MiiArtisan to bring back the lvm and other things. It is also designed to fix the trashy wrapper offline that it has become all those years. It has a longer startup because i put a fix in there to get rid of the annoying localhost not connecting bug.
 
