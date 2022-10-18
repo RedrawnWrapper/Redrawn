@@ -1,27 +1,8 @@
-REDRAWN IS DEAD. DONT EXPECT ANYTHING ELSE FROM US
+REDRAWN IS DEAD. DON'T EXPECT ANYTHING ELSE FROM US
+
+The truth is, Redrawn was just one silly experiment that was born out of the fact that octanuary (stupid bitch) added RegularSpark to his dev team (ew) so we decided to make Redrawn as a response. It evolutioned out of that, and we grew to an at least decent LVM, compared to what Wrapper: Offline was back then. However, we encountered major issues on the way, one which was so big we literally had to replace the entire codebase... which did not get rid of the issue. And personal issues as well, such as school, other projects, drunk dads ruining the fun (this only applies to me) and other shit.
+
+So i hope you all liked Redrawn while it lasted, Goodbye.
 
 
-## What Is Redrawn?
-Redrawn is an lvm project made by MiiArtisan to bring back the lvm and other things. It is also designed to fix the trashy wrapper offline that it has become all those years. It has a longer startup because i put a fix in there to get rid of the annoying localhost not connecting bug.
-
-## Delete Redrawn Right Now! this lvm is terrible!
-no
-
-## Contributors
-### MiiArtisan
-### Joseph Animate 2022 - Staarters, Movie Deleting and Character Deleting.
-
-## Instalation
-it is best if you use the Redrawn installer. that gets rid of pain of having to wait for the files to extract and everything.
-
-## How To Contribute
-you need to be a good user, 13+ of age, a trusted person, and good at coding if you want to contribute.
-
-## Is Redrawn Also Broken Like Wrapper: Offline?
-no, because i tested it and it still works like wrapper offline should have in the first place.
-
-## Why should you use Redrawn?
-because almost all of the voices including david and joey are working. it has a char replacing feature like the old lvm. you can kind of use developer mode on here if you wanted to. for now, debug mode can be used if needed witch kind of acts like developer mode except it lets you catch some problems and test some new features out and others as well. it also has the old starters feature in an almost complete full form: saving, loading, and deleting. if you made something on accident or you don't want one of your old movies anymore, then you can delete them using the brand new delete button that is on the videolist right now! if you ever had problems with https localhost not working the way it should, you can use the online lvm feature to fix that witch uses github pages and applcations. the two are: Asset Server and LVM-Static. If you made a chracter on accident or you don't want it anymore, then you can just simply delete it using the delete button on the top right corner of the char. debug mode needs to be enabled in order for the feature to work espeicaly because i have been trying to get the team library and the shared with you options working. now, instead of taking forever to load, it returns with an error.
-
-## What happens if you dont use the installer to get Redrawn?
-it will return sone errors on every batch file that you click. Just note that the installer needs to be ran in order for Redrawn to run properly.
+anyways just fucking let goanimate die, there's no point on keeping it alive if the community is full of fucking retards who love harassing people over the tiniest mistake.
