@@ -3,9 +3,9 @@
 :: Original Author: Daza#5505
 :: Project Runner: MiiArtisan#3461
 :: License: MIT
-set WRAPPER_VER=0.0.1
-set WRAPPER_BLD=01
-title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
+set REDRAWN_VER=0.0.1
+set REDRAWN_BLD=01
+title Redrawn v%REDRAWN_VER% ^(build %REDRAWN_BLD%^) [Initializing...]
 
 ::::::::::::::::::::
 :: Initialization ::
@@ -96,7 +96,7 @@ if not exist "utilities\checks\disclaimer.txt" (
 echo Redrawn
 echo A project from MiiArtisan originally adapted by Dazaseal
 echo Adapted by The Redrawn Team
-echo Version !WRAPPER_VER!, build !WRAPPER_BLD!
+echo Version !REDRAWN_VER!, build !REDRAWN_BLD!
 echo:
 
 :: Confirm measurements to proceed.
@@ -188,7 +188,7 @@ if !VERBOSEWRAPPER!==n (
 	echo:
 )
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Checking dependencies...]
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^) [Checking dependencies...]
 
 :: Preload variables
 set NEEDTHEDEPENDERS=n
@@ -361,7 +361,7 @@ if !NEEDTHEDEPENDERS!==y (
 	goto skip_dependency_install
 )
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Installing dependencies...]
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^) [Installing dependencies...]
 
 :: Preload variables
 set INSTALL_FLAGS=ALLUSERS=1 /norestart
@@ -748,7 +748,7 @@ echo:
 :: Starting Wrapper ::
 ::::::::::::::::::::::
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Loading...]
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^) [Loading...]
 
 :: Close existing node apps
 :: Hopefully fixes EADDRINUSE errors??
@@ -841,13 +841,13 @@ echo Redrawn has been started^^! The video list should now be open.
 :: Post-Start ::
 ::::::::::::::::
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^)
 if !VERBOSEWRAPPER!==y ( goto wrapperstarted )
 :wrapperstartedcls
 cls
 :wrapperstarted
 if not exist utilities\checks\message.txt (
-title Redrawn v!WRAPPER_VER! ^(One New Message^)
+title Redrawn v!REDRAWN_VER! ^(One New Message^)
 echo Hey folks, 
 echo it's Joseph Animate 2022 here, 
 echo i have made my wrapper offline portable installer repair some parts of Redrawn. 
@@ -863,9 +863,9 @@ set /p CHOICE=Response:
 if "!choice!"=="y" ( goto start_wrapper_installer ) else ( echo You desided to not read the message. if you want to read it, then you must delete this file.>> utilities\checks\message.txt & goto vyondStarted )
 )
 :vyondStarted
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^)
 echo:
-echo Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) running
+echo Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^) running
 echo A project from VisualPlugin adapted by JoshTheVideomaker2022 and Joseph Animate 2022
 echo:
 if !VERBOSEWRAPPER!==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
@@ -971,7 +971,7 @@ goto wrapperidle
 echo Opening the importer...
 call utilities\import.bat
 cls
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^)
 set JUSTIMPORTED=y
 goto wrapperstartedcls
 
@@ -1125,7 +1125,7 @@ echo You must answer Yes or No. && goto exitwrapperretry
 
 :point_extraction
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down...]
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^) [Shutting down...]
 
 :: Shut down Node.js, PHP and http-server
 if !VERBOSEWRAPPER!==y (
@@ -1149,7 +1149,7 @@ if !DRYRUN!==y ( echo Go wet your run next time. )
 pause & TASKKILL /IM cmd.exe /F
 
 :exitwithstyle
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down... WITH STYLE]
+title Redrawn v!REDRAWN_VER! ^(build !REDRAWN_BLD!^) [Shutting down... WITH STYLE]
 echo SHUTTING DOWN THE WRAPPER OFFLINE
 PING -n 3 127.0.0.1>nul
 color 9b
@@ -1242,7 +1242,7 @@ goto returnfromconfigcopy
 	echo 	"THEME_FOLDER": "./_THEMES",>> !env!
 	echo 	"PREMADE_FOLDER": "./_PREMADE",>> !env!
 	echo 	"EXAMPLE_FOLDER": "./_EXAMPLES",>> !env!
-	echo 	"WRAPPER_VER": "1.2.3",>> !env!
+	echo 	"REDRAWN_VER": "1.2.3",>> !env!
 	echo 	"NODE_TLS_REJECT_UNAUTHORIZED": "0">> !env!
 	echo }>> !env!
 goto returnfromenvcopy
