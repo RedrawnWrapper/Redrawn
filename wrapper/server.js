@@ -69,11 +69,24 @@ const functions = [
 ];
 
 // Creates an HTTP server
-module.exports = http.createServer((req, res) => {
+if (env.LVM_ENV == "NON_SERVER")
+{
+	module.exports = http.createServer((req, res) => {
 	const parsedUrl = url.parse(req.url, true);
 	//if (!parsedUrl.path.endsWith('/')) parsedUrl.path += '/';
 	const found = functions.find(f => f(req, res, parsedUrl));
 	if (!found) { res.statusCode = 404; res.end(); }
-}).listen(env.PORT || env.SERVER_PORT, console.log);
+	}).listen(env.SERVER_PORT, console.log);
+} else if (env.LVM_ENV == "SERVER")
+{
+	// 2095 is intended for a Certified Redrawn Server (Cloudflare)
+	env.SERVER_PORT = 2095;
+	module.exports = http.createServer((req, res) => {
+	const parsedUrl = url.parse(req.url, true);
+	//if (!parsedUrl.path.endsWith('/')) parsedUrl.path += '/';
+	const found = functions.find(f => f(req, res, parsedUrl));
+	if (!found) { res.statusCode = 404; res.end(); }
+	}).listen(2095, console.log);
+}
 
 // Fuck you Octanuary 
