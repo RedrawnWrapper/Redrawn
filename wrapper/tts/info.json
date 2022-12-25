@@ -20,7 +20,15 @@
 			"gender": "M",
 			"source": "import3",
 			"desc": "Custom Voice Clip Slot 3"
-		},			
+		},
+		"kiatts":
+			"country": "US",
+			"language": "en",
+			"gender": "M",
+			"source": "kiatts",
+			"arg": "placeholder",
+			"desc": "Kia (Kia#0001)"
+		},
 		"heather2": {
 			"country": "US",
 			"language": "en",
