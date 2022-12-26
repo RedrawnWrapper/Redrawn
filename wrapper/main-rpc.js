@@ -23,9 +23,9 @@ rpc.on("ready", () => {
 		details: "Version " + version +", build " + build,
 		startTimestamp: new Date(),
 		largeImageKey: "icon",
-		largeImageText: "Redrawn",
-		smallImageKey: "Redrawn",
-		smallImagetext: "Redrawn",
+		largeImageText: "Vyond Legacy Offline",
+		smallImageKey: "Vyond Legacy Offline",
+		smallImagetext: "Vyond Legacy Offline",
 	});
 	// Logs "Rich presence is on!" in the console
 	console.log("Rich presence is on!")
