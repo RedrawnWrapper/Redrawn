@@ -45,7 +45,7 @@ Redrawn:
 | Sage         | Developer |
 | davidstv     | Developer, contributed to importing |
 | florrza      | Achieve person (Mostly backend / fixes) |
-| Jerry2006    | Achieve person (Found most of important files for backend / frontend) |
+| Jerry2009    | Achieve person (Found most of important files for backend / frontend) |
 | JC Video     | Developer, helped with TTS fixes |
 | OwenTheGoAnimator/PIXBits2 | Developer? |
 | SnowFLG64 | Developer, Batch and a bit of fullstack|
