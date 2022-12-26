@@ -21,7 +21,6 @@ if not exist utilities ( goto error_location )
 if not exist wrapper ( goto error_location )
 if not exist server ( goto error_location )
 cd %USERPROFILE%\Downloads
-if not exist Redrawn ( goto install_error )
 pushd "%~dp0"
 pushd "%~dp0"
 goto noerror_location
@@ -396,9 +395,11 @@ if !ADMINREQUIRED!==y (
 				echo Redrawn needs to install Node.js.
 			)
 			echo To do this, it must be started with Admin rights.
+			echo You can also press the "Install" button in the Redrawn launcher.
 			echo:
 			echo Close this window and re-open Redrawn as an Admin.
-			echo ^(right-click start_wrapper.bat and click "Run as Administrator"^)
+			echo ^(right-click start_redrawn.bat and click "Run as Administrator"^)
+			echo After completing so, you may now open Redrawn via the launcher.
 			echo:
 			if !DRYRUN!==y (
 				echo ...yep, dry run is going great so far, let's skip the exit
