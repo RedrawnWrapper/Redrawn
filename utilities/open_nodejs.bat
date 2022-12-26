@@ -19,3 +19,4 @@ echo:
 echo If you see an error that says "MODULE_NOT_FOUND",
 echo please type "npm install" in this window, press enter,
 echo and then type "npm start" and press enter.
+pause & exit
