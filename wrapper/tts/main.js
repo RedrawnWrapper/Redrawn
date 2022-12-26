@@ -9,7 +9,7 @@ const http = require("http");
 // Fallback option for compatibility between Wrapper and https://github.com/Windows81/Text2Speech-Haxxor-JS.
 let get;
 try {
-	get = require("../misc/get");
+	get = require("../request/get");
 } catch (e) {
 	get = require("./get");
 }
@@ -442,11 +442,11 @@ module.exports = (voiceName, text) => {
 				break;
 			}
 			case "import": {
-				http.get(
+				https.get(
 					{
 						host: "localhost",
-						port: "4334",
-						path: `/rewriteable.mp3`,
+						port: "4664",
+						path: `/vo/rewriteable.mp3`,
 					},
 					(r) => {
 						var buffers = [];
@@ -456,61 +456,6 @@ module.exports = (voiceName, text) => {
 					}
 				);
 				break;
-			}
-                        case "import2": {
-				http.get(
-					{
-						host: "localhost",
-						port: "4334",
-						path: `/rewriteable2.mp3`,
-					},
-					(r) => {
-						var buffers = [];
-						r.on("data", (d) => buffers.push(d));
-						r.on("end", () => res(Buffer.concat(buffers)));
-						r.on("error", rej);
-					}
-				);
-				break;
-			}
-                        case "import3": {
-				http.get(
-					{
-						host: "localhost",
-						port: "4334",
-						path: `/rewriteable3.mp3`,
-					},
-					(r) => {
-						var buffers = [];
-						r.on("data", (d) => buffers.push(d));
-						r.on("end", () => res(Buffer.concat(buffers)));
-						r.on("error", rej);
-					}
-				);
-				break;
-			}
-			case "kiatts": {
-				var postData = {'text':text}
-				var options = {
-				  hostname: 'KIA-TTS.kiadoescodeonlyonce1time.repl.co',
-				  port: 443,
-				  path: '/tts',
-				  method: 'POST',
-				  headers: {
-				       'Content-Type': 'application/json',
-				       'Content-Length': postData.length
-				  }
-				};
-				var req = https.request(options, (res) => {
-				  var buffers = [];
-											res.on("data", (d) => buffers.push(d));
-											res.on("end", () => {
-												console.log(r.headers.location);
-												get(r.headers.location).then(res).catch(rej);
-											});
-											res.on("error", rej);
-				});
-			break;
 			}
 			/*
 			case "sestek": {

@@ -5,30 +5,8 @@
 			"language": "any",
 			"gender": "M",
 			"source": "import",
-			"desc": "Custom Voice Clip Slot 1"
-		},
-                "import2": {
-			"country": "",
-			"language": "any",
-			"gender": "M",
-			"source": "import2",
-			"desc": "Custom Voice Clip Slot 2"
-		},
-                "import3": {
-			"country": "",
-			"language": "any",
-			"gender": "M",
-			"source": "import3",
-			"desc": "Custom Voice Clip Slot 3"
-		},
-		"kiatts":
-			"country": "US",
-			"language": "en",
-			"gender": "M",
-			"source": "kiatts",
-			"arg": "placeholder",
-			"desc": "Kia (Kia#0001)"
-		},
+			"desc": "Custom Voice Clip"
+		},	
 		"heather2": {
 			"country": "US",
 			"language": "en",

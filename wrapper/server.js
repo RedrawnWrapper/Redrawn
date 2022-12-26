@@ -15,13 +15,8 @@ const chs = require('./character/save');
 const chu = require('./character/upload');
 const stl = require('./static/load');
 const stp = require('./static/page');
-const stc = require('./static/pagecc');
-const lvp = require('./static/pagelvp');
-const thm = require('./static/pagethemelist');
 const str = require('./starter/save');
 const stt = require('./starter/thmb');
-const del = require('./starter/delete');
-const stu = require('./starter/upload');
 const mvl = require('./movie/load');
 const mvL = require('./movie/list');
 const mvm = require('./movie/meta');
@@ -47,7 +42,6 @@ const functions = [
 	chu,
 	stl,
 	stp,
-        stu,
 	mvl,
 	mvL,
 	chd,
@@ -62,10 +56,6 @@ const functions = [
 	evt,
 	str,
 	stt,
-	stc,
-	lvp,
-	thm,
-	del,
 ];
 
 // Creates an HTTP server
@@ -75,5 +65,3 @@ module.exports = http.createServer((req, res) => {
 	const found = functions.find(f => f(req, res, parsedUrl));
 	if (!found) { res.statusCode = 404; res.end(); }
 }).listen(env.PORT || env.SERVER_PORT, console.log);
-
-// Fuck you Octanuary 

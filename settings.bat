@@ -1,6 +1,6 @@
 title Redrawn Settings Script
 :: Interactive config.bat changer
-:: Author: joseph the animator#2292
+:: Author: benson#0411
 :: License: MIT
 
 :: DON'T EDIT THIS FILE! If you need a text version of the settings like it used to be, edit utilities\config.bat. This file is now just an interface for changing that file.
@@ -97,29 +97,48 @@ if exist "wrapper\static\info-nowave.json" (
 ) else ( 
 	echo ^(5^) Waveforms are[91m OFF [0m
 )
+:: Skip updating
+if !AUTOUPDATE!==y (
+	echo ^(6^) Auto updating is[92m ON [0m
+) else ( 
+	echo ^(6^) Auto updating is[91m OFF [0m
+)
 :: Truncated Themelist
 if exist "wrapper\_THEMES\themelist-allthemes.xml" (
-	echo ^(6^) Truncated themelist is[92m ON [0m
+	echo ^(7^) Truncated themelist is[92m ON [0m
 ) else ( 
-	echo ^(6^) Truncated themelist is[91m OFF [0m
+	echo ^(7^) Truncated themelist is[91m OFF [0m
 )
 :: Discord RPC
 if exist "wrapper\main-norpc.js" (
-	echo ^(7^) Discord rich prescence is[92m ON [0m
+	echo ^(8^) Discord rich prescence is[92m ON [0m
 ) else ( 
-	echo ^(7^) Discord rich prescence is[91m OFF [0m
+	echo ^(8^) Discord rich prescence is[91m OFF [0m
 )
-:: Debug Mode
-if exist "wrapper\env-nodebug.json" (
-	echo ^(8^) Debug Mode is[92m ON [0m
-) else ( 
-	echo ^(8^) Debug Mode is[91m OFF [0m
+:: Cepstral
+if exist "wrapper\tts\info-cepstral.json" (
+	echo ^(9^) Provider for Cepstral/VoiceForge voices is[92m VFProxy [0m
+	if exist "wrapper\tts\load-seamus.js" (
+		echo     ^(10^) VFProxy server is[92m PHP Webserver ^(localhost:8181^) [0m
+	) else (
+		if !CEPSTRAL!==y (
+			echo     ^(10^) VFProxy server is[91m seamus-server.tk [0m
+		)
+	)
+) else (
+	if !CEPSTRAL!==y (
+		echo ^(9^) Provider for Cepstral/VoiceForge voices is[91m Cepstral website [0m
+	)
 )
-:: Online LVM
-if exist "wrapper\config-offline.json" (
-	echo ^(9^) The Online LVM is[92m ON [0m
+:: Dark Mode
+if exist "wrapper\pages\css\global-light.css" (
+	echo ^(11^) Dark Mode is[92m ON [0m
 ) else ( 
-	echo ^(9^) The Online LVM is[91m OFF [0m
+	echo ^(11^) Dark Mode is[91m OFF [0m
+)
+:: Character solid archive
+if exist "server\characters\characters.zip" (
+	echo ^(11^) Original LVM Character IDs are[91m OFF [0m
 )
 :: Dev options
 :: These are really specific options that no casual user would ever really need
@@ -156,7 +175,7 @@ if "!choice!"=="1" (
 	) else (
 		set TOGGLETO=n
 	)
-	set CFGLINE=13
+	set CFGLINE=11
 	goto toggleoption
 )
 if "!choice!"=="?1" (
@@ -209,7 +228,7 @@ if "!choice!"=="4" (
 	) else (
 		set TOGGLETO=n
 	)
-	set CFGLINE=17
+	set CFGLINE=14
 	goto toggleoption
 )
 if "!choice!"=="?4" (
@@ -226,17 +245,36 @@ if "!choice!"=="?5" (
 	echo Turning this off will simply add a repeating pre-made pattern in place of true waveforms.
 	goto reaskoptionscreen
 )
-:: Waveforms
-if "!choice!"=="6" goto allthemechange
+:: Auto Update
+if "!choice!"=="6" (
+	set TOTOGGLE=AUTOUPDATE
+	if !AUTOUPDATE!==y (
+		set TOGGLETO=n
+	) else (
+		set TOGGLETO=y
+	)
+	set CFGLINE=38
+	goto toggleoption
+)
 if "!choice!"=="?6" (
+	echo By default, when you open start_wrapper.bat it 
+	echo will auto-update to the newest commit on Github.
+	echo This may be annoying to developers making modifications to the program, 
+	echo as when this is done it resets uncommitted work.
+	echo Turning this off will stop Wrapper from auto-updating.
+	goto reaskoptionscreen
+)
+:: Waveforms
+if "!choice!"=="7" goto allthemechange
+if "!choice!"=="?7" (
 	echo Cuts down the amount of themes that clog up the themelist in the videomaker.
 	echo Keeping this off is highly suggested.
 	echo However, if you want to see everything the program has to offer, turn this on.
 	goto reaskoptionscreen
 )
 :: Rich prescence
-if "!choice!"=="7" goto rpcchange
-if "!choice!"=="?7" (
+if "!choice!"=="8" goto rpcchange
+if "!choice!"=="?8" (
 	echo By default, Discord rich presence is enabled.
         echo:
 	echo It's used to show when you're using Wrapper: Offline
@@ -249,31 +287,43 @@ if "!choice!"=="?7" (
 	goto reaskoptionscreen
 )
 :: Cepstral
-if "!choice!"=="8" goto cepstralchange
-if "!choice!"=="?8" (
-	echo By default, Debug mode is disabled just for the old lvm.
-	echo By turning this on, 
-	echo you will get access to features like deleting your characters and eta.
-	goto reaskoptionscreen
-)
-if "!choice!"=="9" goto vfproxyserverchange
+if "!choice!"=="9" goto cepstralchange
 if "!choice!"=="?9" (
-	echo If you think that the offline lvm is the reason why Redrawn got buggy at your end,
-	echo you may enable the online lvm thing to fix the issue at your end.
+	echo By default, Wrapper: Offline uses the included VFProxy
+	echo for the VoiceForge voices, as VoiceForge was turned
+	echo into a mobile app, causing the original API to be
+	echo deleted. Someone managed to hack the APK and find the
+	echo link, but it outputs in WAV only, so we made a PHP
+	echo wrapper for it ^(VFProxy^) which is intended to bypass
+	echo ratelimits and automatically convert it to MP3 using LAME.
 	echo:
-	echo However, the offline lvm is enabled by default. i just forgot to mention that at the beginning.
+	echo However, some people seem to be having issues with getting
+	echo it working without any problem.
 	echo:
-	echo i was too convinced then.
-	echo if the issue goes on further, please contact me on discord using joseph the animator#2292.
+	echo Toggling this setting will make it so Wrapper: Offline no
+	echo longer launches VFProxy and instead gets the Cepstral voices
+	echo from the actual Cepstral website's demo.
 	goto reaskoptionscreen
 )
-:: Online LVM
-if "!choice!"=="11" goto extractchars
+if "!choice!"=="10" goto vfproxyserverchange
+if "!choice!"=="?10" (
+	echo This setting runs the localhost version of xomdjl_'s VFProxy.
+	echo This makes it easier to use without having to use an external server.
+	echo:
+	echo However, some people seem to be having problems with this.
+	echo:
+	echo Toggling this setting will allow you to use either the localhost VFProxy
+	echo or the seamus-server.tk host of VFProxy.
+	goto reaskoptionscreen
+)
+:: Dark Mode
+if "!choice!"=="11" goto csschange
 if "!choice!"=="?11" (
-	echo When first getting Wrapper: Offline, the whole lvm will run offline.
-	echo This is because the lvm is basicly called "Offline"
-	echo If you wish to use the lvm online, then enable the online lvm use.
-	echo you can enable the online lvm in this slot.
+	echo By default, You are using light mode.
+        echo:
+	echo if the video list is too bright and is hurting your eyes, 
+	echo you can turn on this feature.
+        echo i hope you feel better from the brightness.
 	goto reaskoptionscreen
 )
 :: Dev options
@@ -502,6 +552,24 @@ if exist "themelist-allthemes.xml" (
 popd
 goto optionscreen
 
+:::::::::::::::
+:: Dark Mode ::
+:::::::::::::::
+:csschange
+echo Toggling setting...
+pushd wrapper\pages\css
+if exist "global-dark.css" (
+	:: disable
+	ren global.css global-light.css
+	ren global-dark.css global.css
+) else ( 
+	:: enable
+	ren global.css global-dark.css
+	ren global-light.css global.css
+)
+popd
+goto optionscreen
+
 ::::::::::::::::::
 :: Discord RPC  ::
 ::::::::::::::::::
@@ -520,47 +588,85 @@ if exist "main-norpc.js" (
 popd
 goto optionscreen
 
-:::::::::::::::::
-:: Debug Mode  ::
-:::::::::::::::::
+:::::::::::::::
+:: Cepstral  ::
+:::::::::::::::
 :cepstralchange
 echo Toggling setting...
-pushd wrapper
-if exist "env-debug.json" (
+pushd wrapper\tts
+if exist "info-cepstral.json" (
 	:: disable
-	ren env.json env-nodebug.json
-	ren env-debug.json env.json
+	ren info.json info-vfproxy.json
+	ren info-cepstral.json info.json
 ) else ( 
 	:: enable
-	ren env.json env-debug.json
-	ren env-nodebug.json env.json
+	ren info.json info-cepstral.json
+	ren info-vfproxy.json info.json
 )
 popd
+set TOTOGGLE=CEPSTRAL
+if !CEPSTRAL!==n (
+	set TOGGLETO=y
+) else (
+	set TOGGLETO=n
+)
+set CFGLINE=35
+goto toggleoption
 goto optionscreen
 
-:::::::::::::::::
-:: Online LVM  ::
-:::::::::::::::::
+:::::::::::::::
+:: Cepstral  ::
+:::::::::::::::
 :vfproxyserverchange
 echo Toggling setting...
-pushd wrapper
-if exist "config-online.json" (
+pushd wrapper\tts
+if exist "load-seamus.js" (
 	:: disable
-	ren config.json config-offline.json
-	ren config-online.json config.json
+	ren load.js load-localvfproxy.js
+	ren load-seamus.js load.js
 ) else ( 
 	:: enable
-	ren config.json config-online.json
-	ren config-offline.json config.json
+	ren load.js load-seamus.js
+	ren load-localvfproxy.js load.js
 )
 popd
+set TOTOGGLE=CEPSTRAL
+if !CEPSTRAL!==n (
+	set TOGGLETO=y
+) else (
+	set TOGGLETO=n
+)
+set CFGLINE=35
+goto toggleoption
 goto optionscreen
 
-::::::::::::::::
-:: ?????????? ::
-::::::::::::::::
+::::::::::::::::::::::::
+:: Extract Characters ::
+::::::::::::::::::::::::
 :extractchars
-echo idk
+if exist "server\characters\characters.zip" (
+	echo Are you sure you wish to enable original LVM character IDs?
+	echo This will take a while, depending on your computer.
+	echo Characters will still be compressed, just put into separate usable files.
+	echo Press Y to do it, press N to not do it.
+	echo:
+	:replaceaskretry
+	set /p REPLACECHOICE= Response:
+	echo:
+	if not '!replacechoice!'=='' set replacechoice=%replacechoice:~0,1%
+	if /i "!replacechoice!"=="0" goto end
+	if /i "!replacechoice!"=="y" goto startextractchars
+	if /i "!replacechoice!"=="n" goto optionscreen
+	echo You must answer Yes or No. && goto replaceaskretry
+	
+	:startextractchars
+	echo Extracting characters...
+	echo Please do not close this window!
+	echo It's likely not frozen, it just takes a while.
+	echo:
+	utilities\7za.exe e server\characters\characters.zip -y -o server\characters
+	del /q server\characters\characters.zip
+)
 goto optionscreen
 
 :end
