@@ -1,5 +1,6 @@
 # General Wrapper Offline Stuff
 wrapper/_CACHÉ/*
+wrapper/node_modules/*
 wrapper/_SAVED/*
 wrapper/_THEMES/import.xml
 !_*/_NO_REMÖVE
