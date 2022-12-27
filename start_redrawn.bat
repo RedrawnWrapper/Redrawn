@@ -100,98 +100,13 @@ call utilities\config.bat
 :: Dependency Check ::
 ::::::::::::::::::::::
 
-if !SKIPCHECKDEPENDS!==y (
-	echo Checking dependencies has been skipped.
-	echo:
-	goto skip_dependency_install
-)
-
-if !VERBOSEWRAPPER!==n (
-	echo Checking for dependencies...
-	echo:
-)
-
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Checking dependencies...]
+title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Checking For HTTPS Server dependencies...]
 
 :: Preload variables
-set NEEDTHEDEPENDERS=n
-set ADMINREQUIRED=n
-set FLASH_DETECTED=n
-set FLASH_CHROMIUM_DETECTED=n
-set FLASH_FIREFOX_DETECTED=n
-set NODEJS_DETECTED=n
 set HTTPSERVER_DETECTED=n
 set HTTPSCERT_DETECTED=n
 if !INCLUDEDCHROMIUM!==y set BROWSER_TYPE=chrome
 
-:: Flash Player
-if !VERBOSEWRAPPER!==y ( echo Checking for Flash installation... )
-if exist "!windir!\SysWOW64\Macromed\Flash" set FLASH_CHROMIUM_DETECTED=y
-if exist "!windir!\System32\Macromed\Flash" set FLASH_CHROMIUM_DETECTED=y
-if exist "!windir!\SysWOW64\Macromed\Flash\plugin.exe" set FLASH_FIREFOX_DETECTED=y
-if exist "!windir!\System32\Macromed\Flash\plugin.exe" set FLASH_FIREFOX_DETECTED=y
-if !BROWSER_TYPE!==chrome (
-	if !FLASH_CHROMIUM_DETECTED!==n (
-		echo Flash for Chrome could not be found.
-		echo:
-		set NEEDTHEDEPENDERS=y
-		set ADMINREQUIRED=y
-		goto flash_checked
-	) else (
-		echo Flash is installed.
-		echo:
-		set FLASH_DETECTED=y
-		goto flash_checked
-	)
-)
-if !BROWSER_TYPE!==firefox (
-	if !FLASH_FIREFOX_DETECTED!==n (
-		echo Flash for Firefox could not be found.
-		echo:
-		set NEEDTHEDEPENDERS=y
-		set ADMINREQUIRED=y
-		goto flash_checked
-	) else (
-		echo Flash is installed.
-		echo:
-		set FLASH_DETECTED=y
-		goto flash_checked
-	)
-)
-:: just assume chrome it's what everyone uses
-if !BROWSER_TYPE!==n (
-	if !FLASH_CHROMIUM_DETECTED!==n (
-		echo Flash for Chrome could not be found.
-		echo:
-		set NEEDTHEDEPENDERS=y
-		set ADMINREQUIRED=y
-		goto flash_checked
-	) else (
-		echo Flash is installed.
-		echo:
-		set FLASH_DETECTED=y
-		goto flash_checked
-	)
-)
-:flash_checked
-
-:: Node.js
-if !VERBOSEWRAPPER!==y ( echo Checking for Node.js installation... )
-for /f "delims=" %%i in ('npm -v 2^>nul') do set output=%%i
-IF "!output!" EQU "" (
-	echo Node.js could not be found.
-	echo:
-	set NEEDTHEDEPENDERS=y
-	set ADMINREQUIRED=y
-	goto httpserver_checked
-) else (
-	echo Node.js is installed.
-	echo:
-	set NODEJS_DETECTED=y
-)
-:nodejs_checked
-
-:: http-server
 if !VERBOSEWRAPPER!==y ( echo Checking for http-server installation... )
 npm list -g | findstr "http-server" >nul
 if !errorlevel! == 0 (
@@ -286,221 +201,6 @@ if !NEEDTHEDEPENDERS!==y (
 )
 
 title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Installing dependencies...]
-
-:: Preload variables
-set INSTALL_FLAGS=ALLUSERS=1 /norestart
-set SAFE_MODE=n
-if /i "!SAFEBOOT_OPTION!"=="MINIMAL" set SAFE_MODE=y
-if /i "!SAFEBOOT_OPTION!"=="NETWORK" set SAFE_MODE=y
-set CPU_ARCHITECTURE=what
-if /i "!processor_architecture!"=="x86" set CPU_ARCHITECTURE=32
-if /i "!processor_architecture!"=="AMD64" set CPU_ARCHITECTURE=64
-if /i "!PROCESSOR_ARCHITEW6432!"=="AMD64" set CPU_ARCHITECTURE=64
-
-:: Check for admin if installing Flash or Node.js
-:: Skipped in Safe Mode, just in case anyone is running Wrapper in safe mode... for some reason
-:: and also because that was just there in the code i used for this and i was like "eh screw it why remove it"
-if !ADMINREQUIRED!==y (
-	if !VERBOSEWRAPPER!==y ( echo Checking for Administrator rights... && echo:)
-	if /i not "!SAFE_MODE!"=="y" (
-		fsutil dirty query !systemdrive! >NUL 2>&1
-		if /i not !ERRORLEVEL!==0 (
-			color cf
-			if !VERBOSEWRAPPER!==n ( cls )
-			echo:
-			echo ERROR
-			echo:
-			if !FLASH_DETECTED!==n (
-				if !NODEJS_DETECTED!==n (
-					echo Redrawn needs to install Flash and Node.js.
-				) else (
-					echo Redrawn needs to install Flash.
-				)
-			) else (
-				echo Redrawn needs to install Node.js.
-			)
-			echo To do this, it must be started with Admin rights.
-			echo:
-			echo Close this window and re-open Redrawn as an Admin.
-			echo ^(right-click start_wrapper.bat and click "Run as Administrator"^)
-			echo If you have this installed already, go into settings and disable dependency checking.
-			echo:
-			if !DRYRUN!==y (
-				echo ...yep, dry run is going great so far, let's skip the exit
-				pause
-				goto postadmincheck
-			)
-			pause
-			exit
-		)
-	)
-	if !VERBOSEWRAPPER!==y ( echo Admin rights detected. && echo:)
-)
-:postadmincheck
-
-:: Flash Player
-if !FLASH_DETECTED!==n (
-	:start_flash_install
-	echo Installing Flash Player...
-	echo:
-	if !BROWSER_TYPE!==n (
-		:: Ask what type of browser is being used.
-		echo What web browser do you use? If it isn't here,
-		echo look up whether it's based on Chromium or Firefox.
-		echo If it's not based on either, then
-		echo Redrawn will not be able to install Flash.
-		echo Unless you know what you're doing and have a
-		echo version of Flash made for your browser, please
-		echo install a Chrome or Firefox based browser.
-		echo:
-		echo Enter 1 for Chrome
-		echo Enter 2 for Firefox
-		echo Enter 3 for Edge
-		echo Enter 4 for Opera
-		echo Enter 5 for Brave
-		echo Enter 6 for Chrome-based browser
-		echo Enter 7 for Firefox-based browser
-		echo Enter 0 for a non-standard browser ^(skips install^)
-		:browser_ask
-		set /p FLASHCHOICE=Response:
-		echo:
-		if "!flashchoice!"=="1" goto chromium_chosen
-		if "!flashchoice!"=="2" goto firefox_chosen
-		if "!flashchoice!"=="3" goto chromium_chosen
-		if "!flashchoice!"=="4" goto chromium_chosen
-		if "!flashchoice!"=="5" goto chromium_chosen
-		if "!flashchoice!"=="6" goto chromium_chosen
-		if "!flashchoice!"=="7" goto firefox_chosen
-		if "!flashchoice!"=="0" echo Flash will not be installed.&& goto after_flash_install
-		echo You must pick a browser.&& goto browser_ask
-
-		:chromium_chosen
-		set BROWSER_TYPE=chrome && if !VERBOSEWRAPPER!==y ( echo Chromium-based browser picked. && echo:) && goto escape_browser_ask
-
-		:firefox_chosen
-		set BROWSER_TYPE=firefox && if !VERBOSEWRAPPER!==y ( echo Firefox-based browser picked. ) && goto escape_browser_ask
-	)
-
-	:escape_browser_ask
-	echo To install Flash Player, Redrawn must kill any currently running web browsers.
-	echo Please make sure any work in your browser is saved before proceeding.
-	echo Redrawn will not continue installation until you press a key.
-	echo:
-	pause
-	echo:
-
-	:: Summon the Browser Slayer
-	if !DRYRUN!==y (
-		echo The users brought down the batch script upon the Browser Slayer, and in his defeat entombed him in the unactivated code.
-		goto lurebrowserslayer
-	)
-	echo Rip and tear, until it is done.
-	for %%i in (firefox,palemoon,iexplore,microsoftedge,chrome,chrome64,opera,brave) do (
-		if !VERBOSEWRAPPER!==y (
-			 taskkill /f /im %%i.exe /t
-			 wmic process where name="%%i.exe" call terminate
-		) else (
-			 taskkill /f /im %%i.exe /t >nul
-			 wmic process where name="%%i.exe" call terminate >nul
-		)
-	)
-	:lurebrowserslayer
-	echo:
-
-	if !BROWSER_TYPE!==chrome (
-		echo Starting Flash for Chrome installer...
-		if not exist "utilities\installers\flash_windows_chromium.msi" (
-			echo ...erm. Bit of an issue there actually. The installer doesn't exist.
-			echo A normal copy of Redrawn should come with one.
-			echo You may be able to find a copy on this website:
-			echo https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
-			echo Although Flash is needed, Redrawn will continue launching.
-			echo If you have Flash Player installed already, go into settings, disable dependency checking and restart
-			pause
-		)
-		if !DRYRUN!==n ( msiexec /i "utilities\installers\flash_windows_chromium.msi" !INSTALL_FLAGS! /quiet )
-	)
-	if !BROWSER_TYPE!==firefox (
-		echo Starting Flash for Firefox installer...
-		if not exist "utilities\installers\flash_windows_firefox.msi" (
-			echo ...erm. Bit of an issue there actually. The installer doesn't exist.
-			echo A normal copy of Redrawn should come with one.
-			echo You may be able to find a copy on this website:
-			echo https://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html
-			echo Although Flash is needed, Redrawn will try to install anything else it can.
-			pause
-			goto after_flash_install
-		)
-		if !DRYRUN!==n ( msiexec /i "utilities\installers\flash_windows_firefox.msi" !INSTALL_FLAGS! /quiet )
-	)
-
-	echo Flash has been installed.
-	echo:
-)
-:after_flash_install
-
-:: Node.js
-if !NODEJS_DETECTED!==n (
-	echo Installing Node.js...
-	echo:
-	:: Install Node.js
-	if !CPU_ARCHITECTURE!==64 (
-		if !VERBOSEWRAPPER!==y ( echo 64-bit system detected, installing 64-bit Node.js. )
-		if not exist "utilities\installers\node_windows_x64.msi" (
-			echo We have a problem. The 64-bit Node.js installer doesn't exist.
-			echo A normal copy of Redrawn should come with one.
-			echo You should be able to find a copy on this website:
-			echo https://nodejs.org/en/download/
-			echo Although Node.js is needed, Offline will try to install anything else it can.
-			pause
-			goto after_nodejs_install
-		)
-		echo Proper Node.js installation doesn't seem possible to do automatically.
-		echo You can just keep clicking next until it finishes, and Redrawn will continue once it closes.
-		if !DRYRUN!==n ( msiexec /i "utilities\installers\node_windows_x64.msi" !INSTALL_FLAGS! )
-		goto nodejs_installed
-	)
-	if !CPU_ARCHITECTURE!==32 (
-		if !VERBOSEWRAPPER!==y ( echo 32-bit system detected, installing 32-bit Node.js. )
-		if not exist "utilities\installers\node_windows_x32.msi" (
-			echo We have a problem. The 32-bit Node.js installer doesn't exist.
-			echo A normal copy of Redrawn should come with one.
-			echo You should be able to find a copy on this website:
-			echo https://nodejs.org/en/download/
-			echo Although Node.js is needed, Offline will try to install anything else it can.
-			pause
-			goto after_nodejs_install
-		)
-		echo Proper Node.js installation doesn't seem possible to do automatically.
-		echo You can just keep clicking next until it finishes, and Redrawn will continue once it closes.
-		if !DRYRUN!==n ( msiexec /i "utilities\installers\node_windows_x32.msi" !INSTALL_FLAGS! )
-		goto nodejs_installed
-	)
-	if !CPU_ARCHITECTURE!==what (
-		echo:
-		echo Well, this is a little embarassing.
-		echo Redrawn can't tell if you're on a 32-bit or 64-bit system.
-		echo Which means it doesn't know which version of Node.js to install...
-		echo:
-		echo If you have no idea what that means, press 1 to just try anyway.
-		echo If you're in the future with newer architectures or something
-		echo and you know what you're doing, then press 3 to keep going.
-		echo:
-		:architecture_ask
-		set /p CPUCHOICE= Response:
-		echo:
-		if "!cpuchoice!"=="1" if !DRYRUN!==n ( msiexec /i "utilities\installers\node_windows_x32.msi" !INSTALL_FLAGS! ) && if !VERBOSEWRAPPER!==y ( echo Attempting 32-bit Node.js installation. ) && goto nodejs_installed
-		if "!cpuchoice!"=="3" echo Node.js will not be installed. && goto after_nodejs_install
-		echo You must pick one or the other.&& goto architecture_ask
-	)
-	:nodejs_installed
-	echo Node.js has been installed.
-	set NODEJS_DETECTED=y
-	echo:
-	goto install_cert
-)
-:after_nodejs_install
-
 :: http-server
 if !HTTPSERVER_DETECTED!==n (
 	if !NODEJS_DETECTED!==y (
@@ -642,28 +342,6 @@ if !HTTPSCERT_DETECTED!==n (
 )
 :after_cert_install
 
-:: Alert user to restart Wrapper without running as Admin
-if !ADMINREQUIRED!==y (
-	color 20
-	if !VERBOSEWRAPPER!==n ( cls )
-	echo:
-	echo Dependencies needing Admin now installed^^!
-	echo:
-	echo Redrawn no longer needs Admin rights,
-	echo please restart normally by double-clicking.
-	echo:
-	echo If you saw this from running normally,
-	echo Redrawn should continue normally after a restart.
-	echo:
-	if !DRYRUN!==y (
-		echo ...you enjoying the dry run experience? Skipping closing.
-		pause
-		color 0f
-		goto skip_dependency_install
-	)
-	pause
-	exit
-)
 color 0f
 echo All dependencies now installed^^! Continuing with Redrawn boot.
 echo:
@@ -725,7 +403,7 @@ popd
 
 :: Pause to allow startup
 :: Prevents the video list opening too fast
-PING -n 16 127.0.0.1>nul
+timeout 16
 
 :: Open Wrapper in preferred browser
 if !INCLUDEDCHROMIUM!==n (
