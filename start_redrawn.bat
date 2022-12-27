@@ -5,6 +5,7 @@
 :: Project Runner: MiiArtisan#1687
 :: License: MIT
 :: Confirm measurements to proceed.
+if not exist %USERPROFILE%\Redrawn ( echo You have not installed Redrawn Offline using the installer. && pause & exit )
 cd %USERPROFILE%\Redrawn
 set SUBSCRIPT=y
 echo Loading settings...
