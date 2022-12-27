@@ -231,6 +231,7 @@ if %INCLUDEDCHROMIUM%==n (
 		echo If this does not work, you may have set the path wrong.
 		if %DRYRUN%==n ( start %CUSTOMBROWSER% http://localhost:4343 )
 	)
+	goto wrapperstart
 ) else (
 	echo Opening Redrawn using included Chromium...
 	pushd utilities\ungoogled-chromium
@@ -239,9 +240,9 @@ if %INCLUDEDCHROMIUM%==n (
 	) else (
 		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 )
 	)
-	popd
+	goto wrapperstart
 )
-
+:wrapperstart
 echo Redrawn has been started^^! The video list should now be open.
 
 ::::::::::::::::
