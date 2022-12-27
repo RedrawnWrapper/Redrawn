@@ -1,9 +1,15 @@
+@echo off
 :: Redrawn Launcher
 :: made with love by daza and miiartisan
 :: Author: benson#0411
 :: Project Runner: MiiArtisan#1687
 :: License: MIT
-set SUBSCRIPT=autoupdatingwrapper && call utilities\config.bat
+:: Confirm measurements to proceed.
+cd %USERPROFILE%\Redrawn
+set SUBSCRIPT=y
+echo Loading settings...
+if not exist utilities\config.bat ( goto configmissing )
+call utilities\config.bat
 set WRAPPER_VER=0.0.1
 set WRAPPER_BLD=1
 title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
@@ -18,7 +24,7 @@ title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Initializing...]
 :: check for updates
 
 pushd "%~dp0"
-if !AUTOUPDATE!==y ( 
+if %AUTOUPDATE%==y ( 
 	pushd "%~dp0"
 	if exist .git (
 		echo Updating...
@@ -41,7 +47,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 :: Make sure we're starting in the correct folder, and that it worked (otherwise things would go horribly wrong)
 pushd "%~dp0"
-if !errorlevel! NEQ 0 goto error_location
+if %errorlevel% NEQ 0 goto error_location
 if not exist utilities ( goto error_location )
 if not exist wrapper ( goto error_location )
 if not exist server ( goto error_location )
@@ -63,7 +69,7 @@ exit
 
 :: Check *again* because it seems like sometimes it doesn't go into dp0 the first time???
 pushd "%~dp0"
-if !errorlevel! NEQ 0 goto error_location
+if %errorlevel% NEQ 0 goto error_location
 if not exist utilities ( goto error_location )
 if not exist wrapper ( goto error_location )
 if not exist server ( goto error_location )
@@ -74,7 +80,7 @@ if not exist "utilities\checks" md utilities\checks
 :: Welcome, Director Ford!
 echo Redrawn
 echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn Team
-echo Version !WRAPPER_VER!, build !WRAPPER_BLD!
+echo Version %WRAPPER_VER%, build %WRAPPER_BLD%
 echo:
 
 :: Confirm measurements to proceed.
@@ -83,7 +89,7 @@ echo Loading settings...
 if not exist utilities\config.bat ( goto configmissing )
 call utilities\config.bat
 echo:
-if !VERBOSEWRAPPER!==y ( echo Verbose mode activated. && echo:)
+if %VERBOSEWRAPPER%==y ( echo Verbose mode activated. && echo:)
 goto configavailable
 
 :: Restore config
@@ -100,16 +106,16 @@ call utilities\config.bat
 :: Dependency Check ::
 ::::::::::::::::::::::
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Checking For HTTPS Server dependencies...]
+title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Checking For HTTPS Server dependencies...]
 
 :: Preload variables
 set HTTPSERVER_DETECTED=n
 set HTTPSCERT_DETECTED=n
-if !INCLUDEDCHROMIUM!==y set BROWSER_TYPE=chrome
+if %INCLUDEDCHROMIUM%==y set BROWSER_TYPE=chrome
 
-if !VERBOSEWRAPPER!==y ( echo Checking for http-server installation... )
+if %VERBOSEWRAPPER%==y ( echo Checking for http-server installation... )
 npm list -g | findstr "http-server" >nul
-if !errorlevel! == 0 (
+if %errorlevel% == 0 (
 	echo http-server is installed.
 	echo:
 	set HTTPSERVER_DETECTED=y
@@ -121,9 +127,9 @@ if !errorlevel! == 0 (
 :httpserver_checked
 
 :: HTTPS cert
-if !VERBOSEWRAPPER!==y ( echo Checking for HTTPS certificate... )
+if %VERBOSEWRAPPER%==y ( echo Checking for HTTPS certificate... )
 certutil -store -enterprise root | findstr "WOCRTV3" >nul
-if !errorlevel! == 0 (
+if %errorlevel% == 0 (
 	echo HTTPS cert installed.
 	echo:
 	set HTTPSCERT_DETECTED=y
@@ -143,7 +149,7 @@ if !errorlevel! == 0 (
 popd
 
 :: Assumes nothing is installed during a dry run
-if !DRYRUN!==y (
+if %DRYRUN%==y (
 	echo Let's just ignore anything we just saw above.
 	echo Nothing was found. Nothing exists. It's all fake.
 	set NEEDTHEDEPENDERS=y
@@ -161,8 +167,8 @@ if !DRYRUN!==y (
 :: Dependency Install ::
 ::::::::::::::::::::::::
 
-if !NEEDTHEDEPENDERS!==y (
-	if !SKIPDEPENDINSTALL!==n (
+if %NEEDTHEDEPENDERS%==y (
+	if %SKIPDEPENDINSTALL%==n (
 		echo:
 		echo Installing missing dependencies...
 		echo:
@@ -178,37 +184,37 @@ if !NEEDTHEDEPENDERS!==y (
 	set CFG=utilities\config.bat
 	set TMPCFG=utilities\tempconfig.bat
 	:: Loop through every line until one to edit
-	if exist !tmpcfg! del !tmpcfg!
+	if exist %tmpcfg% del %tmpcfg%
 	set /a count=1
-	for /f "tokens=1,* delims=0123456789" %%a in ('find /n /v "" ^< !cfg!') do (
+	for /f "tokens=1,* delims=0123456789" %%a in ('find /n /v "" ^< %cfg%') do (
 		set "line=%%b"
-		>>!tmpcfg! echo(!line:~1!
+		>>%tmpcfg% echo(%line:~1%
 		set /a count+=1
-		if !count! GEQ 14 goto linereached
+		if %count% GEQ 14 goto linereached
 	)
 	:linereached
 	:: Overwrite the original setting
-	echo set SKIPCHECKDEPENDS=y>> !tmpcfg!
-	echo:>> !tmpcfg!
+	echo set SKIPCHECKDEPENDS=y>> %tmpcfg%
+	echo:>> %tmpcfg%
 	:: Print the last of the config to our temp file
-	more +15 !cfg!>> !tmpcfg!
+	more +15 %cfg%>> %tmpcfg%
 	:: Make our temp file the normal file
-	copy /y !tmpcfg! !cfg! >nul
-	del !tmpcfg!
+	copy /y %tmpcfg% %cfg% >nul
+	del %tmpcfg%
 	:: Set in this script
 	set SKIPCHECKDEPENDS=y
 	goto skip_dependency_install
 )
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Installing dependencies...]
+title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Installing dependencies...]
 :: http-server
-if !HTTPSERVER_DETECTED!==n (
-	if !NODEJS_DETECTED!==y (
+if %HTTPSERVER_DETECTED%==n (
+	if %NODEJS_DETECTED%==y (
 		echo Installing http-server...
 		echo:
 
 		:: Skip in dry run, not much use to run it
-		if !DRYRUN!==y (
+		if %DRYRUN%==y (
 			echo ...actually, nah, let's skip this part.
 			goto httpserverinstalled
 		) 
@@ -219,7 +225,7 @@ if !HTTPSERVER_DETECTED!==n (
 		:: Double check for installation
 		echo Checking for http-server installation again...
 		npm list -g | find "http-server" > nul
-		if !errorlevel! == 0 (
+		if %errorlevel% == 0 (
 			goto httpserverinstalled
 		) else (
 			echo:
@@ -242,7 +248,7 @@ if !HTTPSERVER_DETECTED!==n (
 		echo Checking for http-server installation AGAIN...
 		:triplecheckhttpserver
 		npm list -g | find "http-server" > nul
-		if !errorlevel! == 0 (
+		if %errorlevel% == 0 (
 			goto httpserverinstalled
 		) else (
 			echo:
@@ -271,7 +277,7 @@ if !HTTPSERVER_DETECTED!==n (
 
 :: Install HTTPS certificate
 :install_cert
-if !HTTPSCERT_DETECTED!==n (
+if %HTTPSCERT_DETECTED%==n (
 	echo Installing HTTPS certificate...
 	echo:
 	if not exist "server\the.crt" (
@@ -283,10 +289,10 @@ if !HTTPSCERT_DETECTED!==n (
 		exit
 	)
 	:: Check for admin
-	if /i not "!SAFE_MODE!"=="y" (
-		fsutil dirty query !systemdrive! >NUL 2>&1
-		if /i not !ERRORLEVEL!==0 (
-			if !VERBOSEWRAPPER!==n ( cls )
+	if /i not "%SAFE_MODE%"=="y" (
+		fsutil dirty query %systemdrive% >NUL 2>&1
+		if /i not %ERRORLEVEL%==0 (
+			if %VERBOSEWRAPPER%==n ( cls )
 			echo For Redrawn to work, it needs an HTTPS certificate to be installed.
 			echo If you have administrator privileges, you should reopen start_wrapper.bat as Admin.
 			echo ^(do this by right-clicking start_wrapper.bat and click "Run as Administrator"^)
@@ -297,9 +303,9 @@ if !HTTPSCERT_DETECTED!==n (
 			:certaskretry
 			set /p CERTCHOICE= Response:
 			echo:
-			if not '!certchoice!'=='' set certchoice=%certchoice:~0,1%
-			if /i "!certchoice!"=="y" echo This window will now close so you can restart it with admin. & pause & exit
-			if /i "!certchoice!"=="n" goto certnonadmin
+			if not '%certchoice%'=='' set certchoice=%certchoice:~0,1%
+			if /i "%certchoice%"=="y" echo This window will now close so you can restart it with admin. & pause & exit
+			if /i "%certchoice%"=="n" goto certnonadmin
 			echo You must answer Yes or No. && goto certaskretry
 
 			:: Non-admin cert install
@@ -313,11 +319,11 @@ if !HTTPSCERT_DETECTED!==n (
 			echo If you see a message like this on the real internet, you should stay away.
 			:: Pause to allow startup
 			PING -n 8 127.0.0.1>nul
-			if !INCLUDEDCHROMIUM!==n (
-				if !CUSTOMBROWSER!==n (
+			if %INCLUDEDCHROMIUM%==n (
+				if %CUSTOMBROWSER%==n (
 					start https://localhost:4664/certbypass.html
 				) else (
-					start !CUSTOMBROWSER! https://localhost:4664/certbypass.html >nul
+					start %CUSTOMBROWSER% https://localhost:4664/certbypass.html >nul
 				)
 			) else (
 				pushd utilities\ungoogled-chromium
@@ -332,10 +338,10 @@ if !HTTPSCERT_DETECTED!==n (
 		)
 	)
 	pushd server
-	if !VERBOSEWRAPPER!==y (
-		if !DRYRUN!==n ( certutil -addstore -f -enterprise -user root the.crt )
+	if %VERBOSEWRAPPER%==y (
+		if %DRYRUN%==n ( certutil -addstore -f -enterprise -user root the.crt )
 	) else (
-		if !DRYRUN!==n ( certutil -addstore -f -enterprise -user root the.crt >nul )
+		if %DRYRUN%==n ( certutil -addstore -f -enterprise -user root the.crt >nul )
 	)
 	set ADMINREQUIRED=y
 	popd
@@ -352,49 +358,49 @@ echo:
 :: Starting Wrapper ::
 ::::::::::::::::::::::
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Loading...]
+title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Loading...]
 
 :: Close existing node apps
 :: Hopefully fixes EADDRINUSE errors??
-if !VERBOSEWRAPPER!==y (
-	if !CEPSTRAL!==n (
+if %VERBOSEWRAPPER%==y (
+	if %CEPSTRAL%==n (
 		echo Closing any existing node and/or PHP apps...
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
-		if !DRYRUN!==n ( TASKKILL /IM php.exe /F )
+		if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
+		if %DRYRUN%==n ( TASKKILL /IM php.exe /F )
 		echo:
 	) else (
 		echo Closing any existing node apps...
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
+		if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
 	)
 ) else (
-	if !CEPSTRAL!==n (
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
-		if !DRYRUN!==n ( TASKKILL /IM php.exe /F 2>nul )
+	if %CEPSTRAL%==n (
+		if %DRYRUN%==n ( TASKKILL /IM node.exe /F 2>nul )
+		if %DRYRUN%==n ( TASKKILL /IM php.exe /F 2>nul )
 	) else (
-		if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
+		if %DRYRUN%==n ( TASKKILL /IM node.exe /F 2>nul )
 	)
 )
 
 :: Start Node.js, http-server and PHP for VFProxy
-if !CEPSTRAL!==n (
+if %CEPSTRAL%==n (
 	echo Loading Node.js, http-server and PHP ^(for VFProxy only^)...
 ) else (
 	echo Loading Node.js and http-server...
 )
 pushd utilities
-if !VERBOSEWRAPPER!==y (
-	if !DRYRUN!==n ( start /MIN open_http-server.bat )
-	if !DRYRUN!==n ( start /MIN open_nodejs.bat )
-	if !DRYRUN!==n ( 
-		if !CEPSTRAL!==n ( 
+if %VERBOSEWRAPPER%==y (
+	if %DRYRUN%==n ( start /MIN open_http-server.bat )
+	if %DRYRUN%==n ( start /MIN open_nodejs.bat )
+	if %DRYRUN%==n ( 
+		if %CEPSTRAL%==n ( 
 			start /MIN open_vfproxy_php.bat
 		)
 	)
 ) else (
-	if !DRYRUN!==n ( start SilentCMD open_http-server.bat )
-	if !DRYRUN!==n ( start SilentCMD open_nodejs.bat )
-	if !DRYRUN!==n ( 
-		if !CEPSTRAL!==n (
+	if %DRYRUN%==n ( start SilentCMD open_http-server.bat )
+	if %DRYRUN%==n ( start SilentCMD open_nodejs.bat )
+	if %DRYRUN%==n ( 
+		if %CEPSTRAL%==n (
 			start SilentCMD open_vfproxy_php.bat
 		)
 	)
@@ -406,22 +412,22 @@ popd
 timeout 16
 
 :: Open Wrapper in preferred browser
-if !INCLUDEDCHROMIUM!==n (
-	if !CUSTOMBROWSER!==n (
+if %INCLUDEDCHROMIUM%==n (
+	if %CUSTOMBROWSER%==n (
 		echo Opening Redrawn in your default browser...
-		if !DRYRUN!==n ( start http://localhost:4343 )
+		if %DRYRUN%==n ( start http://localhost:4343 )
 	) else (
 		echo Opening Redrawn in your set browser...
 		echo If this does not work, you may have set the path wrong.
-		if !DRYRUN!==n ( start !CUSTOMBROWSER! http://localhost:4343 )
+		if %DRYRUN%==n ( start %CUSTOMBROWSER% http://localhost:4343 )
 	)
 ) else (
 	echo Opening Redrawn using included Chromium...
 	pushd utilities\ungoogled-chromium
-	if !APPCHROMIUM!==y (
-		if !DRYRUN!==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=http://localhost:4343 )
+	if %APPCHROMIUM%==y (
+		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=http://localhost:4343 )
 	) else (
-		if !DRYRUN!==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 )
+		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 )
 	)
 	popd
 )
@@ -432,20 +438,20 @@ echo Redrawn has been started^^! The video list should now be open.
 :: Post-Start ::
 ::::::::::::::::
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^)
-if !VERBOSEWRAPPER!==y ( goto wrapperstarted )
+title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^)
+if %VERBOSEWRAPPER%==y ( goto wrapperstarted )
 :wrapperstartedcls
 cls
 :wrapperstarted
 
 echo:
-echo Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) running
+echo Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) running
 echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn team
 echo:
-if !VERBOSEWRAPPER!==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
-if !VERBOSEWRAPPER!==y ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
-if !DRYRUN!==y ( echo Don't forget, nothing actually happened, this was a dry run. )
-if !JUSTIMPORTED!==y ( echo Note: You'll need to reload the editor for your file to appear. )
+if %VERBOSEWRAPPER%==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
+if %VERBOSEWRAPPER%==y ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
+if %DRYRUN%==y ( echo Don't forget, nothing actually happened, this was a dry run. )
+if %JUSTIMPORTED%==y ( echo Note: You'll need to reload the editor for your file to appear. )
 :: Hello, code wanderer. Enjoy seeing all the secret options easily instead of finding them yourself.
 echo:
 echo Enter 1 to reopen the video list
@@ -453,55 +459,55 @@ echo Enter 2 to open the server page
 echo Enter ? to open the FAQ
 echo Enter clr to clean up the screen
 echo Enter 0 to close Redrawn
-set /a _rand=(!RANDOM!*67/32768)+1
-if !_rand!==25 echo Enter things you think'll show a secret if you're feeling adventurous
+set /a _rand=(%RANDOM%*67/32768)+1
+if %_rand%==25 echo Enter things you think'll show a secret if you're feeling adventurous
 :wrapperidle
 echo:
 set /p CHOICE=Choice:
-if "!choice!"=="0" goto exitwrapperconfirm
+if "%choice%"=="0" goto exitwrapperconfirm
 set FUCKOFF=n
-if "!choice!"=="1" goto reopen_webpage
-if "!choice!"=="2" goto open_server
-if "!choice!"=="?" goto open_faq
-if /i "!choice!"=="clr" goto wrapperstartedcls
-if /i "!choice!"=="cls" goto wrapperstartedcls
-if /i "!choice!"=="clear" goto wrapperstartedcls
+if "%choice%"=="1" goto reopen_webpage
+if "%choice%"=="2" goto open_server
+if "%choice%"=="?" goto open_faq
+if /i "%choice%"=="clr" goto wrapperstartedcls
+if /i "%choice%"=="cls" goto wrapperstartedcls
+if /i "%choice%"=="clear" goto wrapperstartedcls
 :: funni options
-if "!choice!"=="43" echo OH MY GOD. FOURTY THREE CHARS. NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO & goto wrapperidle
-if /i "!choice!"=="benson" echo watch benson on youtube & goto wrapperidle
-if /i "!choice!"=="ford" echo what up son & goto wrapperidle
-if /i "!choice!"=="no" echo stahp & goto wrapperidle
-if /i "!choice!"=="yes" echo Alright. & goto wrapperidle
-if /i "!choice!"=="fuck off" goto youfuckoff
-if /i "!choice!"=="fuck you" echo No, fuck you. & goto wrapperidle
-if /i "!choice!"=="sex" echo that's fake & goto wrapperidle
-if /i "!choice!"=="watch benson on youtube" goto w_a_t_c_h
-if /i "!choice!"=="browser slayer" goto slayerstestaments
-if /i "!choice!"=="patch" goto patchtime
-if /i "!choice!"=="random" goto sayarandom
-if /i "!choice!"=="octanuary" echo i am a traitor and retard & goto wrapperidle
-if /i "!choice!"=="die" echo die please & goto wrapperidle
-if /i "!choice!"=="aaron doan" echo YOU^^!^^!^^! Noo Wrapper Is Patched Forever^^!^^!^^! Cries And Hits You So Many Times & goto wrapperidle
-if /i "!choice!"=="spark" echo OOOOH GUYS IM A FUCKING DICK & goto wrapperidle
+if "%choice%"=="43" echo OH MY GOD. FOURTY THREE CHARS. NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO & goto wrapperidle
+if /i "%choice%"=="benson" echo watch benson on youtube & goto wrapperidle
+if /i "%choice%"=="ford" echo what up son & goto wrapperidle
+if /i "%choice%"=="no" echo stahp & goto wrapperidle
+if /i "%choice%"=="yes" echo Alright. & goto wrapperidle
+if /i "%choice%"=="fuck off" goto youfuckoff
+if /i "%choice%"=="fuck you" echo No, fuck you. & goto wrapperidle
+if /i "%choice%"=="sex" echo that's fake & goto wrapperidle
+if /i "%choice%"=="watch benson on youtube" goto w_a_t_c_h
+if /i "%choice%"=="browser slayer" goto slayerstestaments
+if /i "%choice%"=="patch" goto patchtime
+if /i "%choice%"=="random" goto sayarandom
+if /i "%choice%"=="octanuary" echo i am a traitor and retard & goto wrapperidle
+if /i "%choice%"=="die" echo die please & goto wrapperidle
+if /i "%choice%"=="aaron doan" echo YOU^^%^^!^^! Noo Wrapper Is Patched Forever^^!^^!^^! Cries And Hits You So Many Times & goto wrapperidle
+if /i "%choice%"=="spark" echo OOOOH GUYS IM A FUCKING DICK & goto wrapperidle
 :: dev options
-if /i "!choice!"=="amnesia" goto wipe_save
-if /i "!choice!"=="restart" goto restart
-if /i "!choice!"=="folder" goto open_files
+if /i "%choice%"=="amnesia" goto wipe_save
+if /i "%choice%"=="restart" goto restart
+if /i "%choice%"=="folder" goto open_files
 echo Time to choose. && goto wrapperidle
 
 :reopen_webpage
-if !INCLUDEDCHROMIUM!==n (
-	if !CUSTOMBROWSER!==n (
+if %INCLUDEDCHROMIUM%==n (
+	if %CUSTOMBROWSER%==n (
 		echo Opening Redrawn in your default browser...
 		start http://localhost:4343
 	) else (
 		echo Opening Redrawn in your set browser...
-		start !CUSTOMBROWSER! http://localhost:4343 >nul
+		start %CUSTOMBROWSER% http://localhost:4343 >nul
 	)
 ) else (
 	echo Opening Redrawn using included Chromium...
 	pushd utilities\ungoogled-chromium
-	if !APPCHROMIUM!==y (
+	if %APPCHROMIUM%==y (
 		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=http://localhost:4343 >nul
 	) else (
 		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 >nul
@@ -511,18 +517,18 @@ if !INCLUDEDCHROMIUM!==n (
 goto wrapperidle
 
 :open_server
-if !INCLUDEDCHROMIUM!==n (
-	if !CUSTOMBROWSER!==n (
+if %INCLUDEDCHROMIUM%==n (
+	if %CUSTOMBROWSER%==n (
 		echo Opening the server page in your default browser...
 		start https://localhost:4664
 	) else (
 		echo Opening the server page in your set browser...
-		start !CUSTOMBROWSER! https://localhost:4664 >nul
+		start %CUSTOMBROWSER% https://localhost:4664 >nul
 	)
 ) else (
 	echo Opening the server page using included Chromium...
 	pushd utilities\ungoogled-chromium
-	if !APPCHROMIUM!==y (
+	if %APPCHROMIUM%==y (
 		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=https://localhost:4664 >nul
 	) else (
 		start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile https://localhost:4664 >nul
@@ -533,8 +539,8 @@ goto wrapperidle
 
 :open_files
 pushd ..
-echo Opening the wrapper-offline folder...
-start explorer.exe wrapper-offline
+echo Opening the Redrawn folder...
+start explorer.exe Redrawn
 popd
 goto wrapperidle
 
@@ -550,7 +556,7 @@ goto wrapperidle
 
 :wipe_save
 call utilities\reset_install.bat
-if !errorlevel! equ 1 goto wrapperidle
+if %errorlevel% equ 1 goto wrapperidle
 :: flows straight to restart below
 
 :restart
@@ -574,31 +580,31 @@ echo press y or n
 :patchtimeretry
 set /p PATCHCHOICE= Response:
 echo:
-if not '!patchchoice!'=='' set patchchoice=%patchchoice:~0,1%
-if /i "!patchchoice!"=="y" echo too bad B^) & goto wrapperidle
-if /i "!patchchoice!"=="n" echo good & goto wrapperidle
+if not '%patchchoice%'=='' set patchchoice=%patchchoice:~0,1%
+if /i "%patchchoice%"=="y" echo too bad B^) & goto wrapperidle
+if /i "%patchchoice%"=="n" echo good & goto wrapperidle
 echo yes or no question here && goto patchtimeretry
 
 :sayarandom
 :: welcome to "inside jokes with no context" land
-set /a _rand=!RANDOM!*15/32767
-if !_rand!==0 echo stress level ^>0
-if !_rand!==1 echo Something random.
-if !_rand!==2 echo oisjdoiajfgmafvdsdg
-if !_rand!==3 echo my head is unscrewed & echo what do i need it for
-if !_rand!==4 echo when you're eating popcorn you're eating busted nuts
-if !_rand!==5 echo chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken 
-if !_rand!==6 echo when u nut so hard that ur roblox crashes
-if !_rand!==7 echo seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven
-if !_rand!==8 echo DONT ASK HOW I GOT IT OR YOU WILL BE BANNED FROM MY CHANNEL WITH NO SECOND CHANCES
-if !_rand!==9 echo everything you know is wrong & echo black is white up is down and short is long
-if !_rand!==10 echo It's a chekcpoint.
-if !_rand!==11 echo Another monday... & echo Another mind-numbing, run-of-the-mill monday... & echo ANOTHER MUNDANE, MORIBUND, HUMDRUM MONDAY!
-if !_rand!==12 echo try typing "with style" when exiting
-if !_rand!==13 echo elmo
-if !_rand!==14 echo gnorm gnat says: trans rights are human rights
-if !_rand!==15 echo wrapper inline
-if !_rand!==16 echo SUS
+set /a _rand=%RANDOM%*15/32767
+if %_rand%==0 echo stress level ^>0
+if %_rand%==1 echo Something random.
+if %_rand%==2 echo oisjdoiajfgmafvdsdg
+if %_rand%==3 echo my head is unscrewed & echo what do i need it for
+if %_rand%==4 echo when you're eating popcorn you're eating busted nuts
+if %_rand%==5 echo chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken 
+if %_rand%==6 echo when u nut so hard that ur roblox crashes
+if %_rand%==7 echo seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven
+if %_rand%==8 echo DONT ASK HOW I GOT IT OR YOU WILL BE BANNED FROM MY CHANNEL WITH NO SECOND CHANCES
+if %_rand%==9 echo everything you know is wrong & echo black is white up is down and short is long
+if %_rand%==10 echo It's a chekcpoint.
+if %_rand%==11 echo Another monday... & echo Another mind-numbing, run-of-the-mill monday... & echo ANOTHER MUNDANE, MORIBUND, HUMDRUM MONDAY!
+if %_rand%==12 echo try typing "with style" when exiting
+if %_rand%==13 echo elmo
+if %_rand%==14 echo gnorm gnat says: trans rights are human rights
+if %_rand%==15 echo wrapper inline
+if %_rand%==16 echo SUS
 goto wrapperidle
 
 :slayerstestaments
@@ -673,41 +679,41 @@ echo Type Y to quit, and N to go back.
 :exitwrapperretry
 set /p EXITCHOICE= Response:
 echo:
-if /i "!exitchoice!"=="y" goto point_extraction
-if /i "!exitchoice!"=="yes" goto point_extraction
-if /i "!exitchoice!"=="n" goto wrapperstartedcls
-if /i "!exitchoice!"=="no" goto wrapperstartedcls
-if /i "!exitchoice!"=="with style" goto exitwithstyle
+if /i "%exitchoice%"=="y" goto point_extraction
+if /i "%exitchoice%"=="yes" goto point_extraction
+if /i "%exitchoice%"=="n" goto wrapperstartedcls
+if /i "%exitchoice%"=="no" goto wrapperstartedcls
+if /i "%exitchoice%"=="with style" goto exitwithstyle
 echo You must answer Yes or No. && goto exitwrapperretry
 
 :point_extraction
 
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down...]
+title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Shutting down...]
 
 :: Shut down Node.js, PHP and http-server
-if !VERBOSEWRAPPER!==y (
-	if !DRYRUN!==n ( TASKKILL /IM node.exe /F )
-	if !DRYRUN!==n ( TASKKILL /IM php.exe /F )
+if %VERBOSEWRAPPER%==y (
+	if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
+	if %DRYRUN%==n ( TASKKILL /IM php.exe /F )
 	echo:
 ) else (
-	if !DRYRUN!==n ( TASKKILL /IM node.exe /F 2>nul )
-	if !DRYRUN!==n ( TASKKILL /IM php.exe /F 2>nul )
+	if %DRYRUN%==n ( TASKKILL /IM node.exe /F 2>nul )
+	if %DRYRUN%==n ( TASKKILL /IM php.exe /F 2>nul )
 )
 
 :: This is where I get off.
 echo Redrawn has been shut down.
-if !FUCKOFF!==y ( echo You're a good listener. )
+if %FUCKOFF%==y ( echo You're a good listener. )
 echo This window will now close.
-if !INCLUDEDCHROMIUM!==y (
+if %INCLUDEDCHROMIUM%==y (
 	echo You can close the web browser now.
 )
 echo Open start_wrapper.bat again to start W:O again.
-if !DRYRUN!==y ( echo Go wet your run next time. ) 
+if %DRYRUN%==y ( echo Go wet your run next time. ) 
 pause & exit
 
 :exitwithstyle
-title Redrawn v!WRAPPER_VER! ^(build !WRAPPER_BLD!^) [Shutting down... WITH STYLE]
-echo SHUTTING DOWN THE WRAPPER OFFLINE
+title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Shutting down... WITH STYLE]
+echo SHUTTING DOWN REDRAWN
 PING -n 3 127.0.0.1>nul
 color 9b
 echo BEWEWEWEWWW PSSHHHH KSHHHHHHHHHHHHHH
@@ -718,11 +724,11 @@ PING -n 3 127.0.0.1>nul
 TASKKILL /IM php.exe /F
 echo PHP DESTROYED
 PING -n 3 127.0.0.1>nul
-echo TIME TO ELIMINATE WRAPPER OFFLINE
+echo TIME TO ELIMINATE REDRAWN
 PING -n 3 127.0.0.1>nul
 echo BOBOOBOBMWBOMBOM SOUND EFFECTSSSSS
 PING -n 3 127.0.0.1>nul
-echo WRAPPER OFFLINE ALSO ANNIHILA
+echo REDRAWN ALSO ANNIHILA
 PING -n 2 127.0.0.1>nul
 exit
 
