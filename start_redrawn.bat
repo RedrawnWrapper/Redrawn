@@ -28,7 +28,7 @@ if %AUTOUPDATE%==y (
 	pushd "%~dp0"
 	if exist .git (
 		echo Updating...
-		call utilities\PortableGit\bin\git.exe pull || call utilities\PortableGit\bin\git.exe add . && call utilities\PortableGit\bin\git.exe stash && call utilities\PortableGit\bin\git.exe pull
+		call utilities\PortableGit\bin\git.exe pull || call utilities\PortableGit\bin\git.exe config --global --add safe.directory %USERPROFILE%\Redrawn && call utilities\PortableGit\bin\git.exe add . && call utilities\PortableGit\bin\git.exe stash && call utilities\PortableGit\bin\git.exe pull
 		PING -n 3 127.0.0.1>nul
 		cls
 	) else (
@@ -206,49 +206,16 @@ title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Loading...]
 :: Close existing node apps
 :: Hopefully fixes EADDRINUSE errors??
 if %VERBOSEWRAPPER%==y (
-	if %CEPSTRAL%==n (
-		echo Closing any existing node and/or PHP apps...
-		if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
-		if %DRYRUN%==n ( TASKKILL /IM php.exe /F )
-		echo:
-	) else (
-		echo Closing any existing node apps...
-		if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
-	)
-) else (
-	if %CEPSTRAL%==n (
-		if %DRYRUN%==n ( TASKKILL /IM node.exe /F 2>nul )
-		if %DRYRUN%==n ( TASKKILL /IM php.exe /F 2>nul )
-	) else (
-		if %DRYRUN%==n ( TASKKILL /IM node.exe /F 2>nul )
-	)
+	echo Closing any existing node apps...
+	if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
+	echo:
 )
 
-:: Start Node.js, http-server and PHP for VFProxy
-if %CEPSTRAL%==n (
-	echo Loading Node.js, http-server and PHP ^(for VFProxy only^)...
-) else (
-	echo Loading Node.js and http-server...
-)
-pushd utilities
-if %VERBOSEWRAPPER%==y (
-	if %DRYRUN%==n ( start /MIN open_http-server.bat )
-	if %DRYRUN%==n ( start /MIN open_nodejs.bat )
-	if %DRYRUN%==n ( 
-		if %CEPSTRAL%==n ( 
-			start /MIN open_vfproxy_php.bat
-		)
-	)
-) else (
-	if %DRYRUN%==n ( start SilentCMD open_http-server.bat )
-	if %DRYRUN%==n ( start SilentCMD open_nodejs.bat )
-	if %DRYRUN%==n ( 
-		if %CEPSTRAL%==n (
-			start SilentCMD open_vfproxy_php.bat
-		)
-	)
-)
-popd
+:: Start Node.js and http-server
+echo Loading Node.js and http-server...
+cd %USERPROFILE%\Redrawn\utilities
+if %DRYRUN%==n ( start open_http-server.bat )
+if %DRYRUN%==n ( start open_nodejs.bat )
 
 :: Pause to allow startup
 :: Prevents the video list opening too fast
