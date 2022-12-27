@@ -219,7 +219,8 @@ if %DRYRUN%==n ( start open_nodejs.bat )
 
 :: Pause to allow startup
 :: Prevents the video list opening too fast
-timeout 16
+:: timer is set for 2 minutes for slow computers
+timeout 120
 
 :: Open Wrapper in preferred browser
 if %INCLUDEDCHROMIUM%==n (
