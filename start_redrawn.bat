@@ -83,12 +83,6 @@ echo Redrawn
 echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn Team
 echo Version %WRAPPER_VER%, build %WRAPPER_BLD%
 echo:
-
-:: Confirm measurements to proceed.
-set SUBSCRIPT=y
-echo Loading settings...
-if not exist utilities\config.bat ( goto configmissing )
-call utilities\config.bat
 echo:
 if %VERBOSEWRAPPER%==y ( echo Verbose mode activated. && echo:)
 goto configavailable
