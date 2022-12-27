@@ -231,7 +231,6 @@ if %INCLUDEDCHROMIUM%==n (
 		echo If this does not work, you may have set the path wrong.
 		if %DRYRUN%==n ( start %CUSTOMBROWSER% http://localhost:4343 )
 	)
-	goto wrapperstart
 ) else (
 	echo Opening Redrawn using included Chromium...
 	pushd utilities\ungoogled-chromium
@@ -240,9 +239,7 @@ if %INCLUDEDCHROMIUM%==n (
 	) else (
 		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 )
 	)
-	goto wrapperstart
 )
-:wrapperstart
 echo Redrawn has been started^^! The video list should now be open.
 
 ::::::::::::::::
@@ -259,8 +256,7 @@ echo:
 echo Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) running
 echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn team
 echo:
-if %VERBOSEWRAPPER%==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. )
-if %VERBOSEWRAPPER%==y ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
+if %VERBOSEWRAPPER%==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. ) else ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
 if %DRYRUN%==y ( echo Don't forget, nothing actually happened, this was a dry run. )
 if %JUSTIMPORTED%==y ( echo Note: You'll need to reload the editor for your file to appear. )
 :: Hello, code wanderer. Enjoy seeing all the secret options easily instead of finding them yourself.
