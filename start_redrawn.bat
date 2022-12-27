@@ -198,7 +198,7 @@ echo:
 :skip_dependency_install
 
 ::::::::::::::::::::::
-:: Starting Wrapper ::
+:: Starting Redrawn ::
 ::::::::::::::::::::::
 
 title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Loading...]
@@ -256,18 +256,11 @@ echo:
 echo Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) running
 echo A project from VisualPlugin adapted by MiiArtisan, DazaSeal and the Redrawn team
 echo:
-if %VERBOSEWRAPPER%==n ( echo DON'T CLOSE THIS WINDOW^^! Use the quit option ^(0^) when you're done. ) else ( echo Verbose mode is on, see the two extra CMD windows for extra output. )
-if %DRYRUN%==y ( echo Don't forget, nothing actually happened, this was a dry run. )
-if %JUSTIMPORTED%==y ( echo Note: You'll need to reload the editor for your file to appear. )
-:: Hello, code wanderer. Enjoy seeing all the secret options easily instead of finding them yourself.
-echo:
 echo Enter 1 to reopen the video list
 echo Enter 2 to open the server page
 echo Enter ? to open the FAQ
 echo Enter clr to clean up the screen
 echo Enter 0 to close Redrawn
-set /a _rand=(%RANDOM%*67/32768)+1
-if %_rand%==25 echo Enter things you think'll show a secret if you're feeling adventurous
 :wrapperidle
 echo:
 set /p CHOICE=Choice:
@@ -279,27 +272,6 @@ if "%choice%"=="?" goto open_faq
 if /i "%choice%"=="clr" goto wrapperstartedcls
 if /i "%choice%"=="cls" goto wrapperstartedcls
 if /i "%choice%"=="clear" goto wrapperstartedcls
-:: funni options
-if "%choice%"=="43" echo OH MY GOD. FOURTY THREE CHARS. NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO & goto wrapperidle
-if /i "%choice%"=="benson" echo watch benson on youtube & goto wrapperidle
-if /i "%choice%"=="ford" echo what up son & goto wrapperidle
-if /i "%choice%"=="no" echo stahp & goto wrapperidle
-if /i "%choice%"=="yes" echo Alright. & goto wrapperidle
-if /i "%choice%"=="fuck off" goto youfuckoff
-if /i "%choice%"=="fuck you" echo No, fuck you. & goto wrapperidle
-if /i "%choice%"=="sex" echo that's fake & goto wrapperidle
-if /i "%choice%"=="watch benson on youtube" goto w_a_t_c_h
-if /i "%choice%"=="browser slayer" goto slayerstestaments
-if /i "%choice%"=="patch" goto patchtime
-if /i "%choice%"=="random" goto sayarandom
-if /i "%choice%"=="octanuary" echo i am a traitor and retard & goto wrapperidle
-if /i "%choice%"=="die" echo die please & goto wrapperidle
-if /i "%choice%"=="aaron doan" echo YOU^^%^^!^^! Noo Wrapper Is Patched Forever^^!^^!^^! Cries And Hits You So Many Times & goto wrapperidle
-if /i "%choice%"=="spark" echo OOOOH GUYS IM A FUCKING DICK & goto wrapperidle
-:: dev options
-if /i "%choice%"=="amnesia" goto wipe_save
-if /i "%choice%"=="restart" goto restart
-if /i "%choice%"=="folder" goto open_files
 echo Time to choose. && goto wrapperidle
 
 :reopen_webpage
@@ -347,7 +319,7 @@ goto wrapperidle
 :open_files
 pushd ..
 echo Opening the Redrawn folder...
-start explorer.exe Redrawn
+start explorer.exe %USERPROFILE%\Redrawn
 popd
 goto wrapperidle
 
@@ -370,108 +342,6 @@ if %errorlevel% equ 1 goto wrapperidle
 TASKKILL /IM node.exe /F
 start "" /wait /B "%~F0" point_insertion
 exit
-
-:w_a_t_c_h
-echo watch benson on youtube
-echo watch benson on youtube
-echo watch benson on youtube
-echo watch benson on youtube
-echo watch benson on youtube
-echo wa
-goto wrapperidle
-
-:patchtime
-echo:
-echo would you like to patch whoper online
-echo press y or n
-:patchtimeretry
-set /p PATCHCHOICE= Response:
-echo:
-if not '%patchchoice%'=='' set patchchoice=%patchchoice:~0,1%
-if /i "%patchchoice%"=="y" echo too bad B^) & goto wrapperidle
-if /i "%patchchoice%"=="n" echo good & goto wrapperidle
-echo yes or no question here && goto patchtimeretry
-
-:sayarandom
-:: welcome to "inside jokes with no context" land
-set /a _rand=%RANDOM%*15/32767
-if %_rand%==0 echo stress level ^>0
-if %_rand%==1 echo Something random.
-if %_rand%==2 echo oisjdoiajfgmafvdsdg
-if %_rand%==3 echo my head is unscrewed & echo what do i need it for
-if %_rand%==4 echo when you're eating popcorn you're eating busted nuts
-if %_rand%==5 echo chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken chicken 
-if %_rand%==6 echo when u nut so hard that ur roblox crashes
-if %_rand%==7 echo seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven
-if %_rand%==8 echo DONT ASK HOW I GOT IT OR YOU WILL BE BANNED FROM MY CHANNEL WITH NO SECOND CHANCES
-if %_rand%==9 echo everything you know is wrong & echo black is white up is down and short is long
-if %_rand%==10 echo It's a chekcpoint.
-if %_rand%==11 echo Another monday... & echo Another mind-numbing, run-of-the-mill monday... & echo ANOTHER MUNDANE, MORIBUND, HUMDRUM MONDAY!
-if %_rand%==12 echo try typing "with style" when exiting
-if %_rand%==13 echo elmo
-if %_rand%==14 echo gnorm gnat says: trans rights are human rights
-if %_rand%==15 echo wrapper inline
-if %_rand%==16 echo SUS
-goto wrapperidle
-
-:slayerstestaments
-echo:
-echo In the first age,
-PING -n 3 127.0.0.1>nul
-echo In the first battle,
-PING -n 3 127.0.0.1>nul
-echo When the shadows first lengthened,
-PING -n 4 127.0.0.1>nul
-echo One stood.
-PING -n 3 127.0.0.1>nul
-echo Slowed by the waste of unoptimized websites,
-PING -n 4 127.0.0.1>nul
-echo His soul harvested by the trackers of Google
-PING -n 5 127.0.0.1>nul
-echo And exposed beyond anonymity, 
-PING -n 4 127.0.0.1>nul
-echo He chose the path of perpetual torment.
-PING -n 6 127.0.0.1>nul
-echo In his ravenous hatred,
-PING -n 3 127.0.0.1>nul
-echo He found no peace,
-PING -n 3 127.0.0.1>nul
-echo And with boiling blood,
-PING -n 3 127.0.0.1>nul
-echo He scoured the search results,
-PING -n 4 127.0.0.1>nul
-echo Seeking vengeance against the companies who had wronged him.
-PING -n 6 127.0.0.1>nul
-echo He wore the crown of the Taskkillers,
-PING -n 4 127.0.0.1>nul
-echo and those that tasted the bite of his sword
-PING -n 5 127.0.0.1>nul
-echo named him...
-PING -n 3 127.0.0.1>nul
-echo the Browser Slayer.
-PING -n 3 127.0.0.1>nul
-:: here comes something that looks awesome normaly but is disgusting when escaped for batch
-:: credit to http://www.gamers.org/~fpv/doomlogo.html
-echo ^=^=^=^=^=^=^=^=^=^=^=^=^=^=^=^=^=     ^=^=^=^=^=^=^=^=^=^=^=^=^=^=^=     ^=^=^=^=^=^=^=^=^=^=^=^=^=^=^=   ^=^=^=^=^=^=^=^=  ^=^=^=^=^=^=^=^=
-echo ^\^\ ^. ^. ^. ^. ^. ^. ^.^\^\   //^. ^. ^. ^. ^. ^. ^.^\^\   //^. ^. ^. ^. ^. ^. ^.^\^\  ^\^\^. ^. ^.^\^\// ^. ^. //
-echo ^|^|^. ^. ^._____^. ^. ^.^|^| ^|^|^. ^. ^._____^. ^. ^.^|^| ^|^|^. ^. ^._____^. ^. ^.^|^| ^|^| ^. ^. ^.^\/ ^. ^. ^.^|^|
-echo ^|^| ^. ^.^|^|   ^|^|^. ^. ^|^| ^|^| ^. ^.^|^|   ^|^|^. ^. ^|^| ^|^| ^. ^.^|^|   ^|^|^. ^. ^|^| ^|^|^. ^. ^. ^. ^. ^. ^. ^|^|
-echo ^|^|^. ^. ^|^|   ^|^| ^. ^.^|^| ^|^|^. ^. ^|^|   ^|^| ^. ^.^|^| ^|^|^. ^. ^|^|   ^|^| ^. ^.^|^| ^|^| ^. ^| ^. ^. ^. ^. ^.^|^|
-echo ^|^| ^. ^.^|^|   ^|^|^. _-^|^| ^|^|-_ ^.^|^|   ^|^|^. ^. ^|^| ^|^| ^. ^.^|^|   ^|^|^. _-^|^| ^|^|-_^.^|^\ ^. ^. ^. ^. ^|^|
-echo ^|^|^. ^. ^|^|   ^|^|-^'  ^|^| ^|^|  ^`-^|^|   ^|^| ^. ^.^|^| ^|^|^. ^. ^|^|   ^|^|-^'  ^|^| ^|^|  ^`^|^\_ ^. ^.^|^. ^.^|^|
-echo ^|^| ^. _^|^|   ^|^|    ^|^| ^|^|    ^|^|   ^|^|_ ^. ^|^| ^|^| ^. _^|^|   ^|^|    ^|^| ^|^|   ^|^\ ^`-_/^| ^. ^|^|
-echo ^|^|_-^' ^|^|  ^.^|/    ^|^| ^|^|    ^\^|^.  ^|^| ^`-_^|^| ^|^|_-^' ^|^|  ^.^|/    ^|^| ^|^|   ^| ^\  / ^|-_^.^|^|
-echo ^|^|    ^|^|_-^'      ^|^| ^|^|      ^`-_^|^|    ^|^| ^|^|    ^|^|_-^'      ^|^| ^|^|   ^| ^\  / ^|  ^`^|^|
-echo ^|^|    ^`^'         ^|^| ^|^|         ^`^'    ^|^| ^|^|    ^`^'         ^|^| ^|^|   ^| ^\  / ^|   ^|^|
-echo ^|^|            ^.^=^=^=^' ^`^=^=^=^.         ^.^=^=^=^'^.^`^=^=^=^.         ^.^=^=^=^' /^=^=^. ^|  ^\/  ^|   ^|^|
-echo ^|^|         ^.^=^=^'   ^\_^|-_ ^`^=^=^=^. ^.^=^=^=^'   _^|_   ^`^=^=^=^. ^.^=^=^=^' _-^|/   ^`^=^=  ^\/  ^|   ^|^|
-echo ^|^|      ^.^=^=^'    _-^'    ^`-_  ^`^=^'    _-^'   ^`-_    ^`^=^'  _-^'   ^`-_  /^|  ^\/  ^|   ^|^|
-echo ^|^|   ^.^=^=^'    _-^'          ^`-__^\^._-^'         ^`-_^./__-^'         ^`^' ^|^. /^|  ^|   ^|^|
-echo ^|^|^.^=^=^'    _-^'                                                     ^`^' ^|  /^=^=^.^|^|
-echo ^=^=^'    _-^'                                                            ^\/   ^`^=^=
-echo ^\   _-^'                                                                ^`-_   /
-echo  ^`^'^'                                                                      ^`^`^'
-goto wrapperidle
 
 ::::::::::::::
 :: Shutdown ::
@@ -538,22 +408,6 @@ PING -n 3 127.0.0.1>nul
 echo REDRAWN ALSO ANNIHILA
 PING -n 2 127.0.0.1>nul
 exit
-
-:patched
-title candypaper nointernet PATCHED edition
-color 43
-echo OH MY GODDDDD
-PING -n 3 127.0.0.1>nul
-echo SWEETSSHEET LACKOFINTERNS PATCHED DETECTED^^!^^!^^!^^!^^!^^!^^!^^!^^!^^!^^!^^!
-PING -n 3 127.0.0.1>nul
-echo can never be use again...
-PING -n 4 127.0.0.1>nul
-echo whoever put patch.jpeg back, you are grounded grounded gorrudjnmed for 6000
-PING -n 3 127.0.0.1>nul
-:grr
-echo g r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r 
-goto grr
-
 :configcopy
 if not exist utilities ( md utilities )
 echo :: Redrawn Config>> utilities\config.bat
