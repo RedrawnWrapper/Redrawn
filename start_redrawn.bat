@@ -5,7 +5,6 @@
 :: Project Runner: MiiArtisan#1687
 :: License: MIT
 :: Confirm measurements to proceed.
-if not exist %USERPROFILE%\Redrawn ( echo You have not installed Redrawn Offline using the installer. && pause & exit )
 cd %USERPROFILE%\Redrawn
 set SUBSCRIPT=y
 echo Loading settings...
@@ -112,97 +111,19 @@ if %VERBOSEWRAPPER%==y ( echo Checking for http-server installation... )
 npm list -g | findstr "http-server" >nul
 if %errorlevel% == 0 (
 	echo http-server is installed.
-	echo:
-	set HTTPSERVER_DETECTED=y
+	goto skip_dependency_install
 ) else (
 	echo http-server could not be found.
-	echo:
-	set NEEDTHEDEPENDERS=y
-)
-:httpserver_checked
-
-:: HTTPS cert
-if %VERBOSEWRAPPER%==y ( echo Checking for HTTPS certificate... )
-certutil -store -enterprise root | findstr "WOCRTV3" >nul
-if %errorlevel% == 0 (
-	echo HTTPS cert installed.
-	echo:
-	set HTTPSCERT_DETECTED=y
-) else (
-	:: backup check in case non-admin method used
-	if exist "utilities\checks\httpscert.txt" (
-		echo HTTPS cert probably installed.
-		echo:
-		set HTTPSCERT_DETECTED=y
-	) else (
-		echo HTTPS cert could not be found.
-		echo:
-		set NEEDTHEDEPENDERS=y
-
-	)
-)
-popd
-
-:: Assumes nothing is installed during a dry run
-if %DRYRUN%==y (
-	echo Let's just ignore anything we just saw above.
-	echo Nothing was found. Nothing exists. It's all fake.
-	set NEEDTHEDEPENDERS=y
-	set ADMINREQUIRED=y
-	set FLASH_DETECTED=n
-	set FLASH_CHROMIUM_DETECTED=n
-	set FLASH_FIREFOX_DETECTED=n
-	set NODEJS_DETECTED=n
-	set HTTPSERVER_DETECTED=n
-	set HTTPSCERT_DETECTED=n
-	set BROWSER_TYPE=n
+	goto installhttpserver
 )
 
 ::::::::::::::::::::::::
 :: Dependency Install ::
 ::::::::::::::::::::::::
 
-if %NEEDTHEDEPENDERS%==y (
-	if %SKIPDEPENDINSTALL%==n (
-		echo:
-		echo Installing missing dependencies...
-		echo:
-	) else (
-	echo Skipping dependency install.
-	goto skip_dependency_install
-	)
-) else (
-	echo All dependencies are available.
-	echo Turning off checking dependencies...
-	echo:
-	:: Initialize vars
-	set CFG=utilities\config.bat
-	set TMPCFG=utilities\tempconfig.bat
-	:: Loop through every line until one to edit
-	if exist %tmpcfg% del %tmpcfg%
-	set /a count=1
-	for /f "tokens=1,* delims=0123456789" %%a in ('find /n /v "" ^< %cfg%') do (
-		set "line=%%b"
-		>>%tmpcfg% echo(%line:~1%
-		set /a count+=1
-		if %count% GEQ 14 goto linereached
-	)
-	:linereached
-	:: Overwrite the original setting
-	echo set SKIPCHECKDEPENDS=y>> %tmpcfg%
-	echo:>> %tmpcfg%
-	:: Print the last of the config to our temp file
-	more +15 %cfg%>> %tmpcfg%
-	:: Make our temp file the normal file
-	copy /y %tmpcfg% %cfg% >nul
-	del %tmpcfg%
-	:: Set in this script
-	set SKIPCHECKDEPENDS=y
-	goto skip_dependency_install
-)
-
 title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Installing dependencies...]
 :: http-server
+:installhttpserver
 if %HTTPSERVER_DETECTED%==n (
 	if %NODEJS_DETECTED%==y (
 		echo Installing http-server...
@@ -269,79 +190,6 @@ if %HTTPSERVER_DETECTED%==n (
 	echo:
 	goto install_cert
 )
-
-:: Install HTTPS certificate
-:install_cert
-if %HTTPSCERT_DETECTED%==n (
-	echo Installing HTTPS certificate...
-	echo:
-	if not exist "server\the.crt" (
-		echo ...except it doesn't exist for some reason.
-		echo Redrawn requires this to run.
-		echo You should get a "the.crt" file from someone else, or redownload Redrawn.
-		echo Offline has nothing left to do since it can't launch without the.crt, so it will close.
-		pause
-		exit
-	)
-	:: Check for admin
-	if /i not "%SAFE_MODE%"=="y" (
-		fsutil dirty query %systemdrive% >NUL 2>&1
-		if /i not %ERRORLEVEL%==0 (
-			if %VERBOSEWRAPPER%==n ( cls )
-			echo For Redrawn to work, it needs an HTTPS certificate to be installed.
-			echo If you have administrator privileges, you should reopen start_wrapper.bat as Admin.
-			echo ^(do this by right-clicking start_wrapper.bat and click "Run as Administrator"^)
-			echo:
-			echo If you can't do that, there's another method, but it's less reliable and is done per-browser.
-			echo: 
-			echo Press Y if you have admin access, and press N if you don't.
-			:certaskretry
-			set /p CERTCHOICE= Response:
-			echo:
-			if not '%certchoice%'=='' set certchoice=%certchoice:~0,1%
-			if /i "%certchoice%"=="y" echo This window will now close so you can restart it with admin. & pause & exit
-			if /i "%certchoice%"=="n" goto certnonadmin
-			echo You must answer Yes or No. && goto certaskretry
-
-			:: Non-admin cert install
-			pushd utilities
-			start SilentCMD open_http-server.bat
-			popd
-			echo: 
-			echo A web browser window will open.
-			echo When you see a security notice, go past it.
-			echo This is completely harmless in a local setting like this.
-			echo If you see a message like this on the real internet, you should stay away.
-			:: Pause to allow startup
-			PING -n 8 127.0.0.1>nul
-			if %INCLUDEDCHROMIUM%==n (
-				if %CUSTOMBROWSER%==n (
-					start https://localhost:4664/certbypass.html
-				) else (
-					start %CUSTOMBROWSER% https://localhost:4664/certbypass.html >nul
-				)
-			) else (
-				pushd utilities\ungoogled-chromium
-				start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile https://localhost:4664/certbypass.html >nul
-				popd
-			)
-			pause
-			echo:
-			echo If you intend on using another browser, you'll have to do this again by going to the server page and passing the security message.
-			echo You've used a non-admin method of installing the HTTPS certificate. To redo the process, delete this file. > utilities\checks\httpscert.txt
-			goto after_cert_install
-		)
-	)
-	pushd server
-	if %VERBOSEWRAPPER%==y (
-		if %DRYRUN%==n ( certutil -addstore -f -enterprise -user root the.crt )
-	) else (
-		if %DRYRUN%==n ( certutil -addstore -f -enterprise -user root the.crt >nul )
-	)
-	set ADMINREQUIRED=y
-	popd
-)
-:after_cert_install
 
 color 0f
 echo All dependencies now installed^^! Continuing with Redrawn boot.
