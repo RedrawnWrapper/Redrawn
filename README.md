@@ -81,4 +81,4 @@ These are credits from Redrawn and W:O.
 ## Footnotes
 [1] - See <https://www.gnu.org/philosophy/free-sw.html> for a better definition of free software.
 ## Notes:
-this version of redrawn is the reason why we quitted in the first place. but we came back anyway. however it is recommended if you use the express version of redrawn because that version has the tts not loading on video edit bug patched up. this version however does not and it is advised if you don't use it unless you are testing it.
+this version of redrawn is the reason why we quitted in the first place. but we came back anyway. however it is recommended if you use the express version of redrawn because that version has the tts not loading on video edit bug patched up. this version however does not and it is advised if you don't use this version unless you are testing it.
