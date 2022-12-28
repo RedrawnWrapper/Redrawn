@@ -355,37 +355,12 @@ echo Type Y to quit, and N to go back.
 :exitwrapperretry
 set /p EXITCHOICE= Response:
 echo:
-if /i "%exitchoice%"=="y" goto point_extraction
-if /i "%exitchoice%"=="yes" goto point_extraction
+if /i "%exitchoice%"=="y" TASKKILL /IM node.exe /F 2>nul && exit
+if /i "%exitchoice%"=="yes" TASKKILL /IM node.exe /F 2>nul && exit
 if /i "%exitchoice%"=="n" goto wrapperstartedcls
 if /i "%exitchoice%"=="no" goto wrapperstartedcls
 if /i "%exitchoice%"=="with style" goto exitwithstyle
 echo You must answer Yes or No. && goto exitwrapperretry
-
-:point_extraction
-
-title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Shutting down...]
-
-:: Shut down Node.js, PHP and http-server
-if %VERBOSEWRAPPER%==y (
-	if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
-	if %DRYRUN%==n ( TASKKILL /IM php.exe /F )
-	echo:
-) else (
-	if %DRYRUN%==n ( TASKKILL /IM node.exe /F 2>nul )
-	if %DRYRUN%==n ( TASKKILL /IM php.exe /F 2>nul )
-)
-
-:: This is where I get off.
-echo Redrawn has been shut down.
-if %FUCKOFF%==y ( echo You're a good listener. )
-echo This window will now close.
-if %INCLUDEDCHROMIUM%==y (
-	echo You can close the web browser now.
-)
-echo Open start_wrapper.bat again to start W:O again.
-if %DRYRUN%==y ( echo Go wet your run next time. ) 
-pause & exit
 
 :exitwithstyle
 title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Shutting down... WITH STYLE]
