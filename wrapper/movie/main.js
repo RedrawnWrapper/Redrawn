@@ -42,6 +42,17 @@ module.exports = {
 			}
 		});
 	},
+	loadRows() {
+		const folder = process.env.SAVED_FOLDER;
+		const array = [];
+		fs.readdirSync(folder).forEach(fn => {
+			if (!fn.includes("movie")) return;
+			const [ beg, numbers, end ] = fn.split("-");
+			const id = Number.parseInt(numbers);
+			array.unshift({html: `<a class="video-holder" href="#" data-video="/player?movieId=m-${id}"><div class="vthumb"><div class="vthumb-clip"><div class="vthumb-clip-inner"><span class="valign"></span><img src="/movie_thumbs/m-${id}.png" alt=""/></div></div></div><div class="play"></div></a>`});
+		});
+		return array;
+	},
 	loadZip(mId) {
 		return new Promise((res, rej) => {
 			const i = mId.indexOf('-');
