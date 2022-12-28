@@ -205,18 +205,17 @@ title Redrawn v%WRAPPER_VER% ^(build %WRAPPER_BLD%^) [Loading...]
 
 :: Close existing node apps
 :: Hopefully fixes EADDRINUSE errors??
-if %VERBOSEWRAPPER%==y (
-	echo Closing any existing node apps...
-	if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
-	echo:
-)
-
+if %DRYRUN%==n ( TASKKILL /IM node.exe /F )
 :: Start Node.js and http-server
 echo Loading Node.js and http-server...
 cd %USERPROFILE%\Redrawn\utilities
-if %DRYRUN%==n ( start open_http-server.bat )
-if %DRYRUN%==n ( start open_nodejs.bat )
-
+if !VERBOSEWRAPPER!==y (
+	if !DRYRUN!==n ( start /MIN open_http-server.bat )
+	if !DRYRUN!==n ( start /MIN open_nodejs.bat )
+) else (
+	if !DRYRUN!==n ( start SilentCMD open_http-server.bat )
+	if !DRYRUN!==n ( start SilentCMD open_nodejs.bat )
+)
 :: Pause to allow startup
 :: Prevents the video list opening too fast
 :: timer is set for 2 minutes for slow computers
