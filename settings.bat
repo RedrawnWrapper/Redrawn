@@ -109,11 +109,11 @@ if exist "wrapper\_THEMES\themelist-allthemes.xml" (
 ) else ( 
 	echo ^(7^) Truncated themelist is[91m OFF [0m
 )
-:: Discord RPC
-if exist "wrapper\main-norpc.js" (
-	echo ^(8^) Discord rich prescence is[92m ON [0m
+:: Online Server
+if exist "wrapper\config-offline.json" (
+	echo ^(8^) Online Server Is[92m ON [0m
 ) else ( 
-	echo ^(8^) Discord rich prescence is[91m OFF [0m
+	echo ^(8^) Online Server Is[91m OFF [0m
 )
 :: Cepstral
 if exist "wrapper\tts\info-cepstral.json" (
@@ -272,18 +272,13 @@ if "!choice!"=="?7" (
 	echo However, if you want to see everything the program has to offer, turn this on.
 	goto reaskoptionscreen
 )
-:: Rich prescence
+:: Online Server
 if "!choice!"=="8" goto rpcchange
 if "!choice!"=="?8" (
-	echo By default, Discord rich presence is enabled.
-        echo:
-	echo It's used to show when you're using Wrapper: Offline
-        echo in your "Playing A Game" status on Discord, much like
-        echo how lots of modern computer games will show on your
-        echo Discord status when you're playing them.
-        echo:
-	echo Turning this off will make Offline stop saying
-        echo when you're using it on Discord.
+	echo By default,
+        echo The LVM Will Be Using Localhost HTTPS (AKA Offline Server)
+	echo Its used so that if anything happens in the server folder causing it not to work right,
+	echo then you can enable the feature.
 	goto reaskoptionscreen
 )
 :: Cepstral
@@ -570,20 +565,20 @@ if exist "global-dark.css" (
 popd
 goto optionscreen
 
-::::::::::::::::::
-:: Discord RPC  ::
-::::::::::::::::::
+::::::::::::::::::::
+:: Online Server  ::
+::::::::::::::::::::
 :rpcchange
 echo Toggling setting...
 pushd wrapper
-if exist "main-norpc.js" (
+if exist "config-offline.json" (
 	:: disable
-	ren main.js main-rpc.js
-	ren main-norpc.js main.js
+	ren config.json config-online.json
+	ren config-offline.json config.json
 ) else ( 
 	:: enable
-	ren main.js main-norpc.js
-	ren main-rpc.js main.js
+	ren config.json config-offline.json
+	ren config-online.json config.json
 )
 popd
 goto optionscreen
