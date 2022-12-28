@@ -234,9 +234,9 @@ if %INCLUDEDCHROMIUM%==n (
 	echo Opening Redrawn using included Chromium...
 	pushd utilities\ungoogled-chromium
 	if %APPCHROMIUM%==y (
-		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=https://localhost:4664 )
+		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=http://localhost:4343 )
 	) else (
-		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile https://localhost:4664 )
+		if %DRYRUN%==n ( start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile http://localhost:4343 )
 	)
 )
 echo Redrawn has been started^^! The video list should now be open.
