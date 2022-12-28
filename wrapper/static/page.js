@@ -206,6 +206,13 @@ module.exports = function (req, res, url) {
         </form>
         <form style="display:none" enctype='multipart/form-data' action='/upload_character' method='post'>
 	         <input id='file2' type="file" onchange="this.form.submit()" name='import' />
-        </form>`);
+        </form><footer>
+	
+
+	<nav id="foot-left">
+		<a href="http://localhost:4343">Redrawn</a>
+	</nav><nav id="foot-left">
+		<a>v0.0.1</a>
+	</nav></footer>`);
 	return true;
 }
