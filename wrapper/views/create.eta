@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="dns-prefetch" href="//web.archive.org/web/20141204150606/http://lightspeed.goanimate.com/">
+
+<title>Create - Redrawn</title>
+
+
+<meta name="description" content="Make a premium video using GoAnimate's powerful Video Maker studio. Enjoy full creative control with simple drag &amp; drop tools. Make a video today!">
+<meta property="og:site_name" content="GoAnimate">
+<meta property="fb:app_id" content="177116303202">
+
+<meta name="google-site-verification" content="K_niiTfCVi72gwvxK00O4NjsVybMutMUnc-ZnN6HUuA">
+
+<link rel="alternate" href="http://feeds.feedburner.com/GoAnimate" type="application/rss+xml" title="GoAnimate Blog">
+<link rel="alternate" href="http://feeds.feedburner.com/GoAnimate/WhatsNew" type="application/rss+xml" title="GoAnimate - Recently Released Content">
+<link rel="alternate" href="http://feeds.feedburner.com/GoAnimate/MostWatched" type="application/rss+xml" title="GoAnimate - Most Watched">
+
+<link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+<link href="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/css/common_combined.css" rel="stylesheet" type="text/css">
+
+<link href="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/css/upsell_modals.css" rel="stylesheet" type="text/css">
+<link href="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/css/videomaker.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+<style text="text/css">
+.top-nav.collapse {height: auto;overflow: visible;}
+</style>
+<![endif]-->
+
+<script>
+var srv_tz_os = -5, view_name = "go", user_cookie_name = "u_info";
+</script>
+
+<script src="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/js/common_combined.js"></script>
+<script type="text/javascript" src="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/po/goserver_js-en_US.json"></script>
+<script type="text/javascript">
+    var I18N_LANG = 'en_US';
+	var GT = new Gettext({'locale_data': json_locale_data});
+	function getYear() {
+		let currentDate = new Date();
+		let cYear = currentDate.getFullYear();
+		document.getElementById("CopyrightYear").innerHTML = `&nbsp;&nbsp;&nbsp; Redrawn © ${cYear}`;
+	}
+</script>
+
+<script src="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/js/jquery/jquery.flexslider.min.js"></script>
+<script src="https://josephanimate2021.github.io/RedrawnDownload/static/a0cbfe8e1f619bcc/go/js/trial_upsell.js"></script>
+
+
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-2516970-1']);
+_gaq.push(['_setDomainName', 'none']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!-- GoAnimate_Footer_ROS_Bottom_960x284 -->
+<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
+</script>
+<script type="text/javascript">
+GS_googleAddAdSenseService("ca-pub-9090384317741239");
+GS_googleEnableAllServices();
+</script>
+<script type="text/javascript">
+GA_googleAddAttr("is_login", "no");
+GA_googleAddAttr("is_plus", "no");
+GA_googleAddAttr("is_creator", "no");
+</script>
+<script type="text/javascript">
+GA_googleAddSlot("ca-pub-9090384317741239", "GoAnimate_Footer_ROS_Bottom_960x284");
+</script>
+<script type="text/javascript">
+GA_googleFetchAds();
+</script>
+<!-- GoAnimate_Footer_ROS_Bottom_960x284 -->
+
+
+<link href="https://plus.google.com/+goanimate" rel="publisher">
+
+</head>
+<body class="en_US" onload="getYear()">
+<script type="text/javascript">
+if (self !== top) {
+            jQuery('body').hide();
+    }
+</script>
+<div id="fb-root"></div>
+<script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({appId: '177116303202', cookie: true, status: true, xfbml: true});
+    jQuery(document).ready(function() {
+      jQuery(document).trigger('facebook.init');
+    });
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+
+<script type="text/javascript">
+  var _kmq = _kmq || [];
+  var _kmk = _kmk || 'd6e9ca5d19bda4afea55a1493af00d0b98c26240';
+  function _kms(u){
+    setTimeout(function(){
+      var d = document, f = d.getElementsByTagName('script')[0],
+      s = d.createElement('script');
+      s.type = 'text/javascript'; s.async = true; s.src = u;
+      f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('//i.kissmetrics.com/i.js');
+  _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+</script>
+
+<script type="text/javascript">
+        jQuery.extend(CCStandaloneBannerAdUI, {"actionshopSWF":"https:\/\/web.archive.org\/web\/20141204150606\/http:\/\/lightspeed.goanimate.com\/animation\/ad1b4b02721506d6\/actionshop.swf","apiserver":"https:\/\/web.archive.org\/web\/20141204150606\/http:\/\/goanimate.com\/","clientThemePath":"https:\/\/web.archive.org\/web\/20141204150606\/http:\/\/lightspeed.goanimate.com\/static\/a0cbfe8e1f619bcc\/<client_theme>","userId":""});
+</script>
+
+<div class="page-container">
+
+<!-- HEADER -->
+<div class="site-header">
+	<div class="container site-header-inside clearfix">
+		<a class="site-logo" href="/" title="Redrawn">
+			<img alt="Make a Video With Redrawn" src="https://camo.githubusercontent.com/4c449c82f308df989f508882c88ea1f2bd6aa41b8257a362e367ec9dc0199bf8/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3935393938363335383437333038343938382f3936303031373436333630373730313532352f53696e5f746974756c6f2d312e706e67">
+		</a>
+	
+		<button type="button" class="top-nav-toggle" data-toggle="collapse" data-target="#top-nav">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	
+		<ul id="top-nav" class="top-nav collapse">
+			<li><a id="upload_movie">Upload A Movie</a></li>
+			<li><a href="https://www.anistick.com/recorder">Anistick Recorder</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" href="/html/list.html" data-toggle="dropdown">Explore <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/changelog.md?token=GHSAT0AAAAAABT2BKZIAW7G2UINSYE3V4FAYTNYLRQ">Update Log</a></li>
+					<li><a href="https://youtube.com/@josephanimate">Joseph's YouTube Channel</a></li>
+					<li><a href="/pages/html/list.html">Your Videos</a></li>
+					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/faq.md?token=GHSAT0AAAAAABT2BKZIXY6CE6Y3JEHLK6LEYTNYMSQ">FAQ</a></li>
+				</ul>
+			</li>
+			<li>
+				<a class="bright" href="/app/cc?themeId=family&bs=adam">Create a Char</a>
+			</li>
+			<li class="top-nav-vm-btn">
+				<span><a class="btn btn-blue" href="/create">Make a Video</a></span>
+			</li>
+		</ul>
+	
+	</div>
+</div>
+
+<!-- END OF HEADER -->
+
+<div class="vm-tutorial">
+    <div class="container">
+        <div class="tutorial-video" style="display:none;">
+
+<div id="wistia_9z4fah3lag" class="wistia_embed" style="width:860px;height:484px;"><div itemprop="video" itemscope itemtype="http://schema.org/VideoObject"><meta itemprop="name" content="How to Use GoAnimate"/><meta itemprop="duration" content="PT3M27S"/><meta itemprop="thumbnailUrl" content="http://embed.wistia.com/deliveries/e3f2aaca2e8b243a83bf5f6e049391fa7e10320c.bin"/><meta itemprop="contentURL" content="http://embed.wistia.com/deliveries/00a07fa93ba333cc10aa9d9726681453a918ac7e.bin"/><meta itemprop="embedURL" content="http://embed.wistia.com/flash/embed_player_v2.0.swf?2013-07-03&amp;autoPlay=false&amp;banner=false&amp;controlsVisibleOnLoad=true&amp;customColor=7b796a&amp;endVideoBehavior=default&amp;fullscreenDisabled=true&amp;mediaDuration=207.0&amp;playButtonVisible=true&amp;showPlayButton=true&amp;showPlaybar=true&amp;showVolume=true&amp;stillUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2Ff2d43e338bed04ffd7650c3da9a54a48d87e40af.jpg%3Fimage_crop_resized%3D860x484&amp;unbufferedSeek=true&amp;videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F00a07fa93ba333cc10aa9d9726681453a918ac7e.bin"/><meta itemprop="uploadDate" content="2013-09-04T11:23:02Z"/><object id="wistia_9z4fah3lag_seo" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="display:block;height:484px;position:relative;width:860px;"><param name="movie" value="http://embed.wistia.com/flash/embed_player_v2.0.swf?2013-07-03"></param><param name="allowfullscreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="bgcolor" value="#000000"></param><param name="wmode" value="opaque"></param><param name="flashvars" value="autoPlay=false&amp;banner=false&amp;controlsVisibleOnLoad=true&amp;customColor=7b796a&amp;endVideoBehavior=default&amp;fullscreenDisabled=true&amp;mediaDuration=207.0&amp;playButtonVisible=true&amp;showPlayButton=true&amp;showPlaybar=true&amp;showVolume=true&amp;stillUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2Ff2d43e338bed04ffd7650c3da9a54a48d87e40af.jpg%3Fimage_crop_resized%3D860x484&amp;unbufferedSeek=true&amp;videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F00a07fa93ba333cc10aa9d9726681453a918ac7e.bin"></param><embed src="https://web.archive.org/web/20141204150606oe_/http://embed.wistia.com/flash/embed_player_v2.0.swf?2013-07-03" allowfullscreen="true" allowscriptaccess="always" bgcolor="#000000" flashvars="autoPlay=false&amp;banner=false&amp;controlsVisibleOnLoad=true&amp;customColor=7b796a&amp;endVideoBehavior=default&amp;fullscreenDisabled=true&amp;mediaDuration=207.0&amp;playButtonVisible=true&amp;showPlayButton=true&amp;showPlaybar=true&amp;showVolume=true&amp;stillUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2Ff2d43e338bed04ffd7650c3da9a54a48d87e40af.jpg%3Fimage_crop_resized%3D860x484&amp;unbufferedSeek=true&amp;videoUrl=http%3A%2F%2Fembed.wistia.com%2Fdeliveries%2F00a07fa93ba333cc10aa9d9726681453a918ac7e.bin" name="wistia_9z4fah3lag_html" style="display:block;height:100%;position:relative;width:100%;" type="application/x-shockwave-flash" wmode="opaque"></embed></object><noscript itemprop="description">How to Use GoAnimate</noscript></div></div>
+<script charset="ISO-8859-1" src="http://fast.wistia.com/static/concat/E-v1.js"></script>
+<script>
+wistiaEmbed = Wistia.embed("9z4fah3lag");
+</script>
+<script charset="ISO-8859-1" src="http://fast.wistia.com/embed/medias/9z4fah3lag/metadata.js"></script>
+
+        </div>
+        <div class="vm-tutorial-trigger-container">
+            <a class="vm-tutorial-trigger" href="#" target="_blank">
+                <span class="on">Watch Tutorial</span>
+                <span class="off">Close</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="vm-bf-wrapper">
+<div class="vm-bf" id="topbanner-bf">
+    <div class="container">
+        <h1>Turn Ideas And Video Scripts Into Animations Easily!</h1>
+        <div class="vm-bf-content">
+            <p>Our themes are carefully-produced sets of matching assets, such as characters, actions, backgrounds, props, and smart sets &ndash; each with a unique visual style. Our flagship theme, Business Friendly, offers the widest selection, providing hundreds of actions across numerous occupations and activities, with more added all the time. Try our video maker today.</p>
+        </div>
+    </div>
+</div>
+<div class="vm-bf whiteboard" id="topbanner-wb" style="display:none;">
+    <div class="container">
+        <h1>Turn Ideas And Video Scripts Into Animations Easily!</h1>
+        <div class="vm-bf-content">
+            <p>Our themes are carefully-produced sets of matching assets, such as characters, actions, backgrounds, props, and smart sets &ndash; each with a unique visual style. Our flagship theme, Whiteboard Animation, offers the widest selection, providing hundreds of actions across numerous occupations and activities, with more added all the time. Try our video maker today.</p>
+        </div>
+    </div>
+</div>
+<div class="vm-bf-dots-wrapper">
+    <ul class="vm-bf-dots">
+        <li class="dot bf on"><a href="#"></a></li>
+        <li class="dot wb"><a href="#"></a></li>
+    </ul>
+</div>
+</div>
+
+<script>
+$('.vm-bf-dots a').click(function(e) {
+    e.preventDefault();
+    var $li = $(this).parent();
+    if ($li.hasClass('on')) return;
+    $li.addClass('on').siblings().removeClass('on');
+    $li.parent('.vm-bf-dots').toggleClass('wb', $li.hasClass('wb'));
+    if ($li.hasClass('wb')) {
+        $('#topbanner-bf').fadeOut();
+        $('#topbanner-wb').fadeIn();
+    } else {
+        $('#topbanner-wb').fadeOut();
+        $('#topbanner-bf').fadeIn();
+    }
+});
+</script>
+
+<div class="container themes-section">
+    <div class="header">
+        <div class="header-content">
+            <h2>Select A Theme</h2>
+            Pick a video-making theme based on its visual style, or use the filter to choose based on features.        </div>
+        <div class="filter-dropdown-container">
+            <div class="filter-dropdown dropdown">
+                <a class="filter-dropdown-toggle" data-toggle="dropdown" href="#">Filter <span class="caret"></span></a>
+                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a class="filter-item" href="#" data-filter="lipsync">
+                            <div class="filter-icon"><img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/filter_lip.png" alt=""></div>
+                            <div class="filter-body">
+                                <div class="filter-name"><strong>Lip-sync</strong></div>
+                                <span class="filter-desc">Characters automatically lip-sync their dialog when lines are assigned to them.</span>
+                            </div>
+                            <div class="filter-checkbox-container">
+                                <span class="filter-checkbox"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="filter-item" href="#" data-filter="ext_lib">
+                            <div class="filter-icon"><img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/filter_library.png" alt=""></div>
+                            <div class="filter-body">
+                                <div class="filter-name"><strong>Extensive Library</strong></div>
+                                <span class="filter-desc">Collections of characters, backgrounds and props corresponding to a wide variety of locations, occupations and industries.</span>
+                            </div>
+                            <div class="filter-checkbox-container">
+                                <span class="filter-checkbox"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="filter-item" href="#" data-filter="starters">
+                            <div class="filter-icon"><img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/filter_starter.png" alt=""></div>
+                            <div class="filter-body">
+                                <div class="filter-name"><strong>Scene Starters</strong></div>
+                                <span class="filter-desc">Pre-made sequences that help you get started (or finished) quickly!  You can also save your own frequently-used sequences as starters.</span>
+                            </div>
+                            <div class="filter-checkbox-container">
+                                <span class="filter-checkbox"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="filter-item" href="#" data-filter="qvm">
+                            <div class="filter-icon"><img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/filter_template.png" alt=""></div>
+                            <div class="filter-body">
+                                <div class="filter-name"><strong>Template</strong></div>
+                                <span class="filter-desc">Super-fast tool for creating simple, dialog-based videos.  Be finished in minutes!</span>
+                            </div>
+                            <div class="filter-checkbox-container">
+                                <span class="filter-checkbox"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="filter-item" href="#" data-filter="char_creator">
+                            <div class="filter-icon"><img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/filter_cc.png" alt=""></div>
+                            <div class="filter-body">
+                                <div class="filter-name"><strong>Character Creator</strong></div>
+                                <span class="filter-desc">Customize your characters!  Adapt existing characters to meet your needs or build completely from scratch.</span>
+                            </div>
+                            <div class="filter-checkbox-container">
+                                <span class="filter-checkbox"></span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-results" id="filter-results" style="display:none">
+        <b class="filter-count">0</b> matching themes based on filters:
+        <ul class="filter-crumb-list"></ul>
+        <a class="filter-crumb-list-clear" href="#">Clear all</a>
+    </div>
+
+    <div class="themes clearfix" id="themes">
+
+        <div class="theme" id="thm-business" data-tags="char_creator lipsync starters ext_lib qvm">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Business_Friendly.jpg" alt="Business Friendly">
+                </div>
+                <div class="theme-meat">
+                    <h3>Business Friendly</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=business');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=business');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-tag biz">Business Exclusive</div>
+        </div>
+
+        <div class="theme" id="thm-whiteboard" data-tags="char_creator lipsync">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Whiteboard_Animation.jpg" alt="Whiteboard Animation">
+                </div>
+                <div class="theme-meat">
+                    <h3>Whiteboard Animation</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=whiteboard');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=whiteboard');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-tag biz">Business Exclusive</div>
+        </div>
+
+        <div class="theme" id="thm-infographics" data-tags="">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/businessAsVisual.jpg" alt="Business as Visual">
+                </div>
+                <div class="theme-meat">
+                    <h3>Business as Visual</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=infographics');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-tag biz">Business Exclusive</div>
+        </div>
+
+        <div class="theme" id="thm-commoncraft" data-tags="">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Commoncraft.jpg" alt="Common Craft">
+                </div>
+                <div class="theme-meat">
+                    <h3>Common Craft</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=commoncraft');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-tag">$59 per year</div>
+        </div>
+
+        <div class="theme" id="thm-custom" data-tags="lipsync qvm char_creator">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Comedy_World.jpg" alt="Comedy World">
+                </div>
+                <div class="theme-meat">
+                    <h3>Comedy World</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=custom');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=family');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-action" data-tags="lipsync qvm char_creator">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/lil_Peepz.jpg" alt="Lil' Peepz">
+                </div>
+                <div class="theme-meat">
+                    <h3>Lil&#039; Peepz</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=action');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc?themeId=cc2&bs=default');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-sticklybiz" data-tags="">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Stickly_Business.jpg" alt="Stickly Business">
+                </div>
+                <div class="theme-meat">
+                    <h3>Stickly Business</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=sticklybiz');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-tag biz">Business Exclusive</div>
+        </div>
+
+        <div class="theme" id="thm-retro" data-tags="">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Cartoon_Classics.jpg" alt="Cartoon Classics">
+                </div>
+                <div class="theme-meat">
+                    <h3>Cartoon Classics</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=retro');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-politics2" data-tags="lipsync qvm">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Election_2012.jpg" alt="White Houserz">
+                </div>
+                <div class="theme-meat">
+                    <h3>White Houserz</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=election');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-anime" data-tags="char_creator lipsync qvm">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Anime.jpg" alt="Anime">
+                </div>
+                <div class="theme-meat">
+                    <h3>Anime</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=anime');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=anime');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-ninjaanime" data-tags="char_creator lipsync">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Ninja_Anime.jpg" alt="Ninja Anime">
+                </div>
+                <div class="theme-meat">
+                    <h3>Ninja Anime</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=ninjaanime');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=ninjaanime');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-spacecitizen" data-tags="lipsync">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Space_Citizens.jpg" alt="Space Citizens">
+                </div>
+                <div class="theme-meat">
+                    <h3>Space Citizens</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=spacecitizen');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-chibi" data-tags="lipsync qvm char_creator">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Chibi_Peepz.jpg" alt="Chibi Peepz">
+                </div>
+                <div class="theme-meat">
+                    <h3>Chibi Peepz</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=chibi');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=chibi');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-ninja" data-tags="lipsync qvm char_creator">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Chibi_Ninjas.jpg" alt="Chibi Ninjas">
+                </div>
+                <div class="theme-meat">
+                    <h3>Chibi Ninjas</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=ninja');" title="Video Maker">Make a Video</button>
+                        <button class="btn btn-icon" type="button" onclick="fullscreenStudio('/cc_browser?themeId=ninja');" title="Character Creator">Create a Char</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-space" data-tags="lipsync qvm">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Space_Peepz.jpg" alt="Space Peepz">
+                </div>
+                <div class="theme-meat">
+                    <h3>Space Peepz</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=space');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-stick" data-tags="">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Stick_Figure.jpg" alt="Stick Figure">
+                </div>
+                <div class="theme-meat">
+                    <h3>Stick Figure</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=stick');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-wildlife" data-tags="lipsync qvm">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://raw.githubusercontent.com/josephanimate2021/ga/zimmertwins-desktop-stable/files/wayback_zimmertwins.jpg" alt="Wildlife">
+                </div>
+                <div class="theme-meat">
+                    <h3>Zimmertwins</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('https://zimmertwins.onrender.com/starters');" title="Template">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme" id="thm-animal" data-tags="lipsync qvm">
+            <div class="theme-cell">
+                <div class="theme-cover">
+                    <img src="https://josephanimate2021.github.io/static/477/go/img/videomaker/themes/Lil_Petz_World.jpg" alt="Lil' Petz World">
+                </div>
+                <div class="theme-meat">
+                    <h3>Lil&#039; Petz World</h3>
+                    <div class="apps">
+                        <button class="btn btn-blue" type="button" onclick="fullscreenStudio('/go_full?tray=animal');" title="Video Maker">Make a Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+$(function() {
+    $('.vm-tutorial-trigger').click(function(e) {
+        e.preventDefault();
+
+        var $tutorial = $('.vm-tutorial');
+
+        if ($tutorial.hasClass('expand')) {
+            $('.tutorial-video').hide();
+            wistiaEmbed && wistiaEmbed.pause();
+        } else {
+            setTimeout(function() {
+                $('.tutorial-video').show();
+                wistiaEmbed && wistiaEmbed.play();
+            }, 400);
+        }
+
+        $tutorial.toggleClass('expand');
+    });
+
+    $('.theme-cell').each(function() {
+        var $button = $('.apps > .btn:first-child', this);
+        var launch, url;
+
+        $('.theme-cover', this).click(function(e) {
+            e.preventDefault();
+
+            if ($button.attr('href') != undefined) {
+                window.location.href = $button.attr('href');
+            } else {
+                $button.trigger('click');
+            }
+        }).addClass('launch');
+    });
+
+    $('.vm-bf-content .btn-flat, .themes .apps > .btn').tooltip();
+});
+
+var tagNames = {"lipsync":"Lip-sync","ext_lib":"Extensive Library","starters":"Scene Starters","qvm":"Template","char_creator":"Character Creator"};
+</script>
+<script src="https://josephanimate2021.github.io/static/477/go/js/video_maker.js"></script>
+
+
+<!-- FOOTER -->
+
+<div class="site-footer">
+	<div class="container clearfix">
+	
+		<div class="site-footer-nav clearfix">
+			<div class="col" style="border-left: none;">
+				<h5><span>About Redrawn</span></h5>
+				<ul>
+					<li><a href="https://github.com/RedrawnWrapper/Redrawn">Who we are</a></li>
+					<li><a href="https://discord.gg/BYaM76Arhx">Discord</a></li>
+					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/changelog.md?token=GHSAT0AAAAAABT2BKZIAW7G2UINSYE3V4FAYTNYLRQ">Update Log</a></li>
+					<li><a href="/html/list.html">Your Videos</a></li>
+				</ul>
+			</div>
+			<div class="col">
+				<h5><span>GoAnimate Solutions</span></h5>
+				<ul>
+					<li><a href="https://youtube.com/@josephanimate">Joseph's Channel</a></li>
+					<li><a href="https://discord.io/goanimate4schools" target="_blank">Joseph's Discord Server</a></li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+				</ul>
+			</div>
+			<div class="col">
+				<h5><span>Usage Guidelines</span></h5>
+				<ul>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+				</ul>
+			</div>
+			<div class="col" style="border-right: none;">
+				<h5>Getting Help</h5>
+				<ul>
+					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/faq.md?token=GHSAT0AAAAAABT2BKZIXY6CE6Y3JEHLK6LEYTNYMSQ">FAQ</a></li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+					<li class="dummy">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<hr>
+	
+	
+		<div class="clearfix">
+			<div class="site-footer-socials-container">
+				Follow us on:
+				<ul class="site-footer-socials clearfix">
+					<li><a class="youtube" href="http://www.youtube.com/@redrawnwrapper">YouTube</a></li>
+				</ul>
+			</div>
+			<div class="site-footer-copyright" id="CopyrightYear"></div>
+		</div>
+	</div>
+</div>
+
+
+<div id="studio_container" style="display: none;">
+    <div id="studio_holder"><!-- Full Screen Studio -->
+        <div style="top: 50%; position: relative;">
+            This content requires the Clean Flash Player 34. <a href="https://web.archive.org/web/20141204150606/http://get.adobe.com/flashplayer/">Get Flash</a>
+        </div>
+    </div>
+</div>
+<!-- END OF PAGE STRUCTURE -->
+
+</body>
+</html>

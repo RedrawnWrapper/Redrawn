@@ -1,0 +1,24 @@
+<script>
+    function getYear() {
+		let currentDate = new Date();
+		let cYear = currentDate.getFullYear();
+		document.getElementById("foot-right").innerHTML = `<a>Redrawn © ${cYear}</a>`;
+	}
+</script>
+<header>
+	<a href="/">
+		<h1 style="margin:0"><img id="logo" src="https://camo.githubusercontent.com/4c449c82f308df989f508882c88ea1f2bd6aa41b8257a362e367ec9dc0199bf8/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3935393938363335383437333038343938382f3936303031373436333630373730313532352f53696e5f746974756c6f2d312e706e67" alt="Redrawn"/></h1>
+	</a>
+	<nav id="headbuttons">
+		<a class="button_small" onclick="document.getElementById('char').click()">UPLOAD A CHAR</a>
+		<a class="button_small" onclick="document.getElementById('movie').click()">UPLOAD A MOVIE</a>
+		<a href="/create" class="button_big">MAKE A VIDEO</a>
+	</nav>
+</header>
+<body onload="getYear()">
+<form enctype='multipart/form-data' action='/upload_character' method='post'>
+	<input id='char' type="file" onchange="this.form.submit()" name='import' />
+</form>
+<form style="display:none" enctype='multipart/form-data' action='/upload_movie' method='post'>
+	<input id='movie' type="file" onchange="this.form.submit()" name='import' />
+</form>
