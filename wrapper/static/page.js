@@ -458,7 +458,6 @@ module.exports = function (req, res, url) {
 			return;
 	}
 	res.setHeader('Content-Type', 'text/html; charset=UTF-8');
-	Object.assign(params.flashvars, query);
 	res.end(!html ? `<head>
 		<script>
 			document.title='${title} - Redrawn',flashvars=${JSON.stringify(params.flashvars)}
