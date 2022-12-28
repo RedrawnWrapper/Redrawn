@@ -147,3 +147,4 @@ dist
 utilities/config.bat
 utilities/config.bat
 utilities/ungoogled-chromium/the_profile/*
+utilities/the_profile/*
