@@ -218,7 +218,6 @@ if !VERBOSEWRAPPER!==y (
 )
 :: Pause to allow startup
 :: Prevents the video list opening too fast
-:: timer is set for 2 minutes for slow computers
 timeout 20
 
 :: Open Wrapper in preferred browser
