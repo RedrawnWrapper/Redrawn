@@ -85,7 +85,7 @@
 		</tfoot>
 	</table>
 </main>
-
+<div id="no-videos"></div>
 <footer>
 	
 
@@ -127,6 +127,7 @@
 			const date = tbl.date.substr(0, 10) + ' ' + tbl.date.substr(11);
 			tbody.insertAdjacentHTML('beforeend', '<tr id="' + tbl.id + '"><td><img src="/movie_thumbs/' + tbl.id + '"></td><td><div>' + tbl.title + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date.match(/./g).join('</span><span>') + '</span></td><td><a class="bi bi-play-btn" href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a class="bi bi-pencil" href="/go_full?movieId=' + tbl.id + '"></a><a class="bi bi-download" href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a><a class="bi bi-record-circle" href="https://josephanimate2021.github.io/lvm-static/offline-player?movieId=' + tbl.id + '&lvpIsModded=true"></a><a class="bi bi-trash" href="javascript:deleteMovie(\'' + tbl.id + '\')"></a></td></tr>');
 		}
+		if (!c > json) document.getElementById('no-videos').innerHTML = '<center><h1>Welcome To Redrawn! (Beta)</h1><br><br>You currently have no videos at the moment. <a href="/go_full?tray=custom">Create one now</a></center>';
 	}
 
 	function deleteMovie(id) {
