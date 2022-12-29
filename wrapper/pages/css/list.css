@@ -91,7 +91,7 @@ tr>:nth-child(4)>a {
 	color: #474747;
 }
 tr>:nth-child(4)>a:hover {
-	color: var(--primary) !important;
+	color: #0000FF !important;
 }
 html.dark tr>:nth-child(4)>a { color: #eee }
 

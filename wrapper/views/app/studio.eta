@@ -54,6 +54,7 @@
 				<a class="close-button" onclick="hidePreviewer()">×</a>
 			</div>
 		</div>
+		<%~ includeFile("../includes/footer", { env: it.env }) %>
 	</body>
 
 	<script src="/pages/js/studio.js"></script>

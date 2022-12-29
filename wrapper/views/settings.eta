@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
 	<head>
 		<meta charset="UTF-8"/>
 		<link rel="icon" href="/favicon.ico" type="image/png" />
@@ -14,7 +14,7 @@
 		<%~ includeFile("./includes/header", { env: it.env }) %>
 
 		<main>			
-			<p>HTML Settings Are Coming Soon.
+			<p>HTML Settings Are Coming Soon.</p>
 		</main>
 
 		<%~ includeFile("./includes/footer", { env: it.env }) %>
