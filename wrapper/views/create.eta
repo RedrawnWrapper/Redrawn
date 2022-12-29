@@ -151,16 +151,16 @@ if (self !== top) {
 			<li><a id="upload_movie">Upload A Movie</a></li>
 			<li><a href="https://www.anistick.com/recorder">Anistick Recorder</a></li>
 			<li class="dropdown">
-				<a class="dropdown-toggle" href="/html/list.html" data-toggle="dropdown">Explore <span class="caret"></span></a>
+				<a class="dropdown-toggle" href="/list" data-toggle="dropdown">Explore <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/changelog.md?token=GHSAT0AAAAAABT2BKZIAW7G2UINSYE3V4FAYTNYLRQ">Update Log</a></li>
 					<li><a href="https://youtube.com/@josephanimate">Joseph's YouTube Channel</a></li>
-					<li><a href="/pages/html/list.html">Your Videos</a></li>
+					<li><a href="/list">Your Videos</a></li>
 					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/faq.md?token=GHSAT0AAAAAABT2BKZIXY6CE6Y3JEHLK6LEYTNYMSQ">FAQ</a></li>
 				</ul>
 			</li>
 			<li>
-				<a class="bright" href="/app/cc?themeId=family&bs=adam">Create a Char</a>
+				<a class="bright" id="upload_char">Upload a Char</a>
 			</li>
 			<li class="top-nav-vm-btn">
 				<span><a class="btn btn-blue" href="/create">Make a Video</a></span>
@@ -554,6 +554,12 @@ wistiaEmbed = Wistia.embed("9z4fah3lag");
     </div>
 </div>
 
+<form style="display:none" enctype='multipart/form-data' action='/upload_movie' method='post'>
+	<input id='movie' type="file" onchange="this.form.submit()" name='import' accept=".xml" />
+</form>
+<form style="display:none" enctype='multipart/form-data' action='/upload_character' method='post'>
+	<input id='char' type="file" onchange="this.form.submit()" name='import' accept=".xml" />
+</form>
 
 <script>
 $(function() {
@@ -595,6 +601,8 @@ $(function() {
 
 var tagNames = {"lipsync":"Lip-sync","ext_lib":"Extensive Library","starters":"Scene Starters","qvm":"Template","char_creator":"Character Creator"};
 </script>
+<script>$('#upload_movie').click(function() { document.getElementById("movie").click(); })</script>
+<script>$('#upload_char').click(function() { document.getElementById("char").click(); })</script>
 <script src="https://josephanimate2021.github.io/static/477/go/js/video_maker.js"></script>
 
 
