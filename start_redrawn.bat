@@ -212,11 +212,22 @@ if !INCLUDEDCHROMIUM!==n (
 	popd
 )
 goto wrapperidle
-
+:open_linkcls
+cls
 :open_link
 set /p LINK=Enter A URL To Get Started:
+if "!link!"=="" (
+	echo please enter a url.
+	goto open_link
+)
+pushd utilities\ungoogled-chromium
 start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=%link% >nul
-goto wrapperidle
+echo Do you want to oepn another link in headless chromium or not?
+echo y for yes.
+echo n for no.
+set /p CHOICE=Choice:
+if "!choice!"=="n" goto wrapperstartedcls
+if "!choice!"=="y" goto open_linkcls
 
 :open_files
 pushd %USERPROFILE%
