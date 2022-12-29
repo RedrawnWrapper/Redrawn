@@ -39,14 +39,14 @@ if (process.env.DISCORD_RPC && process.env.DISCORD_RPC == "y") {
 			details: `Version ${version}`,
 			startTimestamp: new Date(),
 			largeImageKey: "icon",
-			largeImageText: "Wrapper: Offline",
-			smallImageKey: "Wrapper: Offline",
-			smallImagetext: "Wrapper: Offline",
+			largeImageText: "Redrawn",
+			smallImageKey: "Redrawn",
+			smallImagetext: "Redrawn",
 		});
 	});
 
 	// connect rpc to app
 	rpc
-		.login({ clientId: "866340172874383370" })
+		.login({ clientId: "1057912608310698005" })
 		.catch((e) => console.log("RPC connection failed."));
 }
