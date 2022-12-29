@@ -170,6 +170,9 @@ echo Enter 1 to reopen the video list
 echo Enter ? to open the FAQ
 echo Enter clr to clean up the screen
 echo Enter 0 to close Redrawn
+echo Enter 2 to launch a link via headless chromium
+echo If you are having issues with redrawn,
+echo then type restart to restart redrawn.
 set /a _rand=(!RANDOM!*67/32768)+1
 if !_rand!==25 echo Enter things you think'll show a secret if you're feeling adventurous
 :wrapperidle
@@ -179,6 +182,7 @@ if "!choice!"=="0" goto exitwrapperconfirm
 set FUCKOFF=n
 if "!choice!"=="1" goto reopen_webpage
 if "!choice!"=="?" goto open_faq
+if "!choice!"=="2" goto open_link
 if /i "!choice!"=="clr" goto wrapperstartedcls
 if /i "!choice!"=="cls" goto wrapperstartedcls
 if /i "!choice!"=="clear" goto wrapperstartedcls
@@ -207,6 +211,11 @@ if !INCLUDEDCHROMIUM!==n (
 	)
 	popd
 )
+goto wrapperidle
+
+:open_link
+set /p LINK=Enter A URL To Get Started:
+start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=%link% >nul
 goto wrapperidle
 
 :open_files
