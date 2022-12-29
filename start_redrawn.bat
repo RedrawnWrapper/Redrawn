@@ -223,8 +223,8 @@ if "!link!"=="" (
 pushd utilities\ungoogled-chromium
 start chrome.exe --allow-outdated-plugins --user-data-dir=the_profile --app=%link% >nul
 echo Do you want to oepn another link in headless chromium or not?
-echo y for yes.
-echo n for no.
+echo Enter y for yes.
+echo Enter n for no.
 set /p CHOICE=Choice:
 if "!choice!"=="n" goto wrapperstartedcls
 if "!choice!"=="y" goto open_linkcls
