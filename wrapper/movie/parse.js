@@ -13,6 +13,8 @@ const xmldoc = require("xmldoc");
 const themeFolder = process.env.THEME_FOLDER;
 const source = path.join(__dirname, "../../server", process.env.CLIENT_URL);
 const store = path.join(__dirname, "../../server", process.env.STORE_URL);
+const onlinestore = process.env.STORE_URL;
+const onlinestatic = process.env.CLIENT_URL;
 const header = process.env.XML_HEADER;
 // stuff
 const char = require("../character/main");
@@ -113,9 +115,11 @@ module.exports =  {
 				}
 			} else {
 				const filepath = `${store}/${pieces.join("/")}`;
-
+				var fp;
+				if (!fs.existsSync(filepath)) fp = await get(`${onlinestore}/${pieces.join("/")}`);
+				else fp = fs.readFileSync(filepath);
 				// add the file to the zip
-				fUtil.addToZip(zip, filename, fs.readFileSync(filepath));
+				fUtil.addToZip(zip, filename, fp);
 			}
 
 			themes[themeId] = true;
@@ -189,9 +193,12 @@ module.exports =  {
 									}
 								} else {
 									const filepath = `${store}/${pieces.join("/")}`;
+									var fp;
+									if (!fs.existsSync(filepath)) fp = await get(`${onlinestore}/${pieces.join("/")}`);
+									else fp = fs.readFileSync(filepath);
 									const filename = pieces.join(".");
 
-									fUtil.addToZip(zip, filename, fs.readFileSync(filepath));
+									fUtil.addToZip(zip, filename, fp);
 								}
 
 								for (const e3I in elem2.children) {
@@ -232,7 +239,10 @@ module.exports =  {
 
 								const filename = `${name2Font(text.attr.font)}.swf`;
 								const filepath = `${source}/go/font/${filename}`;
-								fUtil.addToZip(zip, filename, fs.readFileSync(filepath));
+								var fp;
+								if (!fs.existsSync(filepath)) fp = await get(`${onlinestatic}/go/font/${filename}`);
+								else fp = fs.readFileSync(filepath);
+								fUtil.addToZip(zip, filename, fp);
 								break;
 							}
 						}

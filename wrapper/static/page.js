@@ -38,6 +38,7 @@ module.exports = async function (req, res, url) {
 	const CLIENT_URL = process.env.CLIENT_URL.replace("127.0.0.1", "localhost");
 
 	let extra, filename;
+	var addFlashQuery = true;
 	switch (url.pathname) {
 		case "/cc": {
 			filename = "app/char";
@@ -129,8 +130,8 @@ module.exports = async function (req, res, url) {
 						goteam_draft_only: 1,
 						isLogin: "Y",
 						isWide: 1,
-						lid: 0,
-						nextUrl: "/",
+						lid: process.env.LID,
+						nextUrl: `/ajax/closeBrowser${query.movieId ? `?movieId=${query.movieId}` : ""}`,
 						page: "",
 						retut: 1,
 						siteId: "go",
@@ -145,6 +146,10 @@ module.exports = async function (req, res, url) {
 				},
 				object: toObjectString
 			};
+			break;
+		} case "/closeBrowser": {
+			addFlashQuery = false;
+			filename = "app/closeBrowser";
 			break;
 		} case "/player": {
 			filename = "app/player";
@@ -174,8 +179,9 @@ module.exports = async function (req, res, url) {
 			return;
 		};
 	}
+
 	// add the query to the flashvars
-	Object.assign(extra.params?.flashvars || {}, query);
+	if (addFlashQuery) Object.assign(extra.params?.flashvars || {}, query);
 
 	res.setHeader("Content-Type", "text/html; charset=UTF-8");
 	try {

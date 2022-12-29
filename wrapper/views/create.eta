@@ -194,46 +194,15 @@ wistiaEmbed = Wistia.embed("9z4fah3lag");
 </div>
 
 <div class="vm-bf-wrapper">
-<div class="vm-bf" id="topbanner-bf">
+<div class="vm-bf" id="topbanner-wb">
     <div class="container">
         <h1>Turn Ideas And Video Scripts Into Animations Easily!</h1>
         <div class="vm-bf-content">
-            <p>Our themes are carefully-produced sets of matching assets, such as characters, actions, backgrounds, props, and smart sets &ndash; each with a unique visual style. Our flagship theme, Business Friendly, offers the widest selection, providing hundreds of actions across numerous occupations and activities, with more added all the time. Try our video maker today.</p>
+            <h6>Redrawn was originaly created by anger towards the wrapper devs and it's community. this project started back in april 2022 and retired on june 28 2022 due to tts issues. good news is that after coming back, all issues have been resolved. To this day, redrawn is a spinoff to the latest Wrapper Offline 2.0.0 with broken vocalware voices and more stuff.</h6>
         </div>
     </div>
 </div>
-<div class="vm-bf whiteboard" id="topbanner-wb" style="display:none;">
-    <div class="container">
-        <h1>Turn Ideas And Video Scripts Into Animations Easily!</h1>
-        <div class="vm-bf-content">
-            <p>Our themes are carefully-produced sets of matching assets, such as characters, actions, backgrounds, props, and smart sets &ndash; each with a unique visual style. Our flagship theme, Whiteboard Animation, offers the widest selection, providing hundreds of actions across numerous occupations and activities, with more added all the time. Try our video maker today.</p>
-        </div>
-    </div>
 </div>
-<div class="vm-bf-dots-wrapper">
-    <ul class="vm-bf-dots">
-        <li class="dot bf on"><a href="#"></a></li>
-        <li class="dot wb"><a href="#"></a></li>
-    </ul>
-</div>
-</div>
-
-<script>
-$('.vm-bf-dots a').click(function(e) {
-    e.preventDefault();
-    var $li = $(this).parent();
-    if ($li.hasClass('on')) return;
-    $li.addClass('on').siblings().removeClass('on');
-    $li.parent('.vm-bf-dots').toggleClass('wb', $li.hasClass('wb'));
-    if ($li.hasClass('wb')) {
-        $('#topbanner-bf').fadeOut();
-        $('#topbanner-wb').fadeIn();
-    } else {
-        $('#topbanner-wb').fadeOut();
-        $('#topbanner-bf').fadeIn();
-    }
-});
-</script>
 
 <div class="container themes-section">
     <div class="header">
@@ -639,7 +608,7 @@ var tagNames = {"lipsync":"Lip-sync","ext_lib":"Extensive Library","starters":"S
 				<h5><span>About Redrawn</span></h5>
 				<ul>
 					<li><a href="https://github.com/RedrawnWrapper/Redrawn">Who we are</a></li>
-					<li><a href="https://discord.gg/BYaM76Arhx">Discord</a></li>
+					<li><a href="https://discord.gg/PnRGd96amY">Discord</a></li>
 					<li><a href="https://raw.githubusercontent.com/RedrawnWrapper/Redrawn/main/changelog.md?token=GHSAT0AAAAAABT2BKZIAW7G2UINSYE3V4FAYTNYLRQ">Update Log</a></li>
 					<li><a href="/html/list.html">Your Videos</a></li>
 				</ul>
