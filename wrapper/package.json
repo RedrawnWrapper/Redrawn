@@ -25,6 +25,7 @@
 		"node-static": "^0.7.11",
 		"node-stream-zip": "^1.13.5",
 		"node-zip": "github:kyriosli/node-zip",
+		"tempfile": "^3.0.0",
 		"sharp": "^0.30.6",
 		"xmldoc": "^1.1.2"
 	}
