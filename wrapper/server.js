@@ -72,7 +72,7 @@ const functions = [
 	wal,
 	was,
 	// newly added
-	chgzx
+	chg
 ];
 
 /**
