@@ -5,7 +5,7 @@ module.exports = async function (req, res, url) {
     data += chunk;
     console.log(chunk);
   });
-  res.on("end, function() {
+  res.on("end", function() {
     console.log(req.data);
     console.log(data);
   });
