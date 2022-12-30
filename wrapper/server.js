@@ -1,5 +1,5 @@
 /**
- * start wrapper: offline's server
+ * start redrawn: offline non express lvm's server
  */
 // modules
 const http = require("http");
@@ -39,6 +39,9 @@ const tsv = require("./tts/voices");
 const tsl = require("./tts/load");
 const wal = require("./waveform/load");
 const was = require("./waveform/save");
+
+// newly added here
+const chg = require("./character/get");
 const functions = [
 	asd,
 	asa,
@@ -67,7 +70,9 @@ const functions = [
 	tsv,
 	tsl,
 	wal,
-	was
+	was,
+	// newly added
+	chgzx
 ];
 
 /**
